@@ -1,0 +1,6 @@
+.enb/tmp
+libs
+node_modules
+
+bundles/*/*.*
+!bundles/*/*.bemjson.js

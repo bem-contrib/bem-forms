@@ -1,0 +1,16 @@
+{
+  "name": "bem-forms",
+  "version": "0.0.0",
+  "authors": [
+    "Vyacheslav Aristov <einstain@yandex-team.ru>"
+  ],
+  "ignore": [
+    "node_modules",
+    "libs",
+    "bundles"
+  ],
+  "dependencies": {
+    "bem-core": "bem/bem-core#~2.5.0",
+    "bem-components": "bem/bem-components#v2"
+  }
+}
