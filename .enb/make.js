@@ -39,7 +39,7 @@ module.exports = function(config) {
                 { path: 'libs/bem-components/desktop.blocks', check: false },
                 { path: 'libs/bem-components/design/common.blocks', check: false },
                 { path: 'libs/bem-components/design/desktop.blocks', check: false },
-                { path: 'blocks', check: true }
+                { path: 'common.blocks', check: true }
             ].map(function(l) { return config.resolvePath(l); });
         }
     });
