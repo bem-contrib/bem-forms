@@ -19,8 +19,6 @@ modules.define(
                     inited : function() {
                         this.messages = {};
 
-                        console.log('Init validator');
-
                         var _this = this;
                         // Get block name
                         // Name is the first DOM class
