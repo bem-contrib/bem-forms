@@ -1,6 +1,13 @@
-.enb/tmp
-libs
-node_modules
+libs/
+node_modules/
+.DS_Store
+.idea
+.project
+.svn
+npm-debug.log
 
+# bem
+.bem/cache/
+.enb/tmp/
 bundles/*/*.*
 !bundles/*/*.bemjson.js
