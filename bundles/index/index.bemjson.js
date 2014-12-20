@@ -7,7 +7,7 @@
         {
             block: 'form',
             method: 'GET',
-            mods : { theme : 'islands' },
+            mods : { validate : true, theme : 'islands' },
             content: [
                 {
                     elem : 'content',
@@ -23,7 +23,10 @@
                                 {
                                     block : 'input',
                                     name : 'simple',
-                                    mods : { theme : 'islands', size : 'l' }
+                                    mods : { theme : 'islands', size : 'l' },
+                                    mix : [
+                                        { block : 'form', elem : 'field' }
+                                    ]
                                 }
                             ]
                         },
@@ -40,6 +43,7 @@
                                     name : 'required',
                                     mods : { theme : 'islands', size : 'l' },
                                     mix : [
+                                        { block : 'form', elem : 'field' },
                                         {
                                             block : 'validate',
                                             js : true,
@@ -63,6 +67,7 @@
                                     name: 'integers',
                                     mods : { theme : 'islands', size : 'l' },
                                     mix : [
+                                        { block : 'form', elem : 'field' },
                                         {
                                             block : 'validate',
                                             js : true,
@@ -85,6 +90,7 @@
                                     name: 'decimal',
                                     mods : { theme : 'islands', size : 'l' },
                                     mix : [
+                                        { block : 'form', elem : 'field' },
                                         {
                                             block : 'validate',
                                             js : { precision : 7, scale : 2, decimal : '.' },
@@ -107,6 +113,7 @@
                                     name : 'money',
                                     mods : { theme : 'islands', size : 'l' },
                                     mix : [
+                                        { block : 'form', elem : 'field' },
                                         {
                                             block : 'validate',
                                             js : true,
@@ -129,6 +136,7 @@
                                     name : 'requiredCard',
                                     mods : { theme : 'islands', size : 'l' },
                                     mix : [
+                                        { block : 'form', elem : 'field' },
                                         {
                                             block : 'validate',
                                             js : true,
