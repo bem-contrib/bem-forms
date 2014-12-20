@@ -38,8 +38,6 @@ modules.define(
                 js : {
                     inited: function () {
                         this.__base.apply(this, arguments);
-
-                        console.log('Init money validator');
                     }
                 },
 

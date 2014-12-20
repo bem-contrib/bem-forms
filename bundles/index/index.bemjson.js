@@ -7,6 +7,7 @@
         {
             block: 'form',
             method: 'GET',
+            mods : { theme : 'islands' },
             content: [
                 {
                     elem : 'content',
@@ -39,6 +40,7 @@
                                     mix : [
                                         {
                                             block : 'validate',
+                                            js : true,
                                             mods : { required : true }
                                         }
                                     ]
@@ -60,6 +62,7 @@
                                     mix : [
                                         {
                                             block : 'validate',
+                                            js : true,
                                             mods : { numbers : true }
                                         }
                                     ]
@@ -80,7 +83,7 @@
                                     mix : [
                                         {
                                             block : 'validate',
-                                            js : { precision : 7, scale : 3 },
+                                            js : { precision : 7, scale : 2, decimal : '.' },
                                             mods : { numbers : true }
                                         }
                                     ]
@@ -101,6 +104,7 @@
                                     mix : [
                                         {
                                             block : 'validate',
+                                            js : true,
                                             mods : { money : true }
                                         }
                                     ]
@@ -121,6 +125,7 @@
                                     mix : [
                                         {
                                             block : 'validate',
+                                            js : true,
                                             mods : { card : true, required : true }
                                         }
                                     ]
@@ -134,7 +139,7 @@
                     content : [
                         {
                             block : 'button',
-                            mods : { theme : 'islands', size : 'l' , type : 'submit' },
+                            mods : { theme : 'islands', size : 'l' , view : 'action', type : 'submit' },
                             text : 'Submit'
                         }
                     ]
