@@ -25,8 +25,6 @@ modules.define(
                     inited : function () {
                         this.__base.apply(this, arguments);
 
-                        console.log('Init required validator');
-
                         var _this = this;
 
                         _this.target.elem('control').on('blur', function() {
