@@ -40,7 +40,8 @@ module.exports = function(config) {
                 { path: 'libs/bem-components/desktop.blocks', check: false },
                 { path: 'libs/bem-components/design/common.blocks', check: false },
                 { path: 'libs/bem-components/design/desktop.blocks', check: false },
-                { path: 'common.blocks', check: true }
+                { path: 'common.blocks' },
+                { path: 'design/common.blocks' }
             ].map(function(l) { return config.resolvePath(l); });
         }
     });

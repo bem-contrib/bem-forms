@@ -14,6 +14,7 @@
                     content : [
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -28,6 +29,7 @@
                         },
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -50,6 +52,7 @@
                         },
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -71,6 +74,7 @@
                         },
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -92,6 +96,7 @@
                         },
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -113,6 +118,7 @@
                         },
                         {
                             block : 'controls-group',
+                            mods : { theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
