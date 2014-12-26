@@ -65,21 +65,22 @@ modules.define(
             /**
              * Match card BIN pattern
              * @param {String} number
-             * @returns {Object} c_type - card info { name : 'name', pattern : '' }
+             * @returns {Object} cardType - card info { name : 'name', pattern : '' }
              */
             _patterns : function(number) {
-                var _j, _len1, c_type;
-                for (_j = 0, _len1 = CARDS.length; _j < _len1; _j++) {
-                    c_type = CARDS[_j];
-                    if (number.match(c_type.pattern)) {
-                        return c_type;
+                var i, l, cardType;
+
+                for (i = 0, l = CARDS.length; i < l; i++) {
+                    cardType = CARDS[i];
+
+                    if (number.match(cardType.pattern)) {
+                        return cardType;
                     }
-                    else {
-                        c_type = false;
-                    }
+
+                    cardType = false;
                 }
 
-                return c_type;
+                return cardType;
             },
 
             /**
@@ -97,14 +98,13 @@ modules.define(
              * @returns {Boolean}
              */
             _luhn : function(number) {
-                var digit, n, _j, _len1,
+                var digit, n, i, l,
                     sum = 0,
                     norm = this._normalize(number),
-                    _ref2 = norm.split('').reverse();
+                    ref2 = norm.split('').reverse();
 
-                for (n = _j = 0, _len1 = _ref2.length; _j < _len1; n = ++_j) {
-                    digit = _ref2[n];
-                    digit = +digit;
+                for (n = i = 0, l = ref2.length; i < l; n = ++i) {
+                    digit = Number(ref2[n]);
                     if (n % 2) {
                         digit *= 2;
                         if (digit < 10) {
@@ -121,32 +121,30 @@ modules.define(
             },
 
             run : function() {
-                var _this = this;
-
                 var data = {
-                    value : _this._normalize(_this.target.getVal())
+                    value : this._normalize(this.target.getVal())
                 };
 
                 if (!!data.value) {
                     if (!SCHEMA(data)) {
-                        _this._error(MESSAGE);
+                        this._error(MESSAGE);
                         return false;
                     }
 
-                    if (!_this._luhn(data.value)) {
-                        _this._error(MESSAGE);
+                    if (!this._luhn(data.value)) {
+                        this._error(MESSAGE);
                         return false;
                     }
 
-                    _this.card = _this._patterns(data.value);
+                    this.card = this._patterns(data.value);
 
-                    if (!_this.card) {
-                        _this._error(MESSAGE);
+                    if (!this.card) {
+                        this._error(MESSAGE);
                         return false;
                     }
                 }
 
-                _this.__base.apply(_this, arguments);
+                this.__base.apply(this, arguments);
             }
 
         }));
