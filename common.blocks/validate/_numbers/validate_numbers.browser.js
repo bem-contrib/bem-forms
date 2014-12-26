@@ -4,8 +4,8 @@
 
 modules.define(
     'validate',
-    ['functions', 'keyboard__codes'],
-    function (provide, functions, keyCodes, Validate) {
+    ['keyboard__codes'],
+    function (provide, keyCodes, Validate) {
 
         /**
          * Error message

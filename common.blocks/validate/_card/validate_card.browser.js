@@ -38,20 +38,13 @@ modules.define(
 
         provide(Validate.decl({ modName : 'card', modVal : true }, {
 
-            beforeSetMod : {
-                js : {
-                    inited : function() {
-                        this.setMod('numbers');
-                    }
-                }
-            },
-
             onSetMod : {
                 js : {
                     inited : function () {
-                        this.__base.apply(this, arguments);
-
                         var _this = this;
+
+                        this.__base.apply(this, arguments);
+                        this.setMod('numbers');
 
                         _this.target.elem('control')
                             .on('blur', function() {

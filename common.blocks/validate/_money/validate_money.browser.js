@@ -4,8 +4,8 @@
 
 modules.define(
     'validate',
-    ['functions', 'keyboard__codes'],
-    function (provide, functions, keyCodes, Validate) {
+    [],
+    function (provide, Validate) {
 
         /**
          * Error message
@@ -24,20 +24,13 @@ modules.define(
 
         provide(Validate.decl({ modName : 'money', modVal : true }, {
 
-            beforeSetMod : {
-                js : {
-                    inited : function() {
-                        this.setMod('numbers');
-                        this.params.decimal = '.';
-                        this.params.scale = 2;
-                    }
-                }
-            },
-
             onSetMod : {
                 js : {
                     inited: function () {
                         this.__base.apply(this, arguments);
+                        this.setMod('numbers');
+                        this.params.decimal = '.';
+                        this.params.scale = 2;
                     }
                 },
 
@@ -51,18 +44,16 @@ modules.define(
             },
 
             run : function() {
-                var _this = this;
-
                 var data = {
-                    value : parseFloat(_this.target.getVal())
+                    value : parseFloat(this.target.getVal())
                 };
 
                 if(!!data.value && !SCHEMA(data)) {
-                    _this._error(MESSAGE);
+                    this._error(MESSAGE);
                     return false;
                 }
 
-                _this.__base.apply(_this, arguments);
+                this.__base.apply(this, arguments);
             }
 
         }));
