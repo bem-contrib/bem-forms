@@ -40,6 +40,7 @@ module.exports = function(config) {
         langs = process.env.BEM_I18N_LANGS;
 
     config.includeConfig('enb-bem-examples');
+    config.includeConfig('enb-bem-docs');
     config.includeConfig('enb-bem-specs');
     config.includeConfig('enb-bem-tmpl-specs');
 
@@ -49,6 +50,7 @@ module.exports = function(config) {
     configureSets(sets, {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
+        docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples'),
         specs : config.module('enb-bem-specs').createConfigurator('specs'),
         tmplSpecs : config.module('enb-bem-tmpl-specs').createConfigurator('tmpl-specs')
     });
@@ -237,6 +239,14 @@ module.exports = function(config) {
                 levels : getLibLevels(platform),
                 techSuffixes : ['tests'],
                 fileSuffixes : ['bemjson.js', 'title.txt']
+            });
+
+            sets.docs.configure({
+                destPath : platform + '.docs',
+                levels : getLibLevels(platform),
+                exampleSets : [platform + '.examples'],
+                langs : config.getLanguages(),
+                jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
             });
 
             sets.specs.configure({
