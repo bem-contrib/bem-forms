@@ -5,7 +5,6 @@
     },
     shouldDeps : [
         'objects',
-        { elem : 'control' },
-        { mods : { validate : true } }
+        { elem : 'control' }
     ]
 })

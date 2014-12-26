@@ -19,11 +19,10 @@ modules.define(
                     inited : function() {
                         this.messages = {};
 
-                        var _this = this;
                         // Get block name
                         // Name is the first DOM class
-                        _this.targetName = _this.domElem.attr('class').split(' ')[0];
-                        _this.target = _this.findBlockOn(_this.targetName);
+                        this.targetName = this.domElem.attr('class').split(' ')[0];
+                        this.target = this.findBlockOn(this.targetName);
                     }
                 },
 

@@ -1,8 +1,6 @@
 ({
     mustDeps: [],
     shouldDeps: [
-        { block : 'keyboard', elem : 'codes' },
-        'functions',
-        'events'
+        { block : 'validate', mods : { numbers : true } }
     ]
 })
