@@ -12,5 +12,8 @@
   "dependencies": {
     "bem-core": "bem/bem-core#~2.5.0",
     "bem-components": "bem/bem-components#v2"
+  },
+  "devDependencies": {
+    "bem-pr": "~0.10.0"
   }
 }
