@@ -2,8 +2,9 @@ module.exports = function(config) {
     config.mode('development', function() {
         config.node('bundles/index', function(nodeConfig) {
             nodeConfig.addTechs([
-                [ require('enb/techs/file-copy'), { sourceTarget: '?.js', destTarget: '_?.js' } ],
-                [ require('enb/techs/file-copy'), { sourceTarget: '?.css', destTarget: '_?.css' } ]
+                [ require('enb/techs/file-copy'), { sourceTarget: '?.css', destTarget: '_?.css' } ],
+                [ require('enb/techs/borschik'), { sourceTarget: '?.js', destTarget: '?.borschik.js', minify: false, freeze: false } ],
+                [ require('enb/techs/file-copy'), { sourceTarget: '?.borschik.js', destTarget: '_?.js' } ],
             ]);
         });
     });
@@ -39,7 +40,8 @@ module.exports = function(config) {
                 { path: 'libs/bem-components/desktop.blocks', check: false },
                 { path: 'libs/bem-components/design/common.blocks', check: false },
                 { path: 'libs/bem-components/design/desktop.blocks', check: false },
-                { path: 'common.blocks', check: true }
+                { path: 'common.blocks' },
+                { path: 'design/common.blocks' }
             ].map(function(l) { return config.resolvePath(l); });
         }
     });
