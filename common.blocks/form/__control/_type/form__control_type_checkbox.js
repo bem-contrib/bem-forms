@@ -1,4 +1,5 @@
 modules.define('form', function(provide, Form) {
+
 /**
  * Контрол типа checkbox (флажок)
  * Подмешивается к блоку checkbox
@@ -10,7 +11,7 @@ provide(Form.decl({ block : this.name, elem : 'control', modName : 'type', modVa
      */
     getVal : function() {
         var control = this.getControl();
-        return control.hasMod('checked') ? control.getVal() : '';
+        return control.hasMod('checked')? control.getVal() : '';
     },
 
     /**
