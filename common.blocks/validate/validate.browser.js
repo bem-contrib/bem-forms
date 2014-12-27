@@ -15,8 +15,8 @@ modules.define(
         provide(BEMDOM.decl(this.name, {
 
             onSetMod : {
-                js : {
-                    inited : function() {
+                'js' : {
+                    'inited' : function() {
                         this.messages = {};
 
                         // Get block name
@@ -30,14 +30,14 @@ modules.define(
                  * Mod for detect result of validations in CSS
                  * @returns false
                  */
-                result : {
-                    success : function() {
+                'result' : {
+                    'success' : function() {
                         // Event on success validate
                         // console.log(this.messages);
                     },
-                    error : function() {
+                    'error' : function() {
                         // Event on error validate
-                        console.log(this.messages);
+                        window.console.error(this.messages);
                     }
                 }
             },

@@ -1,3 +1,7 @@
+/**
+ * @module validate
+ */
+
 modules.define(
     'validate',
     ['i-bem__dom'],
@@ -10,13 +14,6 @@ modules.define(
             validator : 'required',
             text : 'Поле обязательно к заполнению'
         };
-
-        /**
-         * Default required format schema
-         */
-        var SCHEMA = schema({
-            value : undefined
-        });
 
         provide(Validate.decl({ modName : 'required', modVal : true }, {
 
@@ -43,18 +40,12 @@ modules.define(
             },
 
             run : function() {
-                var _this = this;
-
-                var data = {
-                    value : _this.target.getVal()
-                };
-
-                if(!data.value) {
-                    _this._error(MESSAGE);
+                if(!this.target.getVal()) {
+                    this._error(MESSAGE);
                     return false;
                 }
 
-                _this.__base.apply(_this, arguments);
+                this.__base.apply(this, arguments);
             }
 
         }));

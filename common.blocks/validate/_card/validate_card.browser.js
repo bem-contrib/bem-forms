@@ -1,3 +1,4 @@
+/* global schema */
 /**
  * @module validate
  */
@@ -39,8 +40,8 @@ modules.define(
         provide(Validate.decl({ modName : 'card', modVal : true }, {
 
             onSetMod : {
-                js : {
-                    inited : function () {
+                'js' : {
+                    'inited' : function () {
                         var _this = this;
 
                         this.__base.apply(this, arguments);
@@ -53,8 +54,8 @@ modules.define(
                     }
                 },
 
-                result : {
-                    success : function() {
+                'result' : {
+                    'success' : function() {
                         delete this.messages[MESSAGE.validator];
 
                         this.__base.apply(this, arguments);
@@ -70,10 +71,10 @@ modules.define(
             _patterns : function(number) {
                 var i, l, cardType;
 
-                for (i = 0, l = CARDS.length; i < l; i++) {
+                for(i = 0, l = CARDS.length; i < l; i++) {
                     cardType = CARDS[i];
 
-                    if (number.match(cardType.pattern)) {
+                    if(number.match(cardType.pattern)) {
                         return cardType;
                     }
 
@@ -103,11 +104,11 @@ modules.define(
                     norm = this._normalize(number),
                     ref2 = norm.split('').reverse();
 
-                for (n = i = 0, l = ref2.length; i < l; n = ++i) {
+                for(n = i = 0, l = ref2.length; i < l; n = ++i) {
                     digit = Number(ref2[n]);
-                    if (n % 2) {
+                    if(n % 2) {
                         digit *= 2;
-                        if (digit < 10) {
+                        if(digit < 10) {
                             sum += digit;
                         } else {
                             sum += digit - 9;
@@ -125,20 +126,20 @@ modules.define(
                     value : this._normalize(this.target.getVal())
                 };
 
-                if (!!data.value) {
-                    if (!SCHEMA(data)) {
+                if(!!data.value) {
+                    if(!SCHEMA(data)) {
                         this._error(MESSAGE);
                         return false;
                     }
 
-                    if (!this._luhn(data.value)) {
+                    if(!this._luhn(data.value)) {
                         this._error(MESSAGE);
                         return false;
                     }
 
                     this.card = this._patterns(data.value);
 
-                    if (!this.card) {
+                    if(!this.card) {
                         this._error(MESSAGE);
                         return false;
                     }

@@ -10,8 +10,8 @@ modules.define(
         provide(Form.decl({ modName : 'validate', modVal : true }, {
 
             onSetMod : {
-                js : {
-                    inited : function () {
+                'js' : {
+                    'inited' : function () {
                         var _this = this;
 
                         _this._setFields();
@@ -21,7 +21,7 @@ modules.define(
                         });
 
                         this.on('submit', function () {
-                            _this.valid() && console.log('Yeah!');
+                            _this.valid() && window.console.log('Yeah!');
                         });
                     }
                 }
@@ -46,14 +46,11 @@ modules.define(
             },
 
             valid : function() {
-                var _this = this;
-
-                for(var i = 0; i < _this._fields.length - 1; i++) {
-
-                    if(_this._fields[i].validator && !_this._fields[i].validator.run()) return false;
-
+                for(var i = 0, l = this._fields.length; i < l - 1; i++) {
+                    if(this._fields[i].validator && !this._fields[i].validator.run()) {
+                        return false;
+                    }
                 }
-
                 return true;
             },
 

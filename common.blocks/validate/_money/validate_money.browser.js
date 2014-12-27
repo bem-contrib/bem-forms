@@ -1,3 +1,4 @@
+/* global schema */
 /**
  * @module validate
  */
@@ -25,8 +26,8 @@ modules.define(
         provide(Validate.decl({ modName : 'money', modVal : true }, {
 
             onSetMod : {
-                js : {
-                    inited: function () {
+                'js' : {
+                    'inited' : function () {
                         this.__base.apply(this, arguments);
                         this.setMod('numbers');
                         this.params.decimal = '.';
@@ -34,8 +35,8 @@ modules.define(
                     }
                 },
 
-                result : {
-                    success : function() {
+                'result' : {
+                    'success' : function() {
                         delete this.messages[MESSAGE.validator];
 
                         this.__base.apply(this, arguments);
