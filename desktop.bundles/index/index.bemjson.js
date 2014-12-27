@@ -1,8 +1,8 @@
 ({
     block : 'page',
     title : 'form',
-    styles : [{ elem : 'css', url : '_index.css' }],
-    scripts : [{ elem : 'js', url : '_index.js' }],
+    styles : [{ elem : 'css', url : 'index.min.css' }],
+    scripts : [{ elem : 'js', url : 'index.min.js' }],
     content : {
         block : 'form',
         method : 'GET',
