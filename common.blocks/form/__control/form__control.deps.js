@@ -1,3 +1,3 @@
 ({
-    mustDeps: 'form'
+    mustDeps : 'form'
 })

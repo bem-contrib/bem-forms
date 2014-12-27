@@ -1,6 +1,6 @@
 module.exports = function(config) {
     config.mode('development', function() {
-        config.node('bundles/index', function(nodeConfig) {
+        config.node('desktop.bundles/index', function(nodeConfig) {
             nodeConfig.addTechs([
                 [ require('enb/techs/file-copy'), { sourceTarget: '?.js', destTarget: '_?.js' } ],
                 [ require('enb/techs/file-copy'), { sourceTarget: '?.css', destTarget: '_?.css' } ]
@@ -8,7 +8,7 @@ module.exports = function(config) {
         });
     });
     config.mode('production', function() {
-        config.node('bundles/index', function(nodeConfig) {
+        config.node('desktop.bundles/index', function(nodeConfig) {
             nodeConfig.addTechs([
                 [ require('enb/techs/borschik'), { sourceTarget: '?.js', destTarget: '_?.js', minify: true, freeze: false } ],
                 [ require('enb/techs/borschik'), { sourceTarget: '?.css', destTarget: '_?.css', minify: true, freeze: false } ]
@@ -16,7 +16,7 @@ module.exports = function(config) {
         });
     });
 
-    config.node('bundles/index', function(nodeConfig) {
+    config.node('desktop.bundles/index', function(nodeConfig) {
         nodeConfig.addTechs([
             [ require('enb/techs/levels'), { levels: getLevels() } ],
             [ require('enb/techs/file-provider'), { target: '?.bemjson.js' } ],
