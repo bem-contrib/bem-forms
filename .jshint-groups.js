@@ -110,6 +110,9 @@ module.exports = {
             excludes : [
                 '.bem/cache/**',
                 'libs/**',
+                '.libs-cache/**',
+                '.libs-registry/**',
+                '.libs-tmp/**',
                 'node_modules/**'
             ]
         }
