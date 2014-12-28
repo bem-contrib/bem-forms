@@ -1,55 +1,28 @@
-/* global schema */
 /**
- * @module validate
+ * @module input
  */
 
 modules.define(
-    'validate',
+    'input',
     ['keyboard__codes'],
-    function (provide, keyCodes, Validate) {
+    function (provide, keyCodes, Input) {
 
-        /**
-         * Error message
-         */
-        var MESSAGE = {
-            validator : 'numbers',
-            text : 'Неверные циферки'
-        };
+        var ALLOWED_CHARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-        /**
-         * Default numbers format schema
-         */
-        var SCHEMA = schema({
-            value : Number
-        });
-
-        provide(Validate.decl({ modName : 'numbers', modVal : true }, {
+        provide(Input.decl({ modName : 'type', modVal : 'numbers' }, {
 
             onSetMod : {
-                'js' : {
-                    'inited' : function () {
-                        this.__base.apply(this, arguments);
-
+                js : {
+                    inited: function () {
                         var _this = this;
 
-                        _this.target.elem('control')
-                            .on('blur', function() {
-                                _this.run();
-                            })
+                        _this.elem('control')
                             .on('keypress', function(e) {
                                 _this._onKeyPress(e);
                             })
                             .on('keyup', function() {
                                 _this._onKeyUp();
                             });
-                    }
-                },
-
-                'result' : {
-                    'success' : function() {
-                        delete this.messages[MESSAGE.validator];
-
-                        this.__base.apply(this, arguments);
                     }
                 }
             },
@@ -79,27 +52,13 @@ modules.define(
                 // if a number was not pressed
                 if(key < 48 || key > 57)  {
                     // check for other keys that have special purposes
-                    if(
-                        key === keyCodes.BACKSPACE &&
-                        key === keyCodes.TAB       &&
-                        key === keyCodes.ENTER     &&
-                        key === keyCodes.END       &&
-                        key === keyCodes.HOME      &&
-                        key === keyCodes.LEFT      &&
-                        key === keyCodes.RIGHT     &&
-                        key === keyCodes.DELETE
-                    ) {
-                        // for detecting special keys (listed above)
-                        // IE does not support 'charCode' and ignores them in keypress anyway
-                        if(typeof e.charCode !== 'undefined')  {
-                            // special keys have 'keyCode' and 'which' the same (e.g. backspace)
-                            if(e.keyCode === e.which && e.which !== 0)  {
-                                return true;
-                            } else if(e.keyCode !== 0 && e.charCode === 0 && e.which === 0) {
-                                // or keyCode != 0 and 'charCode'/'which' = 0
-                                return true;
-                            }
-                        }
+                    // for detecting special keys (listed above)
+                    // IE does not support 'charCode' and ignores them in keypress anyway
+                    var IE = _this._otherKeys(key) && typeof e.charCode !== 'undefined';
+                    // special keys have 'keyCode' and 'which' the same (e.g. backspace)
+                    if(IE && ((e.keyCode === e.which && e.which !== 0) ||
+                        (e.keyCode !== 0 && e.charCode === 0 && e.which === 0)))  {
+                        return true;
                     }
 
                     // if key pressed is the _this.params.decimal and it is not already in the field
@@ -108,56 +67,31 @@ modules.define(
                         return true;
                     }
 
-                // -----------------------------------------------------------------
+                    // -----------------------------------------------------------------
                 } else {
                     // if a number key was pressed.
                     // If scale >= 0, make sure there's only <scale> characters
                     // after the _this.params.decimal point.
-                    if(_this.params.scale) {
-                        var DECIMALPosition = value.indexOf(_this.params.decimal);
-                        // If there is a _this.params.decimal.
-                        if(DECIMALPosition >= 0) {
-                            var DECIMALsQuantity = value.length - DECIMALPosition - 1;
-                            // If the cursor is after the _this.params.decimal.
-                            if(_this._getSelectionStart(_this.target.elem('control')) > DECIMALPosition) {
-                                return DECIMALsQuantity < _this.params.scale;
-                            } else {
-                                var integersQuantity = (_this.target.getVal().length - 1) - DECIMALsQuantity;
-                                // If precision > 0, integers and decimals quantity should not be greater than precision
-                                if(integersQuantity < (_this.params.precision - _this.params.scale)) {
-                                    return true;
-                                }
-                            }
-
-                        // If there is no decimal
-                        } else {
-                            if(_this.params.precision > 0) {
-                                return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision - _this.params.scale;
-                            } else {
-                                return true;
-                            }
-                        }
-
+                    _this.params.scale && _this._parseDecimal(value);
                     // If precision > 0, make sure there's not more digits than precision
-                    } else if(_this.params.precision > 0) {
-                        return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision;
-                    } else {
-                        return true;
-                    }
+                    _this._parsePrecision();
+
+                    return true;
                 }
 
                 return false;
-
             },
 
             _onKeyUp : function() {
-                var _this = this;
+                var _this = this,
+                    allowed_chars_with_delimiter = ALLOWED_CHARS;
+                allowed_chars_with_delimiter.push(_this.params.decimal);
 
-                var carat = _this._getSelectionStart(_this.target.elem('control'));
-                var val = _this._clean(_this.target.getVal(), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, _this.params.decimal]);
+                var caret = _this._getSelectionStart(_this.target.elem('control'));
+                var val   = _this._clean(_this.target.getVal(), allowed_chars_with_delimiter);
 
                 _this.target.setVal(val);
-                _this._setSelection(_this.target.elem('control'), carat);
+                _this._setSelection(_this.target.elem('control'), caret);
             },
 
             /**
@@ -167,21 +101,12 @@ modules.define(
              * @returns false
              */
             _clean : function(value, validChars) {
-                var _this = this;
-
-                // loop backwards (to prevent going out of bounds)
-                var val = value;
+                var _this = this,
+                    val = value;
 
                 for(var i = val.length - 1; i >= 0; i--) {
-                    var ch = val.charAt(i);
-                    // remove '-' if it is in the wrong place
-                    if(i !== 0 && ch === '-') {
-                        val = val.substring(0, i) + val.substring(i + 1);
-                    // remove character if it is at the start, a '-'
-                    } else if(i === 0 && ch === '-') {
-                        val = val.substring(1);
-                    }
-                    var validChar = false;
+                    var ch = val.charAt(i),
+                        validChar = false;
                     // loop through validChars
                     for(var j = 0; j < validChars.length; j++) {
                         // if it is valid, break out the loop
@@ -191,9 +116,7 @@ modules.define(
                         }
                     }
                     // if not a valid character, or a space, remove
-                    if(!validChar || ch === ' ') {
-                        val = val.substring(0, i) + val.substring(i + 1);
-                    }
+                    if(!validChar || ch === ' ') val = val.substring(0, i) + val.substring(i + 1);
                 }
 
                 // remove extra decimal characters
@@ -251,19 +174,48 @@ modules.define(
                 }
             },
 
-            run : function() {
+            _otherKeys : function(key) {
+                return key === keyCodes.BACKSPACE &&
+                    key === keyCodes.TAB       &&
+                    key === keyCodes.ENTER     &&
+                    key === keyCodes.END       &&
+                    key === keyCodes.HOME      &&
+                    key === keyCodes.LEFT      &&
+                    key === keyCodes.RIGHT     &&
+                    key === keyCodes.DELETE;
+            },
+
+            _parseDecimal : function(value) {
+                var _this = this,
+                    DECIMALsQuantity,
+                    DECIMALPosition = value.indexOf(_this.params.decimal);
+
+                // If there is a _this.params.decimal.
+                if(DECIMALPosition >= 0) {
+                    DECIMALsQuantity = value.length - DECIMALPosition - 1;
+                    // If the cursor is after the _this.params.decimal.
+                    if(_this._getSelectionStart(_this.target.elem('control')) > DECIMALPosition) {
+                        return DECIMALsQuantity < _this.params.scale;
+                    } else if(((_this.target.getVal().length - 1) - DECIMALsQuantity) < (_this.params.precision - _this.params.scale)) {
+                        // If precision > 0, integers and decimals quantity should not be greater than precision
+                        return true;
+                    }
+                } else if(_this.params.precision > 0) {
+                    // If there is no decimal
+                    return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision - _this.params.scale;
+                } else {
+                    return true;
+                }
+            },
+
+            _parsePrecision : function() {
                 var _this = this;
 
-                var data = {
-                    value : parseFloat(_this.target.getVal())
-                };
-
-                if(!!data.value && !SCHEMA(data)) {
-                    _this._error(MESSAGE);
-                    return false;
+                if (_this.params.precision > 0) {
+                    return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision;
+                } else {
+                    return true;
                 }
-
-                _this.__base.apply(_this, arguments);
             }
 
         }));
