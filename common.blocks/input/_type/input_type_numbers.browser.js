@@ -121,14 +121,11 @@ modules.define(
 
                 // remove extra decimal characters
                 var firstDecimal = val.indexOf(_this.params.decimal);
-                if(firstDecimal > 0)
-                {
-                    for(var k = val.length - 1; k > firstDecimal; k--)
-                    {
+                if(firstDecimal > 0) {
+                    for(var k = val.length - 1; k > firstDecimal; k--) {
                         var chch = val.charAt(k);
                         // remove decimal character
-                        if(chch === _this.params.decimal)
-                        {
+                        if(chch === _this.params.decimal) {
                             val = val.substring(0, k) + val.substring(k + 1);
                         }
                     }
