@@ -12,8 +12,10 @@ modules.define(
         provide(Input.decl({ modName : 'type', modVal : 'numbers' }, {
 
             onSetMod : {
-                js : {
-                    inited: function () {
+                'js' : {
+                    'inited' : function () {
+                        this.__base.apply(this, arguments);
+
                         var _this = this;
 
                         _this.elem('control')
@@ -29,7 +31,7 @@ modules.define(
 
             _onKeyPress : function(e) {
                 var _this = this,
-                    value = _this.target.getVal();
+                    value = _this.getVal();
 
                 // get the key that was pressed
                 var key = e.charCode? e.charCode : e.keyCode? e.keyCode : 0;
@@ -83,15 +85,16 @@ modules.define(
             },
 
             _onKeyUp : function() {
-                var _this = this,
-                    allowed_chars_with_delimiter = ALLOWED_CHARS;
-                allowed_chars_with_delimiter.push(_this.params.decimal);
+                var _this = this;
 
-                var caret = _this._getSelectionStart(_this.target.elem('control'));
-                var val   = _this._clean(_this.target.getVal(), allowed_chars_with_delimiter);
+                var allowed = ALLOWED_CHARS;
+                _this.params.decimal && allowed.push(_this.params.decimal);
 
-                _this.target.setVal(val);
-                _this._setSelection(_this.target.elem('control'), caret);
+                var caret = _this._getSelectionStart(_this.elem('control'));
+                var val   = _this._clean(_this.getVal(), allowed);
+
+                _this.setVal(val);
+                _this._setSelection(_this.elem('control'), caret);
             },
 
             /**
@@ -110,11 +113,12 @@ modules.define(
                     // loop through validChars
                     for(var j = 0; j < validChars.length; j++) {
                         // if it is valid, break out the loop
-                        if(ch === validChars[j]) {
+                        if(ch === validChars[j].toString()) {
                             validChar = true;
                             break;
                         }
                     }
+
                     // if not a valid character, or a space, remove
                     if(!validChar || ch === ' ') val = val.substring(0, i) + val.substring(i + 1);
                 }
@@ -172,13 +176,13 @@ modules.define(
             },
 
             _otherKeys : function(key) {
-                return key === keyCodes.BACKSPACE &&
-                    key === keyCodes.TAB       &&
-                    key === keyCodes.ENTER     &&
-                    key === keyCodes.END       &&
-                    key === keyCodes.HOME      &&
-                    key === keyCodes.LEFT      &&
-                    key === keyCodes.RIGHT     &&
+                return key === keyCodes.BACKSPACE ||
+                    key === keyCodes.TAB       ||
+                    key === keyCodes.ENTER     ||
+                    key === keyCodes.END       ||
+                    key === keyCodes.HOME      ||
+                    key === keyCodes.LEFT      ||
+                    key === keyCodes.RIGHT     ||
                     key === keyCodes.DELETE;
             },
 
@@ -191,15 +195,15 @@ modules.define(
                 if(DECIMALPosition >= 0) {
                     DECIMALsQuantity = value.length - DECIMALPosition - 1;
                     // If the cursor is after the _this.params.decimal.
-                    if(_this._getSelectionStart(_this.target.elem('control')) > DECIMALPosition) {
+                    if(_this._getSelectionStart(_this.elem('control')) > DECIMALPosition) {
                         return DECIMALsQuantity < _this.params.scale;
-                    } else if(((_this.target.getVal().length - 1) - DECIMALsQuantity) < (_this.params.precision - _this.params.scale)) {
+                    } else if(((_this.getVal().length - 1) - DECIMALsQuantity) < (_this.params.precision - _this.params.scale)) {
                         // If precision > 0, integers and decimals quantity should not be greater than precision
                         return true;
                     }
                 } else if(_this.params.precision > 0) {
                     // If there is no decimal
-                    return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision - _this.params.scale;
+                    return _this.getVal().replace(_this.params.decimal, '').length < _this.params.precision - _this.params.scale;
                 } else {
                     return true;
                 }
@@ -209,13 +213,12 @@ modules.define(
                 var _this = this;
 
                 if (_this.params.precision > 0) {
-                    return _this.target.getVal().replace(_this.params.decimal, '').length < _this.params.precision;
+                    return _this.getVal().replace(_this.params.decimal, '').length < _this.params.precision;
                 } else {
                     return true;
                 }
             }
 
         }));
-
     }
 );

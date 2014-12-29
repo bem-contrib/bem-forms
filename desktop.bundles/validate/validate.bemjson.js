@@ -110,8 +110,12 @@
                                 },
                                 {
                                     block : 'input',
+                                    //js : {
+                                    //    decimal : '.',
+                                    //    scale : 2
+                                    //},
                                     name : 'money',
-                                    mods : { theme : 'islands', size : 'l' },
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
                                     mix : [
                                         { block : 'form', elem : 'field' },
                                         {

@@ -29,9 +29,12 @@ modules.define(
                 'js' : {
                     'inited' : function () {
                         this.__base.apply(this, arguments);
-                        this.setMod('numbers');
-                        this.params.decimal = '.';
-                        this.params.scale = 2;
+
+                        // input_type_numbers required for format settings
+                        if (this.target.hasMod('type', 'numbers')) {
+                            this.target.params.decimal = '.';
+                            this.target.params.scale = 2;
+                        }
                     }
                 },
 
