@@ -18,8 +18,6 @@ modules.define(
 
                         this.__base.apply(this, arguments);
 
-                        console.log('!!!');
-
                         _this.elem('control')
                             .on('keypress', function(e) {
                                 _this._onKeyPress(e);
