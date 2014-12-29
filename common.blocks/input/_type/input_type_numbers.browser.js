@@ -14,9 +14,11 @@ modules.define(
             onSetMod : {
                 'js' : {
                     'inited' : function () {
+                        var _this = this;
+
                         this.__base.apply(this, arguments);
 
-                        var _this = this;
+                        console.log('!!!');
 
                         _this.elem('control')
                             .on('keypress', function(e) {
@@ -87,7 +89,7 @@ modules.define(
             _onKeyUp : function() {
                 var _this = this;
 
-                var allowed = ALLOWED_CHARS;
+                var allowed = ALLOWED_CHARS.concat(_this.params.allowChars);
                 _this.params.decimal && allowed.push(_this.params.decimal);
 
                 var caret = _this._getSelectionStart(_this.elem('control'));
@@ -113,14 +115,14 @@ modules.define(
                     // loop through validChars
                     for(var j = 0; j < validChars.length; j++) {
                         // if it is valid, break out the loop
-                        if(ch === validChars[j].toString()) {
+                        if(ch == validChars[j]) {
                             validChar = true;
                             break;
                         }
                     }
 
                     // if not a valid character, or a space, remove
-                    if(!validChar || ch === ' ') val = val.substring(0, i) + val.substring(i + 1);
+                    if(!validChar || (validChars.indexOf(' ') === -1 && ch === ' ')) val = val.substring(0, i) + val.substring(i + 1);
                 }
 
                 // remove extra decimal characters

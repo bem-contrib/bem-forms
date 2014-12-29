@@ -5,32 +5,37 @@
 
 modules.define(
     'validate',
-    [],
     function (provide, Validate) {
 
         /**
          * Error message
          */
         var MESSAGE = {
-            validator : 'numbers',
-            text : 'Неверные циферки'
+            validator : 'money',
+            text : 'Неверный формат денег'
         };
 
         /**
-         * Default numbers format schema
+         * Default money format schema
          */
         var SCHEMA = schema({
-            value : Number
+            value : Number.min(1).max(1000000)
         });
 
-        provide(Validate.decl({ modName : 'float', modVal : true }, {
+        provide(Validate.decl({ modName : 'numbers', modVal : 'money' }, {
 
             onSetMod : {
                 'js' : {
                     'inited' : function () {
+                        var _this = this;
+
                         this.__base.apply(this, arguments);
 
-                        var _this = this;
+                        // input_type_numbers required for format settings
+                        if (this.target.hasMod('type', 'numbers')) {
+                            this.target.params.decimal = '.';
+                            this.target.params.scale = 2;
+                        }
 
                         _this.target.elem('control')
                             .on('blur', function() {
@@ -49,18 +54,18 @@ modules.define(
             },
 
             run : function() {
-                var _this = this;
-
                 var data = {
-                    value : parseFloat(_this.target.getVal())
+                    value : parseFloat(this.target.getVal())
                 };
 
-                if(!!data.value && !SCHEMA(data)) {
-                    _this._error(MESSAGE);
-                    return false;
+                if(!!data.value) {
+                    if(!SCHEMA(data)) {
+                        this._error(MESSAGE);
+                        return false;
+                    }
                 }
 
-                _this.__base.apply(_this, arguments);
+                this.__base.apply(this, arguments);
             }
 
         }));

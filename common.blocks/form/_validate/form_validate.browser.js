@@ -21,7 +21,7 @@ modules.define(
                         });
 
                         this.on('submit', function () {
-                            _this.valid() && window.console.log('Yeah!');
+                            _this.valid() && _this.setMod('valid');
                         });
                     }
                 }
