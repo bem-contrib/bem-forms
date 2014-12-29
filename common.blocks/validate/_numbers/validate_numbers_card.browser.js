@@ -42,9 +42,9 @@ modules.define(
             onSetMod : {
                 'js' : {
                     'inited' : function () {
-                        var _this = this;
-
                         this.__base.apply(this, arguments);
+
+                        var _this = this;
 
                         if (_this.target.hasMod('type', 'numbers')) {
                             // Compatibility with masks

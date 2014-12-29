@@ -27,14 +27,14 @@ modules.define(
             onSetMod : {
                 'js' : {
                     'inited' : function () {
-                        var _this = this;
-
                         this.__base.apply(this, arguments);
 
+                        var _this = this;
+
                         // input_type_numbers required for format settings
-                        if (this.target.hasMod('type', 'numbers')) {
-                            this.target.params.decimal = '.';
-                            this.target.params.scale = 2;
+                        if (_this.target.hasMod('type', 'numbers')) {
+                            _this.target.params.decimal = '.';
+                            _this.target.params.scale = 2;
                         }
 
                         _this.target.elem('control')

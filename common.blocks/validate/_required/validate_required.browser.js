@@ -4,8 +4,7 @@
 
 modules.define(
     'validate',
-    ['i-bem__dom'],
-    function (provide, BEMDOM, Validate) {
+    function (provide, Validate) {
 
         /**
          * Error message
@@ -18,8 +17,8 @@ modules.define(
         provide(Validate.decl({ modName : 'required', modVal : true }, {
 
             onSetMod : {
-                js : {
-                    inited : function () {
+                'js' : {
+                    'inited' : function () {
                         this.__base.apply(this, arguments);
 
                         var _this = this;
@@ -30,8 +29,8 @@ modules.define(
                     }
                 },
 
-                result : {
-                    success : function() {
+                'result' : {
+                    'success' : function() {
                         delete this.messages[MESSAGE.validator];
 
                         this.__base.apply(this, arguments);
