@@ -4,8 +4,8 @@
 
 modules.define(
     'validate',
-    ['i-bem__dom'],
-    function (provide, BEMDOM) {
+    ['i-bem__dom', 'jquery'],
+    function (provide, BEMDOM, $) {
 
         /** Make schemas for awesome format validation
          *  More info about js-schema: https://github.com/molnarg/js-schema
@@ -19,10 +19,7 @@ modules.define(
                     'inited' : function() {
                         this.messages = {};
 
-                        // Get block name
-                        // Name is the first DOM class
-                        this.targetName = this.domElem.attr('class').split(' ')[0];
-                        this.target = this.findBlockOn(this.targetName);
+                        this.target = this.findBlockInside(this.params.target);
                     }
                 },
 
@@ -33,11 +30,15 @@ modules.define(
                 'result' : {
                     'success' : function() {
                         // Event on success validate
-                        // console.log(this.messages);
+                        this._messages();
+                        this.target.delMod('invalid');
+                        this.target.setMod('valid');
                     },
                     'error' : function() {
                         // Event on error validate
-                        window.console.error(this.messages);
+                        this._messages();
+                        this.target.delMod('valid');
+                        this.target.setMod('invalid');
                     }
                 }
             },
@@ -49,6 +50,7 @@ modules.define(
              */
             _error : function(message) {
                 this.messages[message.validator] = message.text;
+
                 this.emit('error');
                 this.setMod('result', 'error');
             },
@@ -62,14 +64,15 @@ modules.define(
                 this.setMod('result', 'success');
             },
 
-            /**
-             * Get all validators on this control
-             * @returns {Array} validates
-             */
-            getValidates : function() {
-                // all mods without js_inited
-            },
+            _messages : function() {
+                var html_text = [];
 
+                $.each(this.messages, function(validator, message) {
+                    html_text.push(validator + ': ' + message);
+                });
+
+                this.elem('message').text(html_text);
+            },
             /**
              * Validation stub
              * @returns false

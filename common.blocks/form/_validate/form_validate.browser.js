@@ -14,7 +14,14 @@ modules.define(
                     'inited' : function () {
                         var _this = this;
 
-                        _this._setFields();
+                        //_this._setFields();
+
+                        var fields = _this.elem('field');
+
+                        //$.each(fields, function(i, field) {
+                        //    var validator = _this.findBlockOn($(field), 'validate');
+                        //    validator && validator.run();
+                        //});
 
                         this.bindTo('submit', function(e) {
                             this._onSubmit(e);

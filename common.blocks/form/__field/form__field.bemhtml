@@ -1,7 +1,23 @@
 block('form').elem('field')(
-    js()(true),
 
-    content()(function() {
+    def()(function() {
+        var _this = this;
+
+        if(_this.ctx.validateMods) {
+            applyCtx({
+                block : 'validate',
+                mods : _this.ctx.validateMods,
+                target : _this.ctx.validateTarget,
+                mix: [{
+                    block: 'form',
+                    elem: 'field',
+                    js : true
+                }],
+                content : _this.ctx.content
+            });
+        } else {
+            applyNext();
+        }
 
     })
 );

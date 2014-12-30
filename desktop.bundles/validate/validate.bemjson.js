@@ -13,8 +13,7 @@
                     elem : 'content',
                     content : [
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
                             content : [
                                 {
                                     block : 'label',
@@ -23,16 +22,14 @@
                                 {
                                     block : 'input',
                                     name : 'simple',
-                                    mods : { theme : 'islands', size : 'l' },
-                                    mix : [
-                                        { block : 'form', elem : 'field' }
-                                    ]
+                                    mods : { theme : 'islands', size : 'l' }
                                 }
                             ]
                         },
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
+                            validateMods : { required : true },
+                            validateTarget : 'input',
                             content : [
                                 {
                                     block : 'label',
@@ -41,22 +38,12 @@
                                 {
                                     block : 'input',
                                     name : 'required',
-                                    mods : { theme : 'islands', size : 'l' },
-                                    mix : [
-                                        { block : 'form', elem : 'field' },
-                                        {
-                                            block : 'validate',
-                                            js : true,
-                                            mods : { required : true }
-                                        }
-                                    ]
-
+                                    mods : { theme : 'islands', size : 'l' }
                                 }
                             ]
                         },
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
                             content : [
                                 {
                                     block : 'label',
@@ -65,16 +52,12 @@
                                 {
                                     block : 'input',
                                     name : 'integers',
-                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
-                                    mix : [
-                                        { block : 'form', elem : 'field' }
-                                    ]
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' }
                                 }
                             ]
                         },
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
                             content : [
                                 {
                                     block : 'label',
@@ -88,16 +71,14 @@
                                         precision : 7,
                                         scale : 2,
                                         decimal : '.'
-                                    },
-                                    mix : [
-                                        { block : 'form', elem : 'field' }
-                                    ]
+                                    }
                                 }
                             ]
                         },
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
+                            validateMods : { numbers : 'money' },
+                            validateTarget : 'input',
                             content : [
                                 {
                                     block : 'label',
@@ -106,17 +87,14 @@
                                 {
                                     block : 'input',
                                     name : 'money',
-                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
-                                    mix : [
-                                        { block : 'form', elem : 'field' },
-                                        { block : 'validate', js : true, mods : { numbers : 'money' } }
-                                    ]
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' }
                                 }
                             ]
                         },
                         {
-                            block : 'controls-group',
-                            mods : { theme : 'islands' },
+                            elem : 'field',
+                            validateMods : { numbers : 'card', required : true },
+                            validateTarget : 'input',
                             content : [
                                 {
                                     block : 'label',
@@ -125,11 +103,7 @@
                                 {
                                     block : 'input',
                                     name : 'requiredCard',
-                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
-                                    mix : [
-                                        { block : 'form', elem : 'field' },
-                                        { block : 'validate', js : true, mods : { numbers : 'card', required : true } }
-                                    ]
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' }
                                 }
                             ]
                         }
