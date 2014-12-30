@@ -1,0 +1,7 @@
+block('form').elem('field')(
+    js()(true),
+
+    content()(function() {
+
+    })
+);
