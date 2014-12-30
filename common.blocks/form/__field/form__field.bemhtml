@@ -3,15 +3,14 @@ block('form').elem('field')(
     def()(function() {
         var _this = this;
 
-        if(_this.ctx.validateMods) {
+        if(_this.ctx.validate) {
             applyCtx({
                 block : 'validate',
-                mods : _this.ctx.validateMods,
-                target : _this.ctx.validateTarget,
+                mods : _this.ctx.validate,
+                target : _this.ctx.target,
                 mix: [{
                     block: 'form',
-                    elem: 'field',
-                    js : true
+                    elem: 'field'
                 }],
                 content : _this.ctx.content
             });

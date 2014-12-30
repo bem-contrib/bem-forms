@@ -27,18 +27,24 @@ modules.define(
                  * Mod for detect result of validations in CSS
                  * @returns false
                  */
-                'result' : {
-                    'success' : function() {
-                        // Event on success validate
+                'valid' : {
+                    'true': function () {
                         this._messages();
+                        this.setValid(true);
+                        this.emit('changeState');
                         this.target.delMod('invalid');
                         this.target.setMod('valid');
-                    },
-                    'error' : function() {
-                        // Event on error validate
+                    }
+                },
+                'invalid' : {
+                    'true' : function() {
                         this._messages();
+                        this.setValid(false);
+                        this.emit('changeState');
                         this.target.delMod('valid');
                         this.target.setMod('invalid');
+
+                        this.target.elem('control').focus();
                     }
                 }
             },
@@ -51,8 +57,9 @@ modules.define(
             _error : function(message) {
                 this.messages[message.validator] = message.text;
 
-                this.emit('error');
-                this.setMod('result', 'error');
+                this.emit('stateError');
+                this.delMod('valid');
+                this.setMod('invalid');
             },
 
             /**
@@ -60,8 +67,9 @@ modules.define(
              * @returns false
              */
             _success : function() {
-                this.emit('success');
-                this.setMod('result', 'success');
+                this.emit('stateSuccess');
+                this.delMod('invalid');
+                this.setMod('valid');
             },
 
             _messages : function() {
@@ -71,7 +79,15 @@ modules.define(
                     html_text.push(validator + ': ' + message);
                 });
 
-                this.elem('message').text(html_text);
+                this.elem('messages').text(html_text);
+            },
+
+            setValid : function(valid) {
+                this._valid = valid;
+            },
+
+            getValid : function() {
+                return this._valid;
             },
             /**
              * Validation stub

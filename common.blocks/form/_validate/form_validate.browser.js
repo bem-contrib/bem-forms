@@ -14,63 +14,48 @@ modules.define(
                     'inited' : function () {
                         var _this = this;
 
-                        //_this._setFields();
+                        _this._validates = _this.findBlocksInside('validate');
+                        _this._fields = _this.elem('field');
 
-                        var fields = _this.elem('field');
-
-                        //$.each(fields, function(i, field) {
-                        //    var validator = _this.findBlockOn($(field), 'validate');
-                        //    validator && validator.run();
-                        //});
-
-                        this.bindTo('submit', function(e) {
-                            this._onSubmit(e);
+                        _this.bindTo('submit', function(e) {
+                            _this._submit(e);
                         });
 
-                        this.on('submit', function () {
-                            _this.valid() && _this.setMod('valid');
+                        $.each(_this._validates, function(i, validator) {
+                            validator.on('changeState', function() {
+                                _this.run();
+                            });
                         });
+
                     }
                 }
             },
 
-            _setFields : function() {
+            run : function() {
                 var _this = this;
 
-                _this._fields = _this.elem('field');
-
-                for(var currInputOnField, currInputType, i = 0; i < _this._fields.length; i++) {
-
-                    currInputType = $(_this._fields[i]).attr('class').split(' ')[0];
-                    currInputOnField = _this.findBlockOn($(_this._fields[i]), currInputType);
-
-                    _this._fields[i] = {
-                        name      : currInputOnField.getName(),
-                        validator : _this.findBlockOn($(_this._fields[i]), 'validate')
-                    };
-
-                }
-            },
-
-            valid : function() {
-                for(var i = 0, l = this._fields.length; i < l - 1; i++) {
-                    if(this._fields[i].validator && !this._fields[i].validator.run()) {
+                for(var i = 0; i < _this._validates.length - 1; i++) {
+                    if(!_this._validates[i].getValid()) {
+                        _this.delMod('valid');
+                        _this.setMod('invalid');
+                        _this._validates[i].run();
                         return false;
                     }
                 }
+
+                _this.setMod('valid');
                 return true;
             },
 
-            _onSubmit : function(e) {
+            _submit : function(e) {
                 e.preventDefault();
-                this.emit('submit');
+                this.run();
             }
 
         },
         {
             live : false
-        }
-        ));
+        }));
 
     }
 );

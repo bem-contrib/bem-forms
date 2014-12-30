@@ -1,12 +1,14 @@
 block('validate')(
     js()(function(){
-        return { target : this.ctx.target };
+        return {
+            target : this.ctx.target
+        };
     }),
 
     content()(function() {
         return [
             applyNext(),
-            { elem : 'message' }
+            { elem : 'messages' }
         ]
     })
 );
