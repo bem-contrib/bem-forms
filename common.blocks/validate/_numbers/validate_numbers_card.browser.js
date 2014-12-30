@@ -37,15 +37,19 @@ modules.define(
             }
         ];
 
-        provide(Validate.decl({ modName : 'card', modVal : true }, {
+        provide(Validate.decl({ modName : 'numbers', modVal : 'card' }, {
 
             onSetMod : {
                 'js' : {
                     'inited' : function () {
+                        this.__base.apply(this, arguments);
+
                         var _this = this;
 
-                        this.__base.apply(this, arguments);
-                        this.setMod('numbers');
+                        if (_this.target.hasMod('type', 'numbers')) {
+                            // Compatibility with masks
+                            _this.target.params.allowChars = [' '];
+                        }
 
                         _this.target.elem('control')
                             .on('blur', function() {

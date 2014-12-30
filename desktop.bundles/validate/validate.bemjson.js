@@ -65,14 +65,9 @@
                                 {
                                     block : 'input',
                                     name : 'integers',
-                                    mods : { theme : 'islands', size : 'l' },
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
                                     mix : [
-                                        { block : 'form', elem : 'field' },
-                                        {
-                                            block : 'validate',
-                                            js : true,
-                                            mods : { numbers : true }
-                                        }
+                                        { block : 'form', elem : 'field' }
                                     ]
                                 }
                             ]
@@ -88,14 +83,14 @@
                                 {
                                     block : 'input',
                                     name : 'decimal',
-                                    mods : { theme : 'islands', size : 'l' },
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
+                                    js : {
+                                        precision : 7,
+                                        scale : 2,
+                                        decimal : '.'
+                                    },
                                     mix : [
-                                        { block : 'form', elem : 'field' },
-                                        {
-                                            block : 'validate',
-                                            js : { precision : 7, scale : 2, decimal : '.' },
-                                            mods : { numbers : true }
-                                        }
+                                        { block : 'form', elem : 'field' }
                                     ]
                                 }
                             ]
@@ -111,14 +106,10 @@
                                 {
                                     block : 'input',
                                     name : 'money',
-                                    mods : { theme : 'islands', size : 'l' },
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
                                     mix : [
                                         { block : 'form', elem : 'field' },
-                                        {
-                                            block : 'validate',
-                                            js : true,
-                                            mods : { money : true }
-                                        }
+                                        { block : 'validate', js : true, mods : { numbers : 'money' } }
                                     ]
                                 }
                             ]
@@ -134,14 +125,10 @@
                                 {
                                     block : 'input',
                                     name : 'requiredCard',
-                                    mods : { theme : 'islands', size : 'l' },
+                                    mods : { theme : 'islands', size : 'l', type : 'numbers' },
                                     mix : [
                                         { block : 'form', elem : 'field' },
-                                        {
-                                            block : 'validate',
-                                            js : true,
-                                            mods : { card : true, required : true }
-                                        }
+                                        { block : 'validate', js : true, mods : { numbers : 'card', required : true } }
                                     ]
                                 }
                             ]

@@ -5,7 +5,6 @@
 
 modules.define(
     'validate',
-    [],
     function (provide, Validate) {
 
         /**
@@ -20,18 +19,28 @@ modules.define(
          * Default money format schema
          */
         var SCHEMA = schema({
-            value : Number
+            value : Number.min(1).max(1000000)
         });
 
-        provide(Validate.decl({ modName : 'money', modVal : true }, {
+        provide(Validate.decl({ modName : 'numbers', modVal : 'money' }, {
 
             onSetMod : {
                 'js' : {
                     'inited' : function () {
                         this.__base.apply(this, arguments);
-                        this.setMod('numbers');
-                        this.params.decimal = '.';
-                        this.params.scale = 2;
+
+                        var _this = this;
+
+                        // input_type_numbers required for format settings
+                        if (_this.target.hasMod('type', 'numbers')) {
+                            _this.target.params.decimal = '.';
+                            _this.target.params.scale = 2;
+                        }
+
+                        _this.target.elem('control')
+                            .on('blur', function() {
+                                _this.run();
+                            });
                     }
                 },
 
@@ -49,9 +58,11 @@ modules.define(
                     value : parseFloat(this.target.getVal())
                 };
 
-                if(!!data.value && !SCHEMA(data)) {
-                    this._error(MESSAGE);
-                    return false;
+                if(!!data.value) {
+                    if(!SCHEMA(data)) {
+                        this._error(MESSAGE);
+                        return false;
+                    }
                 }
 
                 this.__base.apply(this, arguments);
