@@ -1,8 +1,19 @@
-modules.define('form', ['i-bem__dom', 'objects'], function(provide, BEMDOM, objects) {
+/**
+ * @module form
+ */
+
+modules.define('form',
+    ['i-bem__dom', 'objects'],
+    function(provide, BEMDOM, objects) {
+
 /**
  * Форма
+ * @exports
+ * @class form
+ * @bem
  */
-provide(BEMDOM.decl(this.name, {
+
+provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -61,7 +72,7 @@ provide(BEMDOM.decl(this.name, {
         storage[name] = { event : event, data : data };
         this._changeStorage || this.emit('change', storage);
     }
-}, {
+}, /** @lends form */{
     live : true
 }));
 
