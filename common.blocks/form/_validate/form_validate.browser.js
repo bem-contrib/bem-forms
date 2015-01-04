@@ -14,16 +14,17 @@ modules.define(
                     'inited' : function () {
                         var _this = this;
 
-                        _this._validates = _this.findBlocksInside('validate');
                         _this._fields = _this.elem('field');
 
                         _this.bindTo('submit', function(e) {
                             _this._submit(e);
                         });
 
-                        $.each(_this._validates, function(i, validator) {
-                            validator.on('changeState', function() {
-                                _this.run();
+                        $.each(_this._fields, function(i, field) {
+                            var validator = _this.findBlockInside(field, 'validate');
+
+                            validator && validator.on('changeState', function() {
+                                validator.run();
                             });
                         });
 

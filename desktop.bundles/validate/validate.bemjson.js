@@ -28,8 +28,11 @@
                         },
                         {
                             elem : 'field',
-                            validate : { required : true },
-                            target : 'input',
+                            validator : {
+                                block : 'validate',
+                                mods : { required : true },
+                                target : 'input'
+                            },
                             content : [
                                 {
                                     block : 'label',
@@ -77,8 +80,11 @@
                         },
                         {
                             elem : 'field',
-                            validate : { numbers : 'money' },
-                            target : 'input',
+                            validator : {
+                                block : 'validate',
+                                mods : { numbers : 'money' },
+                                target : 'input'
+                            },
                             content : [
                                 {
                                     block : 'label',
@@ -93,8 +99,11 @@
                         },
                         {
                             elem : 'field',
-                            validate : { numbers : 'card', required : true },
-                            target : 'input',
+                            validator : {
+                                block : 'validate',
+                                target : 'input',
+                                mods : { numbers : 'card', required : true }
+                            },
                             content : [
                                 {
                                     block : 'label',

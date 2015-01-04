@@ -1,22 +1,16 @@
 block('form').elem('field')(
 
-    def()(function() {
-        var _this = this;
+    content()(function() {
+        var ctx = this.ctx,
+            content = [];
 
-        if(_this.ctx.validate) {
-            applyCtx({
-                block : 'validate',
-                mods : _this.ctx.validate,
-                target : _this.ctx.target,
-                mix: [{
-                    block: 'form',
-                    elem: 'field'
-                }],
-                content : _this.ctx.content
-            });
+        if(ctx.validator) {
+            ctx.validator.content = ctx.content;
+            content = ctx.validator;
         } else {
-            applyNext();
+            content = ctx.content;
         }
 
+        return content;
     })
 );
