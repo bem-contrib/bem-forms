@@ -18,8 +18,8 @@ modules.define(
                 'js' : {
                     'inited' : function() {
                         this.messages = {};
-
                         this.target = this.findBlockInside(this.params.target);
+                        this.container = this.findBlockInside('message');
                     }
                 },
 
@@ -28,7 +28,7 @@ modules.define(
                  * @returns false
                  */
                 'valid' : {
-                    'true': function () {
+                    'true' : function () {
                         this._messages();
                         this.setValid(true);
                         this.emit('changeState');
@@ -73,13 +73,13 @@ modules.define(
             },
 
             _messages : function() {
-                var html_text = [];
+                var text = [];
 
                 $.each(this.messages, function(validator, message) {
-                    html_text.push(validator + ': ' + message);
+                    text.push(validator + ': ' + message);
                 });
 
-                this.elem('messages').text(html_text);
+                this.container.setVal(text);
             },
 
             setValid : function(valid) {

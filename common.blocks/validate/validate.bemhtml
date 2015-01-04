@@ -8,7 +8,13 @@ block('validate')(
     content()(function() {
         return [
             applyNext(),
-            { elem : 'messages' }
-        ]
+            {
+                block : 'message',
+                mix : {
+                    block : 'validate',
+                    elem : 'messages'
+                }
+            }
+        ];
     })
 );
