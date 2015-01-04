@@ -1,0 +1,20 @@
+block('validate')(
+    js()(function(){
+        return {
+            target : this.ctx.target
+        };
+    }),
+
+    content()(function() {
+        return [
+            applyNext(),
+            {
+                block : 'message',
+                mix : {
+                    block : 'validate',
+                    elem : 'messages'
+                }
+            }
+        ];
+    })
+);

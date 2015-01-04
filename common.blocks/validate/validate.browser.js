@@ -4,8 +4,8 @@
 
 modules.define(
     'validate',
-    ['i-bem__dom'],
-    function (provide, BEMDOM) {
+    ['i-bem__dom', 'jquery'],
+    function (provide, BEMDOM, $) {
 
         /** Make schemas for awesome format validation
          *  More info about js-schema: https://github.com/molnarg/js-schema
@@ -18,11 +18,8 @@ modules.define(
                 'js' : {
                     'inited' : function() {
                         this.messages = {};
-
-                        // Get block name
-                        // Name is the first DOM class
-                        this.targetName = this.domElem.attr('class').split(' ')[0];
-                        this.target = this.findBlockOn(this.targetName);
+                        this.target = this.findBlockInside(this.params.target);
+                        this.container = this.findBlockInside('message');
                     }
                 },
 
@@ -30,14 +27,24 @@ modules.define(
                  * Mod for detect result of validations in CSS
                  * @returns false
                  */
-                'result' : {
-                    'success' : function() {
-                        // Event on success validate
-                        // console.log(this.messages);
-                    },
-                    'error' : function() {
-                        // Event on error validate
-                        window.console.error(this.messages);
+                'valid' : {
+                    'true' : function () {
+                        this._messages();
+                        this.setValid(true);
+                        this.emit('changeState');
+                        this.target.delMod('invalid');
+                        this.target.setMod('valid');
+                    }
+                },
+                'invalid' : {
+                    'true' : function() {
+                        this._messages();
+                        this.setValid(false);
+                        this.emit('changeState');
+                        this.target.delMod('valid');
+                        this.target.setMod('invalid');
+
+                        this.target.elem('control').focus();
                     }
                 }
             },
@@ -49,8 +56,10 @@ modules.define(
              */
             _error : function(message) {
                 this.messages[message.validator] = message.text;
-                this.emit('error');
-                this.setMod('result', 'error');
+
+                this.emit('stateError');
+                this.delMod('valid');
+                this.setMod('invalid');
             },
 
             /**
@@ -58,18 +67,28 @@ modules.define(
              * @returns false
              */
             _success : function() {
-                this.emit('success');
-                this.setMod('result', 'success');
+                this.emit('stateSuccess');
+                this.delMod('invalid');
+                this.setMod('valid');
             },
 
-            /**
-             * Get all validators on this control
-             * @returns {Array} validates
-             */
-            getValidates : function() {
-                // all mods without js_inited
+            _messages : function() {
+                var text = [];
+
+                $.each(this.messages, function(validator, message) {
+                    text.push(validator + ': ' + message);
+                });
+
+                this.container.setVal(text);
             },
 
+            setValid : function(valid) {
+                this._valid = valid;
+            },
+
+            getValid : function() {
+                return this._valid;
+            },
             /**
              * Validation stub
              * @returns false

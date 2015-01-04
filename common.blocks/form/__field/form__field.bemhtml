@@ -1,0 +1,16 @@
+block('form').elem('field')(
+
+    content()(function() {
+        var ctx = this.ctx,
+            content = [];
+
+        if(ctx.validator) {
+            ctx.validator.content = ctx.content;
+            content = ctx.validator;
+        } else {
+            content = ctx.content;
+        }
+
+        return content;
+    })
+);

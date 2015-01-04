@@ -29,12 +29,13 @@ modules.define(
                     }
                 },
 
-                'result' : {
-                    'success' : function() {
+                'valid' : {
+                    'true' : function() {
                         delete this.messages[MESSAGE.validator];
 
                         this.__base.apply(this, arguments);
                     }
+
                 }
             },
 
