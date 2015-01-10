@@ -4,8 +4,8 @@ modules.define('form', function(provide, Form) {
  * Подмешивается к блоку radio
  */
 
-// TODO Form.decl({ elem: 'control', modName: 'type', modVal: 'radio' }, ...)
-provide(Form.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'radio' }, {}, {
+// TODO Form.decl({ elem: 'field', modName: 'type', modVal: 'radio' }, ...)
+provide(Form.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'radio' }, {}, {
     live : function() {
         var ptp = this.prototype;
 

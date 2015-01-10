@@ -4,7 +4,7 @@ modules.define('form', function(provide, Form) {
  * Контрол типа checkbox (флажок)
  * Подмешивается к блоку checkbox
  */
-provide(Form.decl({ block : this.name, elem : 'control', modName : 'type', modVal : 'checkbox' }, {
+provide(Form.decl({ block : this.name, elem : 'field', modName : 'type', modVal : 'checkbox' }, {
     /**
      * Возвращает значение контрола
      * @returns {String}
