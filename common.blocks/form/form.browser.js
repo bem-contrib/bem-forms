@@ -11,8 +11,8 @@ provide(BEMDOM.decl(this.name, {
         },
 
         'disabled' : function(modName, modVal) {
-            this.elemInstances('control').forEach(function(control) {
-                control.setMod(modName, modVal);
+            this.elemInstances('field').forEach(function(field) {
+                field.setMod(modName, modVal);
             });
         }
     },
@@ -22,9 +22,9 @@ provide(BEMDOM.decl(this.name, {
      * @returns {Object}
      */
     getVal : function() {
-        return this.elemInstances('control').reduce(function(res, control) {
-            var name = control.getName();
-            name && (res[name] = control.getVal());
+        return this.elemInstances('field').reduce(function(res, field) {
+            var name = field.getName();
+            name && (res[name] = field.getVal());
             return res;
         }, {});
     },
@@ -37,9 +37,9 @@ provide(BEMDOM.decl(this.name, {
         var storage = this._changeStorage = {};
 
         this
-            .elemInstances('control')
-            .forEach(function(control) {
-                control.setVal(val[control.getName()]);
+            .elemInstances('field')
+            .forEach(function(field) {
+                field.setVal(val[field.getName()]);
             });
 
         this.nextTick(function() {
@@ -51,6 +51,7 @@ provide(BEMDOM.decl(this.name, {
     /**
      * метод зовется элементом __control
      * @private
+     * @deprecated
      */
     _onControlChange : function(control, event, data) {
         var storage = this._changeStorage || {},
