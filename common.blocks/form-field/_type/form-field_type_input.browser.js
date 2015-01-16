@@ -1,14 +1,18 @@
 /**
- * @module form__field
+ * @module form-field
  */
-modules.define('form__field', function(provide, prev) {
+modules.define('form-field',
+    function(provide, FormField) {
 
 /**
- * Контрол типа input (текстовое поле ввода)
- * Подмешивается к блоку input
+ * Input field (simple text input)
+ *
+ * @exports
+ * @class form-field
+ * @bem
  */
-prev.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'input' }, {},
-    /** @lends form__field_type_input */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'input' }, {},
+    /** @lends form-field_type_input */{
 
     live : function() {
         var ptp = this.prototype;
@@ -21,6 +25,6 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'input' }
     }
 });
 
-provide(prev);
+provide(FormField);
 
 });

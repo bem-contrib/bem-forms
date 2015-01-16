@@ -13,8 +13,8 @@
                     elem : 'content',
                     content : [
                         {
-                            elem : 'field',
-                            mods : { type : 'input' },
+                            block : 'form-field',
+                            mods : { type : 'input', theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -29,8 +29,8 @@
                             ]
                         },
                         {
-                            elem : 'field',
-                            mods : { type : 'checkbox' },
+                            block : 'form-field',
+                            mods : { type : 'checkbox', theme : 'islands' },
                             content : [
                                 {
                                     block : 'checkbox',
@@ -41,8 +41,8 @@
                             ]
                         },
                         {
-                            elem : 'field',
-                            mods : { type : 'radio' },
+                            block : 'form-field',
+                            mods : { type : 'radio', theme : 'islands' },
                             content : [
                                 {
                                     block : 'radio',

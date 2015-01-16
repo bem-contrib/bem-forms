@@ -1,14 +1,20 @@
 /**
- * @module form__field
+ * @module form-field
  */
-modules.define('form__field', function(provide, prev) {
+modules.define('form-field',
+    function(provide, FormField) {
 
 /**
- * Болванка для контрола формы с заданным типом (модификатор _type)
- * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
- * В общем случае считается, что имя подмешанного блока совпадает со значением модификатора _type
+ * Base class for form-field block with _type modifier
+ *
+ * In common the name of incapsulated control equals to value of _type modifier
+ * E.g. _type_input means that control is input
+ *
+ * @exports
+ * @class form-field
+ * @bem
  */
-prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form__field_type.prototype */{
+FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.prototype */{
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.getControl().setMod(modName, modVal);
@@ -25,7 +31,7 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form_
     },
 
     /**
-     * Returns control name
+     * Returns field name
      * @returns {String}
      */
     getName : function() {
@@ -33,7 +39,7 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form_
     },
 
     /**
-     * Returns control value
+     * Returns field value
      * @returns {String}
      */
     getVal : function() {
@@ -59,7 +65,7 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form_
          * @event FormField#change
          * @type {Object}
          */
-        this.emit(e, data);
+        this.emit('change', data);
     },
 
     /**
@@ -67,13 +73,15 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form_
      * @protected
      */
     _onControlFocus : function(e, data) {
+        this.setMod('focused', true);
+
         /**
          * Input focus event
          *
          * @event FormField#focus
          * @type {Object}
          */
-        this.emit(e, data);
+        this.emit('focus', data);
     },
 
     /**
@@ -81,16 +89,18 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form_
      * @protected
      */
     _onControlBlur : function(e, data) {
+        this.delMod('focused');
+
         /**
          * Input blur event
          *
          * @event FormField#blur
          * @type {Object}
          */
-        this.emit(e, data);
+        this.emit('blur', data);
     }
 });
 
-provide(prev);
+provide(FormField);
 
 });

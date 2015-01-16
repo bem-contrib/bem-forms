@@ -1,14 +1,14 @@
 /**
- * @module form__field
+ * @module form-field
  */
-modules.define('form__field',
+modules.define('form-field',
     ['i-bem__dom'],
     function(provide, BEMDOM) {
 
 /**
  * Field block
  */
-provide(BEMDOM.decl({ block : 'form', elem : 'field' }, /** @lends form__field.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     /**
      * Returns field name
      * @returns {String}
@@ -34,7 +34,7 @@ provide(BEMDOM.decl({ block : 'form', elem : 'field' }, /** @lends form__field.p
      */
     setVal : function() {
     }
-}, {
+}, /** @lends form-field */{
     live : true
 }));
 

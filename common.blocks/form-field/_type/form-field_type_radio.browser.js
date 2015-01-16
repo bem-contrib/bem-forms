@@ -1,14 +1,18 @@
 /**
- * @module form__field
+ * @module form-field
  */
-modules.define('form__field', function(provide, prev) {
+modules.define('form-field',
+    function(provide, FormField) {
 
 /**
- * Контрол типа radio (радиогруппа)
- * Подмешивается к блоку radio
+ * Radio field
+ *
+ * @exports
+ * @class form-field
+ * @bem
  */
-prev.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'radio' }, {},
-    /** @lends form__field_type_radio */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'radio' }, {},
+    /** @lends form-field_type_radio */{
 
     live : function() {
         var ptp = this.prototype;
@@ -21,6 +25,6 @@ prev.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'radio' }
     }
 });
 
-provide(prev);
+provide(FormField);
 
 });

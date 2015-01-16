@@ -2,8 +2,8 @@
  * @module form
  */
 modules.define('form',
-    ['i-bem__dom', 'form__field', 'objects'],
-    function(provide, BEMDOM, FormField, objects) {
+    ['i-bem__dom', 'objects'],
+    function(provide, BEMDOM, objects) {
 
 /**
  * Form declaration
@@ -12,15 +12,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var _this = this;
                 this._changeStorage = null;
-
-                this.getFields().forEach(function(field) {
-                    field
-                        .on('change', _this._onFieldChange.bind(_this, field))
-                        .on('focus', _this._onFieldFocus.bind(_this, field))
-                        .on('blur', _this._onFieldBlur.bind(_this, field));
-                });
             }
         },
 
@@ -36,7 +28,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @type {FormField[]}
      */
     getFields : function() {
-        return this.elemInstances('field');
+        return this.findBlocksInside('form-field');
     },
 
     /**
@@ -113,7 +105,20 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         // dummy
     }
 }, /** @lends form */{
-    live : true
+    live : function () {
+        this
+            .liveInitOnBlockInsideEvent('change', 'form-field', function (e, data) {
+                this._onFieldChange(e.target, e, data);
+            })
+            .liveInitOnBlockInsideEvent('focus', 'form-field', function (e, data) {
+                this._onFieldFocus(e.target, e, data);
+            })
+            .liveInitOnBlockInsideEvent('blur', 'form-field', function (e, data) {
+                this._onFieldBlur(e.target, e, data);
+            });
+
+        return this.__base.apply(this, arguments);
+    }
 }));
 
 });
