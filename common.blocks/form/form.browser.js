@@ -11,10 +11,14 @@ provide(BEMDOM.decl(this.name, {
         },
 
         'disabled' : function(modName, modVal) {
-            this.elemInstances('field').forEach(function(field) {
+            this.getFields().forEach(function(field) {
                 field.setMod(modName, modVal);
             });
         }
+    },
+
+    getFields : function() {
+        return this.elemInstances('field');
     },
 
     /**
@@ -22,7 +26,7 @@ provide(BEMDOM.decl(this.name, {
      * @returns {Object}
      */
     getVal : function() {
-        return this.elemInstances('field').reduce(function(res, field) {
+        return this.getFields().reduce(function(res, field) {
             var name = field.getName();
             name && (res[name] = field.getVal());
             return res;
@@ -37,7 +41,7 @@ provide(BEMDOM.decl(this.name, {
         var storage = this._changeStorage = {};
 
         this
-            .elemInstances('field')
+            .getFields()
             .forEach(function(field) {
                 field.setVal(val[field.getName()]);
             });

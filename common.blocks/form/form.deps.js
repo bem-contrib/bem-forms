@@ -5,6 +5,6 @@
     },
     shouldDeps : [
         'objects',
-        { elem : 'control' }
+        { elem : 'field' }
     ]
 })

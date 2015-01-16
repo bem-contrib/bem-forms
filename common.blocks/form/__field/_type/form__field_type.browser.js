@@ -16,7 +16,7 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
      * @returns {BEM}
      */
     getControl : function() {
-        return this._control || (this._control = this.findBlockOn(this.getMod('type')));
+        return this._control || (this._control = this.findBlockInside(this.getMod('type')));
     },
 
     /**
@@ -46,6 +46,7 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
     /**
      * Реакция на событие изменения значения контрола
      * @protected
+     * @deprecated should be made via events
      */
     _onControlChange : function(e, data) {
         this.block()._onControlChange(this, e, data);

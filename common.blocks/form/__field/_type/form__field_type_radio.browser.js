@@ -11,9 +11,9 @@ provide(Form.decl({ block : 'form', elem : 'field', modName : 'type', modVal : '
 
         this.__base();
         this
-            .liveInitOnBlockEvent('change', 'radio', ptp._onControlChange)
-            .liveInitOnBlockEvent('focus', 'radio-option', ptp._onControlFocus)
-            .liveInitOnBlockEvent('blur', 'radio-option', ptp._onControlBlur);
+            .liveInitOnBlockEvent('change', 'radio', ptp._onControlChange);
+            // .liveInitOnBlockEvent('focus', 'radio-option', ptp._onControlFocus)
+            // .liveInitOnBlockEvent('blur', 'radio-option', ptp._onControlBlur);
     }
 }));
 
