@@ -2,13 +2,14 @@ block('form')(
 
     tag()('form'),
 
+    js()(true),
+
     attrs()(function() {
         return {
             action : this.ctx.action,
+            enctype : this.ctx.enctype,
             method : this.ctx.method
         };
-    }),
-
-    js()(true)
+    })
 
 );

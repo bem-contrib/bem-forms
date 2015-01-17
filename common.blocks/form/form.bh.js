@@ -7,6 +7,7 @@ module.exports = function(bh) {
             .js(true)
             .attrs({
                 action : json.action,
+                enctype : json.enctype,
                 method : json.method
             });
 
