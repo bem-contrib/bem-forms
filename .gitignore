@@ -7,6 +7,7 @@
 .bem/cache
 .bem/snapshots
 .enb/tmp
+.libs-*
 node_modules
 npm-debug.log
 libs
