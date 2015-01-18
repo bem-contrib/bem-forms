@@ -1,20 +1,26 @@
-modules.define('form', function(provide, Form) {
+/**
+ * @module form__field
+ */
+modules.define('form__field', function(provide, prev) {
+
 /**
  * Контрол типа radio (радиогруппа)
  * Подмешивается к блоку radio
  */
+prev.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'radio' }, {},
+    /** @lends form__field_type_radio */{
 
-// TODO Form.decl({ elem: 'field', modName: 'type', modVal: 'radio' }, ...)
-provide(Form.decl({ block : 'form', elem : 'field', modName : 'type', modVal : 'radio' }, {}, {
     live : function() {
         var ptp = this.prototype;
 
         this.__base();
         this
-            .liveInitOnBlockEvent('change', 'radio', ptp._onControlChange);
-            // .liveInitOnBlockEvent('focus', 'radio-option', ptp._onControlFocus)
-            // .liveInitOnBlockEvent('blur', 'radio-option', ptp._onControlBlur);
+            .liveInitOnBlockInsideEvent('change', 'radio', ptp._onControlChange)
+            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'radio', ptp._onControlFocus)
+            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'radio', ptp._onControlBlur);
     }
-}));
+});
+
+provide(prev);
 
 });

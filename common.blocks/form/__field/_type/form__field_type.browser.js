@@ -1,10 +1,14 @@
-modules.define('form', function(provide, Form) {
+/**
+ * @module form__field
+ */
+modules.define('form__field', function(provide, prev) {
+
 /**
  * Болванка для контрола формы с заданным типом (модификатор _type)
  * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
  * В общем случае считается, что имя подмешанного блока совпадает со значением модификатора _type
  */
-provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
+prev.decl({ block : 'form', elem : 'field', modName : 'type' }, /** @lends form__field_type.prototype */{
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.getControl().setMod(modName, modVal);
@@ -12,7 +16,8 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
     },
 
     /**
-     * Возвращает закэшированный инстанс подмешанного контрола
+     * Returns control of field
+     * @protected
      * @returns {BEM}
      */
     getControl : function() {
@@ -20,7 +25,7 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
     },
 
     /**
-     * Возвращает имя контрола
+     * Returns control name
      * @returns {String}
      */
     getName : function() {
@@ -28,7 +33,7 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
     },
 
     /**
-     * Возвращает значение контрола
+     * Returns control value
      * @returns {String}
      */
     getVal : function() {
@@ -46,25 +51,46 @@ provide(Form.decl({ block : this.name, elem : 'field', modName : 'type' }, {
     /**
      * Реакция на событие изменения значения контрола
      * @protected
-     * @deprecated should be made via events
      */
     _onControlChange : function(e, data) {
-        this.block()._onControlChange(this, e, data);
+        /**
+         * Input data change event
+         *
+         * @event FormField#change
+         * @type {Object}
+         */
+        this.emit(e, data);
     },
 
     /**
      * Реакция на событие получения контролом фокуса
-     * @abstract
      * @protected
      */
-    _onControlFocus : function() {},
+    _onControlFocus : function(e, data) {
+        /**
+         * Input focus event
+         *
+         * @event FormField#focus
+         * @type {Object}
+         */
+        this.emit(e, data);
+    },
 
     /**
      * Реакция на событие потери контролом фокуса
-     * @abstract
      * @protected
      */
-    _onControlBlur : function() {}
-}));
+    _onControlBlur : function(e, data) {
+        /**
+         * Input blur event
+         *
+         * @event FormField#blur
+         * @type {Object}
+         */
+        this.emit(e, data);
+    }
+});
+
+provide(prev);
 
 });

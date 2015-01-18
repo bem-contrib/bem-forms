@@ -1,7 +1,6 @@
 ({
     mustDeps : {
-        block : 'i-bem',
-        elems : [{ name : 'dom', mods : ['elem-instances'] }]
+        block : 'i-bem'
     },
     shouldDeps : [
         'objects',

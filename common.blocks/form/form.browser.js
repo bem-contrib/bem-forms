@@ -1,12 +1,26 @@
-modules.define('form', ['i-bem__dom', 'objects'], function(provide, BEMDOM, objects) {
 /**
- * Форма
+ * @module form
  */
-provide(BEMDOM.decl(this.name, {
+modules.define('form',
+    ['i-bem__dom', 'form__field', 'objects'],
+    function(provide, BEMDOM, FormField, objects) {
+
+/**
+ * Form declaration
+ */
+provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
+                var _this = this;
                 this._changeStorage = null;
+
+                this.getFields().forEach(function(field) {
+                    field
+                        .on('change', _this._onFieldChange.bind(_this, field))
+                        .on('focus', _this._onFieldFocus.bind(_this, field))
+                        .on('blur', _this._onFieldBlur.bind(_this, field));
+                });
             }
         },
 
@@ -17,12 +31,16 @@ provide(BEMDOM.decl(this.name, {
         }
     },
 
+    /**
+     * Returns all fields inside form
+     * @type {FormField[]}
+     */
     getFields : function() {
         return this.elemInstances('field');
     },
 
     /**
-     * Сериализует форму
+     * Returns serialized form data
      * @returns {Object}
      */
     getVal : function() {
@@ -34,8 +52,8 @@ provide(BEMDOM.decl(this.name, {
     },
 
     /**
-     * Заполняет форму данными
-     * @param {Object} val данные (если не передан - берется из параметра fillData)
+     * Fills form fields with passed data
+     * @param {Object} [val] - data (params.fillData by default)
      */
     setVal : function(val) {
         var storage = this._changeStorage = {};
@@ -53,20 +71,48 @@ provide(BEMDOM.decl(this.name, {
     },
 
     /**
-     * метод зовется элементом __control
+     * Field change event handler
+     * @abstract
      * @private
-     * @deprecated
+     * @param {FormField} field
+     * @param {Event} event
+     * @param {Object} [data]
      */
-    _onControlChange : function(control, event, data) {
+    _onFieldChange : function(field, event, data) {
         var storage = this._changeStorage || {},
-            name = control.getName();
+            name = field.getName();
 
-        if(!name) return; // TODO как быть?
+        // Just skip if there is no name
+        if(!name) return;
 
         storage[name] = { event : event, data : data };
         this._changeStorage || this.emit('change', storage);
+    },
+
+    /**
+     * Field focus event handler
+     * @abstract
+     * @private
+     * @param {FormField} field
+     * @param {Event} event
+     * @param {Object} [data]
+     */
+    _onFieldFocus : function() {
+        // dummy
+    },
+
+    /**
+     * Field blur event handler
+     * @abstract
+     * @private
+     * @param {FormField} field
+     * @param {Event} event
+     * @param {Object} [data]
+     */
+    _onFieldBlur : function() {
+        // dummy
     }
-}, {
+}, /** @lends form */{
     live : true
 }));
 
