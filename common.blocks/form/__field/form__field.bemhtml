@@ -1,5 +1,6 @@
 block('form').elem('field')(
 
-    js()(true)
+    js()(true),
+    mix()({ block : 'i-bem' })
 
 );
