@@ -20,7 +20,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
      * @returns {BEM}
      */
     getVal : function() {
-        return $(this.domElem).text();
+        return this.domElem.text();
     },
     /**
      * Set message val
@@ -28,7 +28,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
      * @returns {BEM}
      */
     setVal : function(messsage) {
-        $(this.domElem).text(messsage);
+        this.domElem.text(messsage);
     }
 });
 
