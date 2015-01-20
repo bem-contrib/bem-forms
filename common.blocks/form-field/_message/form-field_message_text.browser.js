@@ -19,17 +19,15 @@ FormField.decl({ block : this.name, modName : 'message', modVal : 'text' }, /** 
      * @returns {BEM}
      */
     getMessage : function() {
-        var elem = this._messsage || (this._message = this.elem('message'));
-        return elem.text();
+        return this.elem('message').text();
     },
     /**
      * Set text message of field
      * @protected
      * @returns {BEM}
      */
-    setMessage : function(msg) {
-        var elem = this._messsage || (this._message = this.elem('message'));
-        return elem.text(msg);
+    setMessage : function(messsage) {
+        return this.elem('message').text(messsage);
     }
 });
 
