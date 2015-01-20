@@ -6,7 +6,7 @@
     content : [
         {
             block : 'form',
-            mods : { theme : 'islands' },
+            mods : { message : 'text', theme : 'islands' },
             method : 'GET',
             content : [
                 {
