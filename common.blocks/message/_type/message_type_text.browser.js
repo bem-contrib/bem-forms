@@ -9,10 +9,10 @@ modules.define('message',
  * Message type text
  *
  * @exports
- * @class form-field
+ * @class message
  * @bem
  */
-Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends form-field.prototype */{
+Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
 
     /**
      * Returns message val
@@ -28,7 +28,11 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
      * @returns {BEM}
      */
     setVal : function(messsage) {
+        messsage = String(messsage);
+
         this.domElem.text(messsage);
+
+        return this;
     }
 });
 

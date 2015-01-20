@@ -1,3 +1,7 @@
 block('message')(
-    js()(true)
+
+    js()(true),
+
+    mix()([{ elem : 'control' }])
+
 );
