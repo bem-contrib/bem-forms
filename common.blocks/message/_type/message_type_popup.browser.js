@@ -5,13 +5,13 @@ modules.define('message',
     function(provide, Message) {
 
 /**
- * Message type text
+ * Message type popup
  *
  * @exports
  * @class message
  * @bem
  */
-Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
+Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
 
     /**
      * Returns message val
@@ -19,7 +19,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
      * @returns {BEM}
      */
     getVal : function() {
-        return this.domElem.text();
+        return this._val;
     },
     /**
      * Set message val
@@ -29,7 +29,14 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
     setVal : function(message) {
         message = String(message);
 
-        this.domElem.text(message);
+        var popup = this.findBlockOn(this.elem('control'), 'popup');
+        popup.setAnchor(this);
+        popup.setContent(message);
+        this._val = message;
+
+        message && this._val?
+            popup.setMod('visible') :
+            popup.delMod('visible');
 
         return this;
     }

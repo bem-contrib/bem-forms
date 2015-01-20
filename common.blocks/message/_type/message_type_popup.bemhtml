@@ -1,0 +1,12 @@
+block('message').mod('type', 'popup')(
+    content()(function() {
+        return [
+            {
+                block : 'popup',
+                directions : ['left-center', 'right-center'],
+                mods : { target : 'anchor' },
+                mix : { block : 'message', elem : 'control' }
+            }
+        ];
+    })
+);

@@ -30,7 +30,8 @@
                         },
                         {
                             block : 'form-field',
-                            mods : { type : 'checkbox', theme : 'islands' },
+                            mods : { type : 'checkbox', message : 'popup', theme : 'islands' },
+                            attrs : { id : 'pop' },
                             content : [
                                 {
                                     block : 'checkbox',
