@@ -33,6 +33,23 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
      * @abstract
      */
     setVal : function() {
+    },
+
+    /**
+     * Return message of field
+     * @protected
+     * @abstract
+     */
+    getMessage : function() {
+        return '';
+    },
+
+    /**
+     * Set message of field
+     * @param {*|String} message
+     * @abstract
+     */
+    setMessage : function() {
     }
 }, /** @lends form-field */{
     live : true

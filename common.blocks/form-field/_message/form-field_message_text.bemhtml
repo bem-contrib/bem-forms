@@ -1,0 +1,12 @@
+block('form-field').mod('message', 'text')(
+    content()(function() {
+        var ctx = this.ctx;
+
+        return [
+            ctx.content,
+            { elem : 'message' }
+        ];
+    }),
+
+    elem('message').tag()('span')()
+);

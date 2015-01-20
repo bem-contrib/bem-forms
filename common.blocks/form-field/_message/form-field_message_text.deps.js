@@ -1,0 +1,6 @@
+({
+    mustDeps : [],
+    shouldDeps : [
+        { elem : 'message' }
+    ]
+})

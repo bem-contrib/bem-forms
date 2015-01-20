@@ -14,7 +14,7 @@
                     content : [
                         {
                             block : 'form-field',
-                            mods : { type : 'input', theme : 'islands' },
+                            mods : { type : 'input', message : 'text', theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
