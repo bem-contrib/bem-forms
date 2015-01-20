@@ -4,9 +4,11 @@ block('form-field').mod('message', 'text')(
 
         return [
             ctx.content,
-            { elem : 'message' }
+            {
+                block : 'message',
+                mods : { type : 'text' },
+                mix : { block : 'form-field', elem : 'message' }
+            }
         ];
-    }),
-
-    elem('message').tag()('span')()
+    })
 );

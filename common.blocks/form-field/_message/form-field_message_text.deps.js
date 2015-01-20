@@ -1,6 +1,6 @@
 ({
     mustDeps : [],
     shouldDeps : [
-        { elem : 'message' }
+        { block : 'message', mods : { type : 'text' } }
     ]
 })

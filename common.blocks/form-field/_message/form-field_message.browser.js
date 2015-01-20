@@ -19,16 +19,9 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
      * @abstract
      */
     getMessage : function() {
-        return '';
-    },
-
-    /**
-     * Set message of field
-     * @param {*|String} message
-     * @abstract
-     */
-    setMessage : function() {
+        return this._message || (this._message = this.findBlockInside('message'));
     }
+
 });
 
 provide(FormField);
