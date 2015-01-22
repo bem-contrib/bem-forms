@@ -5,7 +5,7 @@ block('form').mod('message', 'text')(
         return [
             {
                 block : 'message',
-                mods : { type : 'text' },
+                mods : { type : 'text', theme : ctx.mods.theme },
                 mix : { block : 'form', elem : 'message' }
             },
             ctx.content

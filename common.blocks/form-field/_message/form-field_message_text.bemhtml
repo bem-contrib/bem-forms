@@ -6,7 +6,7 @@ block('form-field').mod('message', 'text')(
             ctx.content,
             {
                 block : 'message',
-                mods : { type : 'text' },
+                mods : { type : 'text', theme : ctx.mods.theme },
                 mix : { block : 'form-field', elem : 'message' }
             }
         ];
