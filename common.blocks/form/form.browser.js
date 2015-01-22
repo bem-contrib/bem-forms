@@ -32,15 +32,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     },
 
     /**
-     * Return message block
-     * @protected
-     * @abstract
-     */
-    getMessage : function() {
-        return this._message || (this._message = this.findBlockInside('message'));
-    },
-
-    /**
      * Returns serialized form data
      * @returns {Object}
      */

@@ -1,17 +1,17 @@
 /**
- * @module form-field
+ * @module form
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form',
+    function(provide, Form) {
 
 /**
- * Base form-field__message class
+ * Base form__message class
  *
  * @exports
- * @class form-field
+ * @class form
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field.prototype */{
+Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype */{
 
     /**
      * Return instance of message block
@@ -43,6 +43,6 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
     }
 });
 
-provide(FormField);
+provide(Form);
 
 });
