@@ -4,7 +4,6 @@
     },
     shouldDeps : [
         'objects',
-        { block : 'form-field' },
-        { block : 'message' }
+        { block : 'form-field' }
     ]
 })
