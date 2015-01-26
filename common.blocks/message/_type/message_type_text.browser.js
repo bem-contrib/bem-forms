@@ -27,8 +27,6 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
      * @returns {BEM}
      */
     setVal : function(message) {
-        message = String(message);
-
         this.domElem.text(message);
 
         return this;

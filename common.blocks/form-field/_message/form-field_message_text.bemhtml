@@ -7,7 +7,7 @@ block('form-field').mod('message', 'text')(
             {
                 block : 'message',
                 mods : { type : 'text', theme : ctx.mods.theme },
-                mix : { block : 'form-field', elem : 'message' }
+                mix : { block : ctx.block, elem : 'message' }
             }
         ];
     })

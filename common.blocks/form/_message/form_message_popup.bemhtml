@@ -6,7 +6,7 @@ block('form').mod('message', 'popup')(
             {
                 block : 'message',
                 mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },
-                mix : { block : 'form', elem : 'message' }
+                mix : { block : ctx.block, elem : 'message' }
             },
             ctx.content
         ];

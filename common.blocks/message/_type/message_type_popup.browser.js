@@ -13,6 +13,14 @@ modules.define('message',
  */
 Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
 
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._popup = this.findBlockOn(this.elem('control'), 'popup');
+                this._popup.setAnchor(this);
+            }
+        }
+    },
     /**
      * Returns message val
      * @protected
@@ -27,16 +35,10 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
      * @returns {BEM}
      */
     setVal : function(message) {
-        message = String(message);
+        this._val = String(message);
+        this._popup.setContent(this._val);
 
-        var popup = this.findBlockOn(this.elem('control'), 'popup');
-        popup.setAnchor(this);
-        popup.setContent(message);
-        this._val = message;
-
-        message && this._val?
-            popup.setMod('visible') :
-            popup.delMod('visible');
+        this._popup.toggleMod('visible', true, Boolean(this._val));
 
         return this;
     }
