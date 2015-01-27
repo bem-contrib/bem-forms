@@ -16,7 +16,8 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._popup = this.findBlockOn(this.elem('control'), 'popup');
+                this._val = '';
+                this._popup = this.findBlockInside('popup');
                 this._popup.setAnchor(this);
             }
         }

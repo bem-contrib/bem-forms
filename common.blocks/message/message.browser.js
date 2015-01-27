@@ -2,14 +2,20 @@
  * @module message
  */
 modules.define('message',
-    ['i-bem__dom', 'control'],
-    function(provide, BEMDOM, Control) {
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
 
     /**
      * Message block
      */
-    provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends message.prototype */{
+    provide(BEMDOM.decl(this.name, /** @lends message.prototype */{
 
+        /**
+         * Get message value
+         * @abstract
+         */
+        getVal : function() {
+        },
         /**
          * Set message value
          * @param {*|String} val
