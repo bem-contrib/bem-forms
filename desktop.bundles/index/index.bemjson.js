@@ -6,7 +6,7 @@
     content : [
         {
             block : 'form',
-            mods : { theme : 'islands' },
+            mods : { message : 'text', theme : 'islands' },
             method : 'GET',
             content : [
                 {
@@ -14,7 +14,7 @@
                     content : [
                         {
                             block : 'form-field',
-                            mods : { type : 'input', theme : 'islands' },
+                            mods : { type : 'input', message : 'text', theme : 'islands' },
                             content : [
                                 {
                                     block : 'label',
@@ -30,7 +30,8 @@
                         },
                         {
                             block : 'form-field',
-                            mods : { type : 'checkbox', theme : 'islands' },
+                            mods : { type : 'checkbox', message : 'popup', theme : 'islands' },
+                            attrs : { id : 'pop' },
                             content : [
                                 {
                                     block : 'checkbox',

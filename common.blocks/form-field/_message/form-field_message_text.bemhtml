@@ -1,0 +1,14 @@
+block('form-field').mod('message', 'text')(
+    content()(function() {
+        var ctx = this.ctx;
+
+        return [
+            ctx.content,
+            {
+                block : 'message',
+                mods : { type : 'text', theme : ctx.mods.theme },
+                mix : { block : ctx.block, elem : 'message' }
+            }
+        ];
+    })
+);

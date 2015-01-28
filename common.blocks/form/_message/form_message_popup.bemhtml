@@ -1,0 +1,14 @@
+block('form').mod('message', 'popup')(
+    content()(function() {
+        var ctx = this.ctx;
+
+        return [
+            {
+                block : 'message',
+                mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },
+                mix : { block : ctx.block, elem : 'message' }
+            },
+            ctx.content
+        ];
+    })
+);
