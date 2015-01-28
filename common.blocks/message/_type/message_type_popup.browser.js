@@ -16,7 +16,8 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._val = '';
+                this.__base.apply(this, arguments);
+
                 this._popup = this.findBlockInside('popup');
                 this._popup.setAnchor(this);
             }
@@ -35,8 +36,9 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
      * @protected
      * @returns {BEM}
      */
-    setVal : function(message) {
-        this._val = String(message);
+    setVal : function() {
+        this.__base.apply(this, arguments);
+
         this._popup.setContent(this._val);
 
         this._popup.toggleMod('visible', true, Boolean(this._val));

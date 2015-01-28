@@ -14,20 +14,14 @@ modules.define('message',
 Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
 
     /**
-     * Returns message val
-     * @protected
-     * @returns {BEM}
-     */
-    getVal : function() {
-        return this.domElem.text();
-    },
-    /**
      * Set message val
      * @protected
      * @returns {BEM}
      */
-    setVal : function(message) {
-        this.domElem.text(message);
+    setVal : function() {
+        this.__base.apply(this, arguments);
+
+        this.domElem.text(this._val);
 
         return this;
     }
