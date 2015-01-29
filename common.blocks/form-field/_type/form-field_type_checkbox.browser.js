@@ -39,7 +39,7 @@ FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' },
          * @type {Object}
          */
         this.emit('change', data);
-    },
+    }
 }, /** @lends form-field_type_checkbox */{
     live : function() {
         var ptp = this.prototype;

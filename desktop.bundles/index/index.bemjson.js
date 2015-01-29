@@ -15,7 +15,12 @@
                         {
                             block : 'form-field',
                             id : 'input',
-                            mods : { type : 'input', message : 'text', theme : 'islands' },
+                            mods : {
+                                type : 'input',
+                                validate : 'card',
+                                message : 'popup',
+                                theme : 'islands'
+                            },
                             content : [
                                 {
                                     block : 'label',
