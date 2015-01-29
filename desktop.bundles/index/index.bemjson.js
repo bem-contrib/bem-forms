@@ -14,9 +14,8 @@
                     content : [
                         {
                             block : 'form-field',
-                            id : 'first_name',
+                            id : 'input',
                             mods : { type : 'input', message : 'text', theme : 'islands' },
-                            attrs : { id : 'input' },
                             content : [
                                 {
                                     block : 'label',
@@ -32,8 +31,8 @@
                         },
                         {
                             block : 'form-field',
+                            id : 'checkbox',
                             mods : { type : 'checkbox', message : 'popup', theme : 'islands' },
-                            attrs : { id : 'checkbox' },
                             content : [
                                 {
                                     block : 'checkbox',
@@ -45,8 +44,8 @@
                         },
                         {
                             block : 'form-field',
+                            id : 'checkbox_group',
                             mods : { type : 'checkbox-group', message : 'text', theme : 'islands' },
-                            attrs : { id : 'checkbox_group' },
                             content : [
                                 {
                                     block : 'checkbox-group',
@@ -61,8 +60,8 @@
                         },
                         {
                             block : 'form-field',
+                            id : 'radio',
                             mods : { type : 'radio', theme : 'islands' },
-                            attrs : { id : 'radio' },
                             content : [
                                 {
                                     block : 'radio',
@@ -74,8 +73,8 @@
                         },
                         {
                             block : 'form-field',
+                            id : 'radio_group',
                             mods : { type : 'radio-group', message : 'text', theme : 'islands' },
-                            attrs : { id : 'radio_group' },
                             content : [
                                 {
                                     block : 'radio-group',
