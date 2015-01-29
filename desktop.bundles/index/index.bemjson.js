@@ -15,6 +15,7 @@
                         {
                             block : 'form-field',
                             mods : { type : 'input', message : 'text', theme : 'islands' },
+                            attrs : { id : 'input' },
                             content : [
                                 {
                                     block : 'label',
@@ -31,7 +32,7 @@
                         {
                             block : 'form-field',
                             mods : { type : 'checkbox', message : 'popup', theme : 'islands' },
-                            attrs : { id : 'pop' },
+                            attrs : { id : 'checkbox' },
                             content : [
                                 {
                                     block : 'checkbox',
@@ -44,12 +45,29 @@
                         {
                             block : 'form-field',
                             mods : { type : 'radio', theme : 'islands' },
+                            attrs : { id : 'radio' },
                             content : [
                                 {
                                     block : 'radio',
                                     mods : { theme : 'islands', size : 'l' },
                                     text : 'Radio 1',
                                     name : 'radio'
+                                }
+                            ]
+                        },
+                        {
+                            block : 'form-field',
+                            mods : { type : 'radio-group', message : 'text', theme : 'islands' },
+                            attrs : { id : 'radio_group' },
+                            content : [
+                                {
+                                    block : 'radio-group',
+                                    mods : { theme : 'islands', size : 'l' },
+                                    options : [
+                                        { text : 'Radio 1', val : '1' },
+                                        { text : 'Radio 2', val : '2' },
+                                        { text : 'Radio 3', val : '3' }
+                                    ]
                                 }
                             ]
                         }
