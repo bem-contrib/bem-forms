@@ -45,6 +45,22 @@
                         },
                         {
                             block : 'form-field',
+                            mods : { type : 'checkbox-group', message : 'text', theme : 'islands' },
+                            attrs : { id : 'checkbox_group' },
+                            content : [
+                                {
+                                    block : 'checkbox-group',
+                                    mods : { theme : 'islands', size : 'l' },
+                                    options : [
+                                        { text : 'Checkbox 1', val : '1' },
+                                        { text : 'Checkbox 2', val : '2' },
+                                        { text : 'Checkbox 3', val : '3' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            block : 'form-field',
                             mods : { type : 'radio', theme : 'islands' },
                             attrs : { id : 'radio' },
                             content : [
