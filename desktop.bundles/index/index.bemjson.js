@@ -14,6 +14,7 @@
                     content : [
                         {
                             block : 'form-field',
+                            id : 'first_name',
                             mods : { type : 'input', message : 'text', theme : 'islands' },
                             content : [
                                 {
@@ -23,8 +24,8 @@
                                 },
                                 {
                                     block : 'input',
-                                    mods : { theme : 'islands', size : 'l' },
-                                    name : 'input'
+                                    name : 'firstName',
+                                    mods : { theme : 'islands', size : 'l' }
                                 }
                             ]
                         },
