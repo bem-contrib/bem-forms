@@ -1,5 +1,12 @@
 block('form-field')(
 
-    js()(true)
+    js()(true),
+
+    def()(function() {
+        applyNext({ _form_field : this.ctx });
+    }),
+    attrs()(function() {
+        return { id : this.ctx.id };
+    })
 
 );

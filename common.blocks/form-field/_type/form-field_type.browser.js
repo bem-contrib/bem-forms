@@ -15,6 +15,7 @@ modules.define('form-field',
  * @bem
  */
 FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.prototype */{
+
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.getControl().setMod(modName, modVal);
@@ -47,7 +48,7 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     },
 
     /**
-     * Устанавливает значение контрола
+     * Set control val
      * @param {*|String} val устанавливаемое значение
      */
     setVal : function(val) {
@@ -55,7 +56,7 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     },
 
     /**
-     * Реакция на событие изменения значения контрола
+     * Control changed
      * @protected
      */
     _onControlChange : function(e, data) {
@@ -69,7 +70,7 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     },
 
     /**
-     * Реакция на событие получения контролом фокуса
+     * Control focused
      * @protected
      */
     _onControlFocus : function(e, data) {
@@ -85,7 +86,7 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     },
 
     /**
-     * Реакция на событие потери контролом фокуса
+     * Control unfocused
      * @protected
      */
     _onControlBlur : function(e, data) {
