@@ -36,6 +36,8 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     _updateStatus : function() {
         this.toggleMod('invalid', true, Boolean(this._status));
 
+        this.getControl().toggleMod('invalid', true, Boolean(this._status));
+
         this.hasMod('message') && this.setMessageVal(this._status);
     },
 
