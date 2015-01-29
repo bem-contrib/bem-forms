@@ -5,7 +5,7 @@ modules.define('form-field',
     function(provide, FormField) {
 
 /**
- * Radio field
+ * Radio-group field
  *
  * @exports
  * @class form-field
