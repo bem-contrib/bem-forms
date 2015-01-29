@@ -18,6 +18,7 @@
                             mods : {
                                 type : 'input',
                                 validate : 'card',
+                                required : true,
                                 message : 'popup',
                                 theme : 'islands'
                             },

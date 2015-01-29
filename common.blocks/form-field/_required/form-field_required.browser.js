@@ -2,24 +2,24 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['validation_card'],
-    function(provide, validate_card, FormField) {
+    ['validation', 'validation_required'],
+    function(provide, Validation, validation_required, FormField) {
 
 /**
- * Card form-field validation
+ * Required form-field
 
  * @exports
  * @class form-field
  * @bem
  */
-FormField.decl({ modName : 'validate', modVal : 'card' }, /** @lends form-field.prototype */{
+FormField.decl({ modName : 'required', modVal : true }, /** @lends form-field.prototype */{
 
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this._validator.push(validate_card());
+                this._validator.push(validation_required());
             }
         }
     }
