@@ -30,7 +30,7 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         this._status = this._validator.check(this.getVal());
         this._updateStatus();
 
-        return !Boolean(this._status);
+        return this._status;
     },
 
     _updateStatus : function() {

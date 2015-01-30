@@ -6,7 +6,11 @@
     content : [
         {
             block : 'form',
-            mods : { message : 'text', theme : 'islands' },
+            mods : {
+                theme : 'islands',
+                'has-validate' : true,
+                message : 'text'
+            },
             method : 'GET',
             content : [
                 {
@@ -19,9 +23,8 @@
                                 theme : 'islands',
                                 type : 'input',
                                 'has-validate' : true,
-                                validate : 'card',
                                 required : true,
-                                message : 'popup'
+                                message : 'text'
                             },
                             content : [
                                 {
