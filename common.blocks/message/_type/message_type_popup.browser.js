@@ -41,9 +41,10 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
 
         this._popup.setContent(this._val);
 
-        this._popup.toggleMod('visible', true, Boolean(this._val));
+        // Use it in your levels
+        //this._popup.toggleMod('visible', true, Boolean(this._val));
 
-        return this;
+        //return this;
     }
 });
 

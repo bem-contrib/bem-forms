@@ -49,6 +49,8 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
     _updateStatus : function() {
         this.toggleMod('invalid', true, Boolean(this._broken));
         this._broken[0].getControl().setMod('focused');
+
+        // Use it in your levels
     }
 },
 {
