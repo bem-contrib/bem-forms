@@ -1,6 +1,6 @@
 ({
     mustDeps : [],
     shouldDeps : [
-        { block : 'message', mods : { theme : 'islands' } }
+        { block : 'popup', mods : { theme : 'islands' } }
     ]
 })
