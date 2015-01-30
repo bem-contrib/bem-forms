@@ -22,9 +22,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
     },
 
     _onSubmit : function(e) {
-        if(this.validate()) {
-            e.preventDefault();
-        }
+        this.validate() && e.preventDefault();
     },
 
     /**
