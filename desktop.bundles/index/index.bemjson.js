@@ -16,11 +16,12 @@
                             block : 'form-field',
                             id : 'input',
                             mods : {
+                                theme : 'islands',
                                 type : 'input',
+                                'has-validate' : true,
                                 validate : 'card',
                                 required : true,
-                                message : 'popup',
-                                theme : 'islands'
+                                message : 'popup'
                             },
                             content : [
                                 {
