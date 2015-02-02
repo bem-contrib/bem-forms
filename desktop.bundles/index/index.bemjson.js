@@ -6,7 +6,11 @@
     content : [
         {
             block : 'form',
-            mods : { message : 'text', theme : 'islands' },
+            mods : {
+                theme : 'islands',
+                'has-validate' : true,
+                message : 'text'
+            },
             method : 'GET',
             content : [
                 {
@@ -15,7 +19,13 @@
                         {
                             block : 'form-field',
                             id : 'input',
-                            mods : { type : 'input', message : 'text', theme : 'islands' },
+                            mods : {
+                                theme : 'islands',
+                                type : 'input',
+                                'has-validate' : true,
+                                required : true,
+                                message : 'text'
+                            },
                             content : [
                                 {
                                     block : 'label',
@@ -32,7 +42,13 @@
                         {
                             block : 'form-field',
                             id : 'checkbox',
-                            mods : { type : 'checkbox', message : 'popup', theme : 'islands' },
+                            mods : {
+                                type : 'checkbox',
+                                theme : 'islands',
+                                'has-validate' : true,
+                                required : true,
+                                message : 'text'
+                            },
                             content : [
                                 {
                                     block : 'checkbox',
@@ -45,7 +61,10 @@
                         {
                             block : 'form-field',
                             id : 'checkbox_group',
-                            mods : { type : 'checkbox-group', message : 'text', theme : 'islands' },
+                            mods : {
+                                type : 'checkbox-group',
+                                theme : 'islands'
+                            },
                             content : [
                                 {
                                     block : 'checkbox-group',
@@ -61,7 +80,10 @@
                         {
                             block : 'form-field',
                             id : 'radio',
-                            mods : { type : 'radio', theme : 'islands' },
+                            mods : {
+                                type : 'radio',
+                                theme : 'islands'
+                            },
                             content : [
                                 {
                                     block : 'radio',
@@ -74,7 +96,10 @@
                         {
                             block : 'form-field',
                             id : 'radio_group',
-                            mods : { type : 'radio-group', message : 'text', theme : 'islands' },
+                            mods : {
+                                type : 'radio-group',
+                                theme : 'islands'
+                            },
                             content : [
                                 {
                                     block : 'radio-group',
