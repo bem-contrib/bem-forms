@@ -41,6 +41,29 @@
                         },
                         {
                             block : 'form-field',
+                            id : 'textarea',
+                            mods : {
+                                theme : 'islands',
+                                type : 'textarea',
+                                'has-validate' : true,
+                                required : true,
+                                message : 'text'
+                            },
+                            content : [
+                                {
+                                    block : 'label',
+                                    mods : { theme : 'islands' },
+                                    content : 'Textarea'
+                                },
+                                {
+                                    block : 'textarea',
+                                    name : 'BIO',
+                                    mods : { theme : 'islands', size : 'l' }
+                                }
+                            ]
+                        },
+                        {
+                            block : 'form-field',
                             id : 'checkbox',
                             mods : {
                                 type : 'checkbox',
