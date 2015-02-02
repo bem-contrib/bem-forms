@@ -224,3 +224,47 @@
     ]
 }
 ```
+
+### Вывод сообщений `_message` 
+
+Абстракция надо блоком [message](../message/message.ru.md). Устанавливает логику вывода сообщений валидации.
+ 
+* `text`. Текстовое сообщение.
+
+```bemjson
+{
+    block : 'form-field',
+    mods : {
+        type : 'input',
+        'has-validate' : true,
+        required : true,
+        message : 'text'
+    },
+    content : [
+        {
+            block : 'input',
+            name : 'firstName'
+        }
+    ]
+}
+```
+
+* `popup`. Попап.
+
+```bemjson
+{
+    block : 'form-field',
+    mods : {
+        type : 'input',
+        'has-validate' : true,
+        required : true,
+        message : 'popup'
+    },
+    content : [
+        {
+            block : 'input',
+            name : 'firstName'
+        }
+    ]
+}
+```
