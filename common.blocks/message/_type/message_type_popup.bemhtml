@@ -1,14 +1,14 @@
 block('message').mod('type', 'popup')(
-    content()(function() {
+    def()(function() {
         var ctx = this.ctx;
 
-        return [
+        applyCtx([
             {
                 block : 'popup',
                 directions : ['left-center', 'right-center'],
                 mods : { target : 'anchor', theme : ctx.mods.theme, size : ctx.mods.size },
-                mix : { block : 'message', elem : 'control' }
+                mix : { block : ctx.block, mods : ctx.mods }
             }
-        ];
+        ]);
     })
 );

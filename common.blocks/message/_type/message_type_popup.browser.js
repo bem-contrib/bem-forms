@@ -19,9 +19,19 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
                 this.__base.apply(this, arguments);
 
                 this._popup = this.findBlockInside('popup');
+
                 this._popup.setAnchor(this);
             }
         }
+    },
+
+    /**
+     * Returns message val
+     * @protected
+     * @returns {BEM}
+     */
+    setAnchor : function(anchor) {
+        this._popup.setAnchor(anchor);
     },
     /**
      * Returns message val
