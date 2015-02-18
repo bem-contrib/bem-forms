@@ -28,15 +28,15 @@ modules.define('validation_card',
     ];
 
     return provide(function(message, params) {
-        message = objects.extend(message, DEFAULT_MESSAGE);
+        message = objects.extend(DEFAULT_MESSAGE, message);
+        params = objects.extend({}, params);
 
         return function (val) {
             if(!val) {
                 return null;
             }
 
-            if((val.length !== 16 && val.length !== 18) ||
-                DIGITS_RE.test(val)) {
+            if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
                 return message.wrong_length;
             }
 
