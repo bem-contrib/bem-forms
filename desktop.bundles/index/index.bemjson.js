@@ -26,6 +26,9 @@
                                 required : true,
                                 message : 'text'
                             },
+                            js : {
+                                message : 'Super required!'
+                            },
                             content : [
                                 {
                                     block : 'label',
