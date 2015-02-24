@@ -28,7 +28,7 @@ modules.define('validation_card',
     ];
 
     return provide(function(message, params) {
-        message = objects.extend(DEFAULT_MESSAGE, message);
+        message = message || DEFAULT_MESSAGE;
         params = objects.extend({}, params);
 
         return function (val) {
