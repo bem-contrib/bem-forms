@@ -5,16 +5,10 @@
     scripts : [{ elem : 'js', url : 'examples.min.js' }],
     content : [
         {
-            block : 'form-field',
-            mods : {
-                type : 'input',
-                'has-validate' : true,
-                required : true,
-                message : 'text'
-            },
+            block : 'message',
+            mods : { type : 'popup' },
             mix :  { block : 'another-block' },
-            attrs :  { 'data-form-field' : 'custom form-field data' },
-            name : 'tmplFormField',
+            attrs :  { 'data-message' : 'custom message data' },
             content : []
         }
     ]
