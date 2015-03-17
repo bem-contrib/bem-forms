@@ -1,9 +1,9 @@
-({
-    mustDeps : {
-        block : 'i-bem'
-    },
+[{
+    mustDeps : [
+        { block : 'i-bem' }
+    ],
     shouldDeps : [
-        'objects',
+        { block : 'objects' },
         { block : 'form-field' }
     ]
-})
+}]
