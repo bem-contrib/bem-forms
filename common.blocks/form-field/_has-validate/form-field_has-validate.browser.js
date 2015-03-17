@@ -23,13 +23,17 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         return this._validator || (this._validator = Validation.create());
     },
 
+    getStatus : function() {
+        return this.getValidator().check(this.getVal());
+    },
+
     /**
      * Validate form-field
      * @public
      * @returns {Boolean}
      */
     validate : function() {
-        this._status = this.getValidator().check(this.getVal());
+        this._status = this.getStatus();
         this._updateStatus();
 
         return this._status;
