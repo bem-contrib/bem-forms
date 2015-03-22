@@ -7,7 +7,7 @@ block('message').mod('type', 'popup')(
                 block : 'popup',
                 directions : ['left-center', 'right-center'],
                 mods : { target : 'anchor', theme : ctx.mods.theme, size : ctx.mods.size },
-                mix : { block : ctx.block, mods : ctx.mods }
+                mix : { block : ctx.block, elem : 'control' }
             }
         ]);
     })
