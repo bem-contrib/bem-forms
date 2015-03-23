@@ -8,7 +8,7 @@ block('form').mod('message', 'text')(
                 mods : { type : 'text', theme : ctx.mods.theme },
                 mix : { block : ctx.block, elem : 'message' }
             },
-            ctx.content
+            applyNext()
         ];
     })
 );
