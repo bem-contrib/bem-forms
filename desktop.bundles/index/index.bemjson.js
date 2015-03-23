@@ -18,7 +18,7 @@
                     content : [
                         {
                             block : 'form-field',
-                            id : 'input',
+                            name : 'firstName',
                             mods : {
                                 theme : 'islands',
                                 type : 'input',
@@ -37,8 +37,34 @@
                                 },
                                 {
                                     block : 'input',
-                                    name : 'firstName',
                                     mods : { theme : 'islands', size : 'l' }
+                                }
+                            ]
+                        },
+                        {
+                            block : 'form-field',
+                            name : 'years',
+                            mods : {
+                                theme : 'islands',
+                                type : 'select',
+                                'has-validate' : true,
+                                required : true,
+                                message : 'text'
+                            },
+                            content : [
+                                {
+                                    block : 'label',
+                                    mods : { theme : 'islands' },
+                                    content : 'Select'
+                                },
+                                {
+                                    block : 'select',
+                                    mods : { mode : 'check', theme : 'islands', size : 'l' },
+                                    text : 'Программа конференции',
+                                    options : [
+                                        { text : '1', val : 1 },
+                                        { text : '2', val : 2 }
+                                    ]
                                 }
                             ]
                         },
@@ -67,7 +93,7 @@
                         },
                         {
                             block : 'form-field',
-                            id : 'checkbox',
+                            name : 'ololo',
                             mods : {
                                 type : 'checkbox',
                                 theme : 'islands',
@@ -79,14 +105,13 @@
                                 {
                                     block : 'checkbox',
                                     mods : { theme : 'islands', size : 'l' },
-                                    text : 'Checkbox 1',
-                                    name : 'checkbox'
+                                    text : 'Checkbox 1'
                                 }
                             ]
                         },
                         {
                             block : 'form-field',
-                            id : 'checkbox_group',
+                            name : 'checkboxGroupName',
                             mods : {
                                 type : 'checkbox-group',
                                 theme : 'islands'
@@ -105,7 +130,7 @@
                         },
                         {
                             block : 'form-field',
-                            id : 'radio',
+                            name : 'radio',
                             mods : {
                                 type : 'radio',
                                 theme : 'islands'
@@ -114,14 +139,13 @@
                                 {
                                     block : 'radio',
                                     mods : { theme : 'islands', size : 'l' },
-                                    text : 'Radio 1',
-                                    name : 'radio'
+                                    text : 'Radio 1'
                                 }
                             ]
                         },
                         {
                             block : 'form-field',
-                            id : 'radio_group',
+                            name : 'radioGroupName',
                             mods : {
                                 type : 'radio-group',
                                 theme : 'islands'

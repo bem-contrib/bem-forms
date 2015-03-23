@@ -3,10 +3,9 @@ block('form-field')(
     js()(true),
 
     def()(function() {
-        applyNext({ _form_field : this.ctx });
-    }),
-    attrs()(function() {
-        return { id : this.ctx.id };
+	var _form_field = this.ctx;
+	_form_field.id = _form_field.id || this.generateId();
+	applyNext({ _form_field : _form_field });
     })
 
 );
