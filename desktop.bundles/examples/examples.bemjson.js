@@ -1,15 +1,18 @@
 ({
     block : 'page',
     title : 'form',
-    styles : [{ elem : 'css', url : 'examples.min.css' }],
-    scripts : [{ elem : 'js', url : 'examples.min.js' }],
     content : [
         {
-            block : 'message',
-            mods : { type : 'popup' },
-            mix :  { block : 'another-block' },
-            attrs :  { 'data-message' : 'custom message data' },
-            content : []
+            block : 'form-field',
+            mods : { type : 'textarea' },
+            name : 'tmplFormFieldAndId',
+            id : '123456789',
+            content : [
+                {
+                    block : 'textarea',
+                    val : 'withFormFieldNameAndId'
+                }
+            ]
         }
     ]
 })

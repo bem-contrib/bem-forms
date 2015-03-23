@@ -1,9 +1,0 @@
-block('textarea').elem('control')(
-
-    match(this._form_field).def()(function() {
-        this._textarea.id = this._textarea.id || this._form_field.id;
-        this._textarea.name = this._textarea.name || this._form_field.name;
-
-        applyNext();
-    })
-);

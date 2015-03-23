@@ -2,6 +2,7 @@ block('select')(
 
     match(this._form_field).def()(function() {
         var ctx = this.ctx;
+        
         ctx.name = ctx.name || this._form_field.name;
 
         applyNext();
