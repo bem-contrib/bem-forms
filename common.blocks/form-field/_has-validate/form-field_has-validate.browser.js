@@ -14,11 +14,17 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         'js' : {
             'inited' : function() {
                 this._status = null;
-                this._validator = Validation.create();
-
                 this.on('blur', this.validate);
             }
         }
+    },
+
+    getValidator : function() {
+        return this._validator || (this._validator = Validation.create());
+    },
+
+    getStatus : function() {
+        return this.getValidator().check(this.getVal());
     },
 
     /**
@@ -27,7 +33,7 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
      * @returns {Boolean}
      */
     validate : function() {
-        this._status = this._validator.check(this.getVal());
+        this._status = this.getStatus();
         this._updateStatus();
 
         return this._status;
@@ -39,7 +45,7 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         this.getControl().toggleMod('invalid', true, Boolean(this._status));
 
         // Use it in your levels
-        //this.hasMod('message') && this.setMessageVal(this._status);
+        // this.hasMod('message') && this.setMessageVal(this._status);
     }
 });
 

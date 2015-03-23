@@ -3,7 +3,7 @@ block('form-field').mod('message', 'popup')(
         var ctx = this.ctx;
 
         return [
-            ctx.content,
+            applyNext(),
             {
                 block : 'message',
                 mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },

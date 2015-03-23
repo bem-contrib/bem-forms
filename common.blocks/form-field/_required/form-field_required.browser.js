@@ -19,7 +19,7 @@ FormField.decl({ modName : 'required', modVal : true }, /** @lends form-field.pr
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this._validator.push(validation_required());
+                this.getValidator().push(validation_required(this.params.message));
             }
         }
     }
