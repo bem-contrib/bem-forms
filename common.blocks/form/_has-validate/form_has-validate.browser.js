@@ -31,16 +31,15 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @returns {Array}
          */
         getInvalidFields : function() {
+            var invalid = [];
 
-            if(!this.getStatus()) {
-                this._invalidFields = [];
+            for(var i = 0, l = this.fields.length; i < l; i++) {
+                var f = this.fields[i];
 
-                for(var i = 0; i < this.fields.length; i++) {
-                    !this.fields[i].getStatus() && this._invalidFields.push(this.fields[i]);
-                }
+                f.getStatus() || invalid.push(f);
             }
 
-            return this._invalidFields;
+            return invalid;
         },
 
         /**
