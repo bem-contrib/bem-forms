@@ -1,5 +1,19 @@
 block('form-field').mod('type', 'hidden')(
     js()(function() {
         return { name : this.ctx.name, value : this.ctx.val };
+    }),
+
+    content()(function() {
+        return [
+            {
+                tag : 'input',
+                attrs : {
+                    type : 'hidden',
+                    name : this.ctx.name,
+                    id : this.ctx.id,
+                    value : this.ctx.val
+                }
+            }
+        ];
     })
 );
