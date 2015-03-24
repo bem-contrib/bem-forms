@@ -74,7 +74,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
 
         /**
         * This method can be overrided in project connected with bem-forms
-        * @private
+        * @protected
         */
         _updateView : function() {
             this.toggleMod('invalid', true, Boolean(this.getStatus()));
