@@ -26,6 +26,21 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         },
 
         /**
+         * Get form status
+         * @public
+         * @returns {String}
+         */
+        getStatus : function() {
+            this._broken = [];
+
+            for(var i = 0; i < this.fields.length; i++) {
+                this._status = this.fields[i].getStatus();
+            }
+
+            return this._status;
+        },
+
+        /**
          * Validate form
          * @public
          * @returns {Boolean}
@@ -38,16 +53,18 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
                 this._status && this._broken.push(this.fields[i]);
             }
 
-            this._updateStatus();
+            this._updateView();
 
             return !this._broken.length;
         },
 
-        _updateStatus : function() {
+        /**
+        * This method can be overrided in project connected with bem-forms
+        * @private
+        */
+        _updateView : function() {
             this.toggleMod('invalid', true, Boolean(this._broken));
             this._broken.length && this._broken[0].getControl().setMod('focused');
-
-            // Use it in your levels
         }
     },
     {
