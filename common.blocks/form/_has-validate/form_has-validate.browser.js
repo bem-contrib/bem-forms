@@ -26,15 +26,34 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         },
 
         /**
+         * Get all invalid form-fields
+         * @public
+         * @returns {Array}
+         */
+        getInvalidFields : function() {
+
+            if(!this.getStatus()) {
+                this._invalidFields = [];
+
+                for(var i = 0; i < this.fields.length; i++) {
+                    !this.fields[i].getStatus() && this._invalidFields.push(this.fields[i]);
+                }
+            }
+
+            return this._invalidFields;
+        },
+
+        /**
          * Get form status
          * @public
          * @returns {String}
          */
         getStatus : function() {
-            this._broken = [];
+            this._status = true;
 
             for(var i = 0; i < this.fields.length; i++) {
                 this._status = this.fields[i].getStatus();
+                if(!this._status) break;
             }
 
             return this._status;
@@ -46,16 +65,11 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @returns {Boolean}
          */
         validate : function() {
-            this._broken = [];
-
             for(var i = 0; i < this.fields.length; i++) {
-                this._status = this.fields[i].validate();
-                this._status && this._broken.push(this.fields[i]);
+                this.fields[i].validate();
             }
 
             this._updateView();
-
-            return !this._broken.length;
         },
 
         /**
@@ -63,8 +77,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         * @private
         */
         _updateView : function() {
-            this.toggleMod('invalid', true, Boolean(this._broken));
-            this._broken.length && this._broken[0].getControl().setMod('focused');
+            this.toggleMod('invalid', true, Boolean(this.getStatus()));
         }
     },
     {
