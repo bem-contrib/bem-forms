@@ -21,12 +21,19 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
             }
         },
 
+        /**
+         * onSubmit event handler
+         *
+         * @private
+         * @param {Event}
+         */
         _onSubmit : function(e) {
             this.validate() && e.preventDefault();
         },
 
         /**
          * Get all invalid form-fields
+         *
          * @public
          * @returns {Array}
          */
@@ -44,27 +51,26 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
 
         /**
          * Get form status
+         *
          * @public
          * @returns {String}
          */
         getStatus : function() {
-            this._status = true;
-
-            for(var i = 0; i < this.fields.length; i++) {
-                this._status = this.fields[i].getStatus();
-                if(!this._status) break;
+            for(var i = 0, l = this.fields.length; i < l; i++) {
+                if(!this.fields[i].getStatus()) return false;
             }
 
-            return this._status;
+            return true;
         },
 
         /**
-         * Validate form
+         * Check form validaty state
+         *
          * @public
          * @returns {Boolean}
          */
         validate : function() {
-            for(var i = 0; i < this.fields.length; i++) {
+            for(var i = 0, l = this.fields.length; i < l; i++) {
                 this.fields[i].validate();
             }
 
@@ -72,9 +78,11 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         },
 
         /**
-        * This method can be overrided in project connected with bem-forms
-        * @protected
-        */
+         * Update form modifier `invalid` according to current validity state.
+         * This method can be overriden in projects based on `bem-forms`
+         *
+         * @protected
+         */
         _updateView : function() {
             this.toggleMod('invalid', true, Boolean(this.getStatus()));
         }
