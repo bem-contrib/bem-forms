@@ -4,15 +4,10 @@
     content : [
         {
             block : 'form-field',
-            mods : { type : 'textarea' },
+            mods : { type : 'hidden' },
             name : 'tmplFormFieldAndId',
             id : '123456789',
-            content : [
-                {
-                    block : 'textarea',
-                    val : 'withFormFieldNameAndId'
-                }
-            ]
+            val : '111'
         }
     ]
 })
