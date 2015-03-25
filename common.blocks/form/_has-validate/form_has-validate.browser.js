@@ -28,7 +28,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @param {Event}
          */
         _onSubmit : function(e) {
-            this.validate() && e.preventDefault();
+            if(this.validate()) e.preventDefault();
         },
 
         /**
@@ -43,7 +43,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
             for(var i = 0, l = this.fields.length; i < l; i++) {
                 var f = this.fields[i];
 
-                f.getStatus() || invalid.push(f);
+                if(!f.getStatus()) invalid.push(f);
             }
 
             return invalid;
