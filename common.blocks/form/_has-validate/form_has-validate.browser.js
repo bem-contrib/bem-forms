@@ -12,8 +12,6 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         onSetMod : {
             'js' : {
                 'inited' : function() {
-                    this.fields = this.getFields();
-
                     this.bindTo('submit', function(e) {
                         this._onSubmit(e);
                     });
@@ -38,9 +36,10 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @returns {Array}
          */
         getInvalidFields : function() {
-            var invalid = [];
+            var currentFields = this.getFields(),
+                invalid = [];
 
-            for(var i = 0, l = this.fields.length; i < l; i++) {
+            for(var i = 0, l = currentFields.length; i < l; i++) {
                 var f = this.fields[i];
 
                 f.getStatus() || invalid.push(f);
@@ -56,8 +55,10 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @returns {String}
          */
         getStatus : function() {
-            for(var i = 0, l = this.fields.length; i < l; i++) {
-                if(!this.fields[i].getStatus()) return false;
+            var currentFields = this.getFields();
+
+            for(var i = 0, l = currentFields.length; i < l; i++) {
+                if(!currentFields[i].getStatus()) return false;
             }
 
             return true;
@@ -70,8 +71,10 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
          * @returns {Boolean}
          */
         validate : function() {
-            for(var i = 0, l = this.fields.length; i < l; i++) {
-                this.fields[i].validate();
+            var currentFields = this.getFields();
+
+            for(var i = 0, l = currentFields.length; i < l; i++) {
+                currentFields[i].validate();
             }
 
             this._updateView();
