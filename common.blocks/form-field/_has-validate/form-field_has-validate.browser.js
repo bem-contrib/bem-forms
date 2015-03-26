@@ -17,17 +17,27 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
             }
         }
     },
-
+    /**
+     * Get form-field validator instance
+     *
+     * @public
+     * @returns {Object}
+     */
     getValidator : function() {
         return this._validator || (this._validator = Validation.create());
     },
-
+    /**
+     * Get current form-field status
+     *
+     * @public
+     * @returns {String}
+     */
     getStatus : function() {
         return this.getValidator().check(this.getVal());
     },
-
     /**
      * Validate form-field
+     *
      * @public
      * @returns {Boolean}
      */
@@ -37,7 +47,11 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
 
         return this._status;
     },
-
+    /**
+     * Update statuses on form-field and elements: control, message
+     *
+     * @protected
+     */
     _updateStatus : function() {
         this.toggleMod('invalid', true, Boolean(this._status));
 

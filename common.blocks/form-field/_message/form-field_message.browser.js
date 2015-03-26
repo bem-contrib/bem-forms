@@ -21,7 +21,6 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
     getMessage : function() {
         return this._message || (this._message = this.findBlockInside('message'));
     },
-
     /**
      * Return message value
      * @public
@@ -30,7 +29,6 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
     getMessageVal : function() {
         return this._getMessage().getVal();
     },
-
     /**
      * Set message value
      * @public

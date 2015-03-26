@@ -24,7 +24,6 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
             }
         }
     },
-
     /**
      * Returns message val
      * @protected
