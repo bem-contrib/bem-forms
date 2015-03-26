@@ -42,6 +42,8 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         this.toggleMod('invalid', true, Boolean(this._status));
 
         this.getControl().toggleMod('invalid', true, Boolean(this._status));
+
+        this.getMessage().toggleMod('invalid', true, Boolean(this._status));
     }
 });
 
