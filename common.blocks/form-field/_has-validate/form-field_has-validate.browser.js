@@ -13,8 +13,7 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._status = null;
-                this.on('blur', this.validate);
+                this._status = this.getStatus();
             }
         }
     },
@@ -43,9 +42,6 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
         this.toggleMod('invalid', true, Boolean(this._status));
 
         this.getControl().toggleMod('invalid', true, Boolean(this._status));
-
-        // Use it in your levels
-        // this.hasMod('message') && this.setMessageVal(this._status);
     }
 });
 

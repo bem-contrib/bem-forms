@@ -31,6 +31,24 @@ modules.define('message',
          */
         setVal : function(val) {
             return this._val = val;
+        },
+        /**
+         * Show message
+         */
+        show : function() {
+            this.setMod('visibility');
+        },
+        /**
+         * Hide message
+         */
+        hide : function() {
+            this.delMod('visibility');
+        },
+        /**
+         * Toggle message visibility
+         */
+        toggle : function() {
+            this.toggleMod('visibility');
         }
     }));
 
