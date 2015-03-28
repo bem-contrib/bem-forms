@@ -24,7 +24,6 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
             }
         }
     },
-
     /**
      * Returns message val
      * @protected
@@ -50,11 +49,30 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
         this.__base.apply(this, arguments);
 
         this._popup.setContent(this._val);
+    },
+    /**
+     * Show message in popup
+     */
+    show : function() {
+        this.__base.apply(this, arguments);
 
-        // Use it in your levels
-        //this._popup.toggleMod('visible', true, Boolean(this._val));
+        this._popup.setMod('visible');
+    },
+    /**
+     * Hide message in popup
+     */
+    hide : function() {
+        this.__base.apply(this, arguments);
 
-        //return this;
+        this._popup.delMod('visible');
+    },
+    /**
+     * Toggle message in popup
+     */
+    toggle : function() {
+        this.__base.apply(this, arguments);
+
+        this._popup.toggleMod('visible');
     }
 });
 
