@@ -27,11 +27,11 @@ modules.define('validation_card',
         }
     ];
 
-    return provide(function(message, params) {
-        message = message || DEFAULT_MESSAGE;
+    return provide(function(params) {
+        var message = params.message || DEFAULT_MESSAGE;
         params = objects.extend({}, params);
 
-        return function (val) {
+        return function(val) {
             if(!val) {
                 return null;
             }

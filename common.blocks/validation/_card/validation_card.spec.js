@@ -10,9 +10,11 @@ modules.define('spec', ['validation', 'validation_card'], function(provide, Vali
         beforeEach(function() {
             validators = Validation.create();
             validators.push(new ValidationCard({
-                wrong_length : wrong_length,
-                luhn_failed : luhn_failed,
-                unsupported : unsupported
+                message : {
+                    wrong_length : wrong_length,
+                    luhn_failed : luhn_failed,
+                    unsupported : unsupported
+                }
             }));
         });
 
