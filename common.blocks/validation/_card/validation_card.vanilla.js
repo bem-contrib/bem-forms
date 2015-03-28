@@ -37,11 +37,11 @@ modules.define('validation_card',
             }
 
             if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
-                return message.wrong_length;
+                return _resolveMessage(message, 'wrong_length');
             }
 
             if(!_luhn(val)) {
-                return message.luhn_failed;
+                return _resolveMessage(message, 'luhn_failed');
             }
 
             var cardType = _detectType(val);
@@ -52,7 +52,7 @@ modules.define('validation_card',
 
             // if you need concrete card type
             if(params.cardType && !~params.cardType.indexOf(cardType.name)) {
-                return message.unsupported;
+                return _resolveMessage(message, 'unsupported');
             }
 
             return null;
@@ -101,5 +101,9 @@ modules.define('validation_card',
         }
 
         return sum % 10 === 0;
+    }
+
+    function _resolveMessage(message, type) {
+        return typeof message === 'string'? message : message[type];
     }
 });
