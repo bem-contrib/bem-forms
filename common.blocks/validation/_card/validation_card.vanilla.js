@@ -11,7 +11,9 @@ modules.define('validation_card',
         luhn_failed : 'Incorrect card number',
         unsupported : 'Unsupported card type'
     };
+
     var DIGITS_RE = /^\d+$/;
+
     var CARDS_RE = [
         {
             name : 'visa',
@@ -47,7 +49,7 @@ modules.define('validation_card',
             var cardType = _detectType(val);
 
             if(!cardType) {
-                return message.unsupported;
+                return _resolveMessage(message, 'unsupported');
             }
 
             // if you need concrete card type
@@ -61,6 +63,7 @@ modules.define('validation_card',
 
     /**
      * Match card BIN pattern
+     *
      * @param {String} cardNumber
      * @returns {{ name : String, pattern : RegExp }} cardType - card info
      */
@@ -82,6 +85,7 @@ modules.define('validation_card',
 
     /**
      * Luhn algorithm
+     *
      * @param {String} cardNumber
      * @returns {Boolean}
      */
@@ -103,6 +107,11 @@ modules.define('validation_card',
         return sum % 10 === 0;
     }
 
+    /**
+     * Resolve right message
+     *
+     * @returns {String}
+     */
     function _resolveMessage(message, type) {
         return typeof message === 'string'? message : message[type];
     }
