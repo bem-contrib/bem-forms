@@ -12,8 +12,6 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
         onSetMod : {
             'js' : {
                 'inited' : function() {
-                    this.fields = this.getFields();
-
                     this.bindTo('submit', function(e) {
                         this._onSubmit(e);
                     });
@@ -21,33 +19,75 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
             }
         },
 
+        /**
+         * onSubmit event handler
+         *
+         * @private
+         * @param {Event}
+         */
         _onSubmit : function(e) {
-            this.validate() && e.preventDefault();
+            if(this.validate()) e.preventDefault();
         },
 
         /**
-         * Validate form
+         * Get all invalid form-fields
+         *
+         * @public
+         * @returns {Array}
+         */
+        getInvalidFields : function() {
+            var currentFields = this.getFields(),
+                invalid = [];
+
+            for(var i = 0, l = currentFields.length; i < l; i++) {
+                var f = this.fields[i];
+
+                if(!f.getStatus()) invalid.push(f);
+            }
+
+            return invalid;
+        },
+
+        /**
+         * Get form status
+         *
+         * @public
+         * @returns {String}
+         */
+        getStatus : function() {
+            var currentFields = this.getFields();
+
+            for(var i = 0, l = currentFields.length; i < l; i++) {
+                if(!currentFields[i].getStatus()) return false;
+            }
+
+            return true;
+        },
+
+        /**
+         * Check form validaty state
+         *
          * @public
          * @returns {Boolean}
          */
         validate : function() {
-            this._broken = [];
+            var currentFields = this.getFields();
 
-            for(var i = 0; i < this.fields.length; i++) {
-                this._status = this.fields[i].validate();
-                this._status && this._broken.push(this.fields[i]);
+            for(var i = 0, l = currentFields.length; i < l; i++) {
+                currentFields[i].validate();
             }
 
-            this._updateStatus();
-
-            return !this._broken.length;
+            this._updateView();
         },
 
-        _updateStatus : function() {
-            this.toggleMod('invalid', true, Boolean(this._broken));
-            this._broken.length && this._broken[0].getControl().setMod('focused');
-
-            // Use it in your levels
+        /**
+         * Update form modifier `invalid` according to current validity state.
+         * This method can be overriden in projects based on `bem-forms`
+         *
+         * @protected
+         */
+        _updateView : function() {
+            this.toggleMod('invalid', true, Boolean(this.getStatus()));
         }
     },
     {

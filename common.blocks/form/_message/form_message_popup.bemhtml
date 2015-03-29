@@ -8,7 +8,7 @@ block('form').mod('message', 'popup')(
                 mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },
                 mix : { block : ctx.block, elem : 'message' }
             },
-            ctx.content
+            applyNext()
         ];
     })
 );

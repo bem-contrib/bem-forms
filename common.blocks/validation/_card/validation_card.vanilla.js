@@ -11,7 +11,9 @@ modules.define('validation_card',
         luhn_failed : 'Incorrect card number',
         unsupported : 'Unsupported card type'
     };
+
     var DIGITS_RE = /^\d+$/;
+
     var CARDS_RE = [
         {
             name : 'visa',
@@ -27,32 +29,32 @@ modules.define('validation_card',
         }
     ];
 
-    return provide(function(message, params) {
-        message = message || DEFAULT_MESSAGE;
+    return provide(function(params) {
+        var message = params.message || DEFAULT_MESSAGE;
         params = objects.extend({}, params);
 
-        return function (val) {
+        return function(val) {
             if(!val) {
                 return null;
             }
 
             if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
-                return message.wrong_length;
+                return _resolveMessage(message, 'wrong_length');
             }
 
             if(!_luhn(val)) {
-                return message.luhn_failed;
+                return _resolveMessage(message, 'luhn_failed');
             }
 
             var cardType = _detectType(val);
 
             if(!cardType) {
-                return message.unsupported;
+                return _resolveMessage(message, 'unsupported');
             }
 
             // if you need concrete card type
             if(params.cardType && !~params.cardType.indexOf(cardType.name)) {
-                return message.unsupported;
+                return _resolveMessage(message, 'unsupported');
             }
 
             return null;
@@ -61,6 +63,7 @@ modules.define('validation_card',
 
     /**
      * Match card BIN pattern
+     *
      * @param {String} cardNumber
      * @returns {{ name : String, pattern : RegExp }} cardType - card info
      */
@@ -82,6 +85,7 @@ modules.define('validation_card',
 
     /**
      * Luhn algorithm
+     *
      * @param {String} cardNumber
      * @returns {Boolean}
      */
@@ -101,5 +105,14 @@ modules.define('validation_card',
         }
 
         return sum % 10 === 0;
+    }
+
+    /**
+     * Resolve right message
+     *
+     * @returns {String}
+     */
+    function _resolveMessage(message, type) {
+        return typeof message === 'string'? message : message[type];
     }
 });

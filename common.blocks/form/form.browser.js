@@ -38,7 +38,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     getVal : function() {
         return this.getFields().reduce(function(res, field) {
             var name = field.getName();
-            name && (res[name] = field.getVal());
+            if(name) res[name] = field.getVal();
             return res;
         }, {});
     },
@@ -57,7 +57,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             });
 
         this.nextTick(function() {
-            objects.isEmpty(storage) || this.emit('change', storage);
+            if(!objects.isEmpty(storage)) this.emit('change', storage);
             this._changeStorage = null;
         });
     },
@@ -78,7 +78,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         if(!name) return;
 
         storage[name] = { event : event, data : data };
-        this._changeStorage || this.emit('change', storage);
+        if(!this._changeStorage) this.emit('change', storage);
     },
 
     /**

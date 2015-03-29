@@ -3,14 +3,14 @@
  */
 
 modules.define('validation_required',
-    function (provide) {
+    function(provide) {
 
     var DEFAULT_MESSAGE = 'Required field';
 
-    provide(function (message) {
-        message = message || DEFAULT_MESSAGE;
+    provide(function(params) {
+        var message = params.message || DEFAULT_MESSAGE;
 
-        return function (val) {
+        return function(val) {
             return val? null : message;
         };
     });

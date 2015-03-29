@@ -4,13 +4,13 @@
 
 modules.define('validation_numbers',
     ['objects'],
-    function (provide, objects) {
+    function(provide, objects) {
 
     var DEFAULT_MESSAGE = 'Should be a number (e.g. 123.45)';
     var NUMBERS_RE = /^\d+(\.\d+)?$/;
 
-    provide(function (message, params) {
-        message = message || DEFAULT_MESSAGE;
+    provide(function(params) {
+        var message = params.message || DEFAULT_MESSAGE;
 
         if(objects.isEmpty(params)) {
             params = null;
@@ -23,7 +23,7 @@ modules.define('validation_numbers',
             }
         }
 
-        return function (val) {
+        return function(val) {
             if(!val) {
                 return null;
             }
