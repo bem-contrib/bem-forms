@@ -10,49 +10,7 @@ modules.define('spec',
             form = buildForm();
         });
 
-        it.skip('should can add form-field to the end of form', function() {
-            form.getFields().length.should.be.eq(0);
-
-            form.addField.after(null, {
-                block : 'form-field',
-                mods : { type : 'input' },
-                content : [
-                    { block : 'input' }
-                ]
-            });
-
-            form.getFields().length.should.be.eq(1);
-        });
-
-        it.skip('should can add form-field after block', function() {
-            form.getFields().length.should.be.eq(0);
-
-            form.addField.after(this.findBlockInside('form-field'), {
-                block : 'form-field',
-                mods : { type : 'input' },
-                content : [
-                    { block : 'input' }
-                ]
-            });
-
-            form.getFields().length.should.be.eq(1);
-        });
-
-        it.skip('should can add form-field before block', function() {
-            form.getFields().length.should.be.eq(1);
-
-            form.addField.before(this.findBlockInside('form-field'), {
-                block : 'form-field',
-                mods : { type : 'input' },
-                content : [
-                    { block : 'input' }
-                ]
-            });
-
-            form.getFields().length.should.be.eq(2);
-        });
-
-        it.skip('should can find form-field by name', function() {
+        it.skip('should find form-field by name', function() {
             form.addField.after(null, {
                 block : 'form-field',
                 name : 'firstName',
@@ -62,26 +20,13 @@ modules.define('spec',
                 ]
             });
 
-            form.getFieldByName('firstName');
+            form.getFieldByName('firstName').getName().should.be.eq('firstName');
         });
 
-        it.skip('should can delete form-field by name', function() {
-            form.addField.after(null, {
-                block : 'form-field',
-                name : 'lastName',
-                mods : { type : 'input' },
-                content : [
-                    { block : 'input' }
-                ]
-            });
-
-            form.delFieldByName('lastName');
-        });
-
-        it.skip('should can rebuild tab-index', function() {
+        it.skip('should rebuild tab-index', function() {
             form.getFields().length.should.be.eq(0);
 
-            form.addField.after(null, {
+            BEMDOM.append(form.domElem, {
                 block : 'form-field',
                 name : 'firstName',
                 mods : { type : 'input' },
@@ -92,7 +37,7 @@ modules.define('spec',
 
             form.getFieldByName('firstName').getIndex().should.be.eq(1);
 
-            form.addField.before(form.getFieldByName('firstName'), {
+            BEMDOM.prepend(form.domElem, {
                 block : 'form-field',
                 name : 'lastName',
                 mods : { type : 'input' },

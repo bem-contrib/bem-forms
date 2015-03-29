@@ -1,6 +1,6 @@
 modules.define('spec',
-    ['form-field', 'BEMHTML', 'i-bem__dom'],
-    function(provide, FormField, BEMHTML, BEMDOM) {
+    ['form-field'],
+    function(provide, FormField) {
 
     describe('form fields manipulating', function() {
 
@@ -10,13 +10,14 @@ modules.define('spec',
             formField = buildFormField();
         });
 
-        it.skip('should can get tab-index', function() {
+        it.skip('should get tab-index', function() {
             formField.getIndex().should.be.eq(1);
         });
 
-        it.skip('should can set tab-index', function() {
+        it.skip('should set tab-index', function() {
             formField.getIndex().should.be.eq(1);
-            formField.setIndex(-1).should.be.eq(-1);
+            formField.setIndex(-1);
+            formField.getIndex().should.be.eq(-1);
         });
 
     });
