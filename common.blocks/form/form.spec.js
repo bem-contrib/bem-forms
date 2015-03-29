@@ -11,7 +11,7 @@ modules.define('spec',
         });
 
         it.skip('should find form-field by name', function() {
-            form.addField.after(null, {
+            BEMDOM.append(form.domElem, {
                 block : 'form-field',
                 name : 'firstName',
                 mods : { type : 'input' },
