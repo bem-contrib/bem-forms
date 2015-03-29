@@ -19,7 +19,7 @@ FormField.decl({ modName : 'validate', modVal : 'card' }, /** @lends form-field.
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this.getValidator().push(validate_card(this.params.message));
+                this.getValidator().push(validate_card(this.params.card));
             }
         }
     }

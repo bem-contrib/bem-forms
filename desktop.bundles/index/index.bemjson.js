@@ -27,7 +27,9 @@
                                 message : 'text'
                             },
                             js : {
-                                message : 'Super required!'
+                                required : {
+                                    message : 'Super required!'
+                                }
                             },
                             content : [
                                 {
