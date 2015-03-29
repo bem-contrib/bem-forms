@@ -11,14 +11,14 @@ modules.define('spec',
         });
 
         it.skip('should find form-field by name', function() {
-            BEMDOM.append(form.domElem, {
+            BEMDOM.append(form.domElem, BEMHTML.apply({
                 block : 'form-field',
                 name : 'firstName',
                 mods : { type : 'input' },
                 content : [
                     { block : 'input' }
                 ]
-            });
+            }));
 
             form.getFieldByName('firstName').getName().should.be.eq('firstName');
         });
@@ -26,25 +26,25 @@ modules.define('spec',
         it.skip('should rebuild tab-index', function() {
             form.getFields().length.should.be.eq(0);
 
-            BEMDOM.append(form.domElem, {
+            BEMDOM.append(form.domElem, BEMHTML.apply({
                 block : 'form-field',
                 name : 'firstName',
                 mods : { type : 'input' },
                 content : [
                     { block : 'input' }
                 ]
-            });
+            }));
 
             form.getFieldByName('firstName').getIndex().should.be.eq(1);
 
-            BEMDOM.prepend(form.domElem, {
+            BEMDOM.prepend(form.domElem, BEMHTML.apply({
                 block : 'form-field',
                 name : 'lastName',
                 mods : { type : 'input' },
                 content : [
                     { block : 'input' }
                 ]
-            });
+            }));
 
             form.getFields().length.should.be.eq(2);
 
