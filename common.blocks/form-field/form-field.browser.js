@@ -12,10 +12,10 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     /**
      * Returns field name
      * @returns {String}
-     * @abstract
+     * @public
      */
     getName : function() {
-        return '';
+        return this.getMod('name');
     },
 
     /**
