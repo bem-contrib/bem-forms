@@ -17,7 +17,7 @@ FormField.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /**
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this._getMessage().setAnchor(this);
+                this.getMessage().setAnchor(this);
             }
         }
     }

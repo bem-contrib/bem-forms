@@ -22,7 +22,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             });
         }
     },
-
     /**
      * Returns all fields inside form
      * @type {FormField[]}
@@ -30,7 +29,13 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     getFields : function() {
         return this.findBlocksInside('form-field');
     },
-
+    /**
+     * Returns field by name
+     * @type {FormField[]}
+     */
+    getFieldByName : function(name) {
+        return this.findBlocksInside({ block : 'form-field', modName : 'name', modVal : name });
+    },
     /**
      * Returns serialized form data
      * @returns {Object}
@@ -42,7 +47,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             return res;
         }, {});
     },
-
     /**
      * Fills form fields with passed data
      * @param {Object} [val] - data (params.fillData by default)
@@ -61,7 +65,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             this._changeStorage = null;
         });
     },
-
     /**
      * Field change event handler
      * @abstract
@@ -80,7 +83,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         storage[name] = { event : event, data : data };
         if(!this._changeStorage) this.emit('change', storage);
     },
-
     /**
      * Field focus event handler
      * @abstract
@@ -92,7 +94,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     _onFieldFocus : function() {
         // dummy
     },
-
     /**
      * Field blur event handler
      * @abstract

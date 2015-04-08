@@ -21,7 +21,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
             this.getControl().setMod(modName, modVal);
         }
     },
-
     /**
      * Returns control of field
      * @protected
@@ -30,15 +29,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     getControl : function() {
         return this._control || (this._control = this.findBlockInside(this.getMod('type')));
     },
-
-    /**
-     * Returns field name
-     * @returns {String}
-     */
-    getName : function() {
-        return this.getControl().getName();
-    },
-
     /**
      * Returns field value
      * @returns {String}
@@ -46,7 +36,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     getVal : function() {
         return this.getControl().getVal();
     },
-
     /**
      * Set control val
      * @param {*|String} val устанавливаемое значение
@@ -54,7 +43,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     setVal : function(val) {
         this.getControl().setVal(val);
     },
-
     /**
      * Control changed
      * @protected
@@ -68,14 +56,12 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
          */
         this.emit('change', data);
     },
-
     /**
      * Control focused
      * @protected
      */
     _onControlFocus : function(e, data) {
         this.setMod('focused', true);
-
         /**
          * Input focus event
          *
@@ -84,14 +70,12 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
          */
         this.emit('focus', data);
     },
-
     /**
      * Control unfocused
      * @protected
      */
     _onControlBlur : function(e, data) {
         this.delMod('focused');
-
         /**
          * Input blur event
          *
