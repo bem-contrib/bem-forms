@@ -42,7 +42,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
             for(var i = 0, l = currentFields.length; i < l; i++) {
                 var f = currentFields[i];
 
-                if(!f.getStatus()) invalid.push(f);
+                if(f.getStatus()) invalid.push(f);
             }
 
             return invalid;
@@ -58,7 +58,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
             var currentFields = this.getFields();
 
             for(var i = 0, l = currentFields.length; i < l; i++) {
-                if(!currentFields[i].getStatus()) return false;
+                if(currentFields[i].getStatus()) return false;
             }
 
             return true;
