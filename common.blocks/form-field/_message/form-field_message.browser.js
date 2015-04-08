@@ -27,7 +27,7 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
      * @abstract
      */
     getMessageVal : function() {
-        return this._getMessage().getVal();
+        return this.getMessage().getVal();
     },
     /**
      * Set message value
@@ -35,7 +35,7 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
      * @abstract
      */
     setMessageVal : function(val) {
-        this._getMessage().setVal(val);
+        this.getMessage().setVal(val);
         this.emit('message-change');
         return this;
     }
