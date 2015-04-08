@@ -9,6 +9,7 @@ modules.define('validation_money',
     var MONEY_RE = /^-?\d+(\.\d{1,2})?$/;
 
     provide(function(params) {
+	params = params || {};
         var message = params.message || DEFAULT_MESSAGE;
 
         return function(val) {

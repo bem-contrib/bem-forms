@@ -10,6 +10,7 @@ modules.define('validation_numbers',
     var NUMBERS_RE = /^\d+(\.\d+)?$/;
 
     provide(function(params) {
+	params = params || {};
         var message = params.message || DEFAULT_MESSAGE;
 
         if(objects.isEmpty(params)) {

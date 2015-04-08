@@ -8,6 +8,7 @@ modules.define('validation_required',
     var DEFAULT_MESSAGE = 'Required field';
 
     provide(function(params) {
+	params = params || {};
         var message = params.message || DEFAULT_MESSAGE;
 
         return function(val) {
