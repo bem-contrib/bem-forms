@@ -8,6 +8,8 @@ modules.define('validation_pattern',
     var DEFAULT_MESSAGE = 'Should match provided pattern "%s"';
 
     provide(function(params) {
+        params = params || {};
+
         if(!params.value) {
             return function () {
                 return null;

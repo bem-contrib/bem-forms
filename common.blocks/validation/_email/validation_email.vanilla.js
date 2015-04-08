@@ -11,6 +11,7 @@ modules.define('validation_email',
     var EMAIL_RE = /.+@.+/;
 
     provide(function(params) {
+        params = params || {};
         var message = params.message || DEFAULT_MESSAGE;
 
         return function(val) {

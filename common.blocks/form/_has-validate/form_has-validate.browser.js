@@ -40,7 +40,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
                 invalid = [];
 
             for(var i = 0, l = currentFields.length; i < l; i++) {
-                var f = this.fields[i];
+                var f = this.currentFields[i];
 
                 if(!f.getStatus()) invalid.push(f);
             }

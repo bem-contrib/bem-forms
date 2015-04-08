@@ -30,6 +30,7 @@ modules.define('validation_card',
     ];
 
     return provide(function(params) {
+        params = params || {};
         var message = params.message || DEFAULT_MESSAGE;
         params = objects.extend({}, params);
 
