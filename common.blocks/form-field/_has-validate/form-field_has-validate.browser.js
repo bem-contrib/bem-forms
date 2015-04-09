@@ -13,6 +13,8 @@ FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /
     onSetMod : {
         'js' : {
             'inited' : function() {
+                this.__base.apply(this, arguments);
+
                 this._status = this.getStatus();
             }
         }
