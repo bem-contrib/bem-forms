@@ -11,7 +11,7 @@
     "url": "https://github.com/bem/bem-forms"
   },
   "bugs": {
-    "url" : "http://github.com/bem/bem-forms/issues"
+    "url": "http://github.com/bem/bem-forms/issues"
   },
   "dependencies": {
     "bem-environ": "1.4.0"
@@ -38,18 +38,15 @@
     "enb-magic-platform": "0.4.5",
     "enb-modules": "0.2.0",
     "enb-stylus": "1.2.3",
-    "git-hooks": "~0.0.6",
+    "git-hooks": "0.0.10",
     "http-server": "^0.8.0",
     "istanbul": "0.3.8",
-    "jscs": "1.10.0",
+    "jscs": "^1.12.0",
+    "jscs-bem": "^0.2.0",
     "jshint": "2.6.3",
-    "jshint-groups": "0.6.2",
+    "jshint-groups": "^0.7.0",
     "stylus": "0.50.0",
-    "svgo": "0.5.0",
-    "git-hooks": "0.0.10",
-    "jscs": "^1.11.3",
-    "jscs-bem": "^0.1.2",
-    "jshint-groups": "^0.7.0"
+    "svgo": "0.5.0"
   },
   "private": true,
   "scripts": {
