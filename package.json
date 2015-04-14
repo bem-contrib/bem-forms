@@ -51,6 +51,7 @@
   "private": true,
   "scripts": {
     "start": "magic server",
+    "postinstall": "bower-npm-install",
     "make": "BEM_TEMPLATE_ENGINE=BEMHTML magic make --no-cache",
     "deps": "bower i",
     "compiled": "find . -iname '*.styl' | xargs stylus",
