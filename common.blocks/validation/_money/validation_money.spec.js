@@ -2,7 +2,7 @@ modules.define('spec', ['validation', 'validation_money'], function(provide, Val
 
     describe('validation_money', function() {
 
-        var message = 'Field requires email inside',
+        var message = 'Field should be filled with money amount',
             validators;
         beforeEach(function() {
             validators = Validation.create();
