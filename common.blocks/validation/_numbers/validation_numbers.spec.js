@@ -22,18 +22,18 @@ modules.define('spec', ['validation', 'validation_numbers'], function(provide, V
             (validators.check('99.99') === null).should.be.true;
         });
 
-        it('should be a number is less than range', function() {
-            validators.check('10').should.equal(message);
-        });
-
-        it('should be a number has more range', function() {
-            validators.check('999').should.equal(message);
-        });
-
-        it('should show validation message', function() {
+        it('should report a custom message', function() {
             validators.check('-99').should.equal(message);
             (validators.check('ololo12.09') || '').should.equal(message);
             (validators.check('12.') || '').should.equal(message);
+        });
+
+        it('should be a number in range (lower border)', function() {
+            validators.check('10').should.equal(message);
+        });
+
+        it('should be a number in range (upper border)', function() {
+            validators.check('999').should.equal(message);
         });
 
     });
