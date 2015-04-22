@@ -2,7 +2,8 @@
  * @module form
  */
 modules.define('form',
-    function(provide, Form) {
+    ['vow'],
+    function(provide, Vow, Form) {
 
 /**
  * Field block
@@ -12,9 +13,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.bindTo('submit', function(e) {
-                    this._onSubmit(e);
-                });
+                this.bindTo('submit', this._onSubmit);
             }
         }
     },
@@ -27,62 +26,12 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      */
     _onSubmit : function(e) {
         e.preventDefault();
+
         var _this = this;
-        this.checkValidity()
-            .then(function () {
+        this.reportValidity()
+            .then(function() {
                 _this.domElem.submit();
             });
-    },
-
-    /**
-     * Get all invalid form-fields
-     *
-     * @public
-     * @returns {Array}
-     */
-    getInvalidFields : function() {
-        var currentFields = this.getFields(),
-            invalid = [];
-
-        for(var i = 0, l = currentFields.length; i < l; i++) {
-            var f = currentFields[i];
-
-            if(f.getStatus()) invalid.push(f);
-        }
-
-        return invalid;
-    },
-
-    /**
-     * Get form status
-     *
-     * @public
-     * @returns {?String}
-     */
-    getStatus : function() {
-        var currentFields = this.getFields();
-
-        for(var i = 0, l = currentFields.length; i < l; i++) {
-            if(currentFields[i].getStatus()) return false;
-        }
-
-        return true;
-    },
-
-    /**
-     * Check form validaty state
-     *
-     * @public
-     * @returns {?Boolean}
-     */
-    validate : function() {
-        var currentFields = this.getFields();
-
-        for(var i = 0, l = currentFields.length; i < l; i++) {
-            currentFields[i].validate();
-        }
-
-        this._updateView();
     },
 
     /**
@@ -92,7 +41,100 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * @protected
      */
     _updateView : function() {
-        this.toggleMod('invalid', true, Boolean(this.getStatus()));
+        this.toggleMod('validity-state', 'invalid', Boolean(this.getStatus()));
+    },
+
+    /**
+     * Get all invalid form-fields
+     *
+     * @public
+     * @returns {Array.<FormField>}
+     */
+    getInvalidFields : function() {
+        return this.getFields()
+            .reduce(function(res, field) {
+                if(!field.isValid()) res.push(field);
+            }, []);
+    },
+
+    /**
+     * Returns true if all fields are valid
+     *
+     * @public
+     * @returns {Boolean}
+     */
+    isValid : function() {
+        return this.getFields()
+            .every(function(field) {
+                return field.isValid();
+            });
+    },
+
+    /** @type {Boolean} Whether checking in progress */
+    _inProgress : false,
+
+    /**
+     * Check form validity state
+     *
+     * @public
+     * @returns {Promise}
+     */
+    checkValidity : function() {
+        // prevent parallel checks
+        if(this._inProgress) {
+            return null;
+        }
+
+        var dfd = Vow.defer();
+
+        // uhm... wtf? need specs on this!
+        Vow.all(this.getFields().map(function(field) {
+                return field.checkValidity()
+                    .fail(function(e) {
+                        return { error : e };
+                    })
+                    .always(function() {
+                        dfd.notify();
+                    });
+            }))
+            .always(function() {
+                this._inProgress = false;
+                dfd.resolve();
+            }, this);
+
+        return dfd.promise();
+    },
+
+    /**
+     * Checks form field and reports problems to the user.
+     *
+     * Returns resolved promise if the field satisfy their validation constraints.
+     * Or rejects promise with an error, cancelable invalid events are fired for field
+     * and validation problems are reported to the user.
+     *
+     * @return {Promise}
+     */
+    reportValidity : function() {
+        // prevent parallel reports
+        if(this._state() === this.__self.STATE_INPROGRESS) {
+            return null;
+        }
+
+        var dfr = Vow.defer(),
+            _this = this;
+
+        this._state(this.__self.STATE_INPROGRESS);
+        this.reportValidity()
+            .then(function(res) {
+                _this._state(_this.__self.STATE_VALID);
+                dfr.resolve(res);
+            })
+            .fail(function(err) {
+                _this._state(_this.__self.STATE_INVALID);
+                dfr.reject(err);
+            });
+
+        return dfr.promise();
     }
 
 }, {
