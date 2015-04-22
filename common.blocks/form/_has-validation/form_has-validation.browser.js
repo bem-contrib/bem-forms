@@ -2,8 +2,7 @@
  * @module form
  */
 modules.define('form',
-    ['vow'],
-    function(provide, Vow, Form) {
+    function(provide, Form) {
 
 /**
  * Field block
@@ -60,7 +59,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * @public
      * @returns {Boolean}
      */
-    getState : function() {
+    getStatus : function() {
         var currentFields = this.getFields();
 
         for(var i = 0, l = currentFields.length; i < l; i++) {
@@ -74,15 +73,16 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * Check form validaty state
      *
      * @public
-     * @returns {Promise}
+     * @returns {?Boolean}
      */
-    checkValidity : function() {
-        var fields = this.getFields();
+    validate : function() {
+        var currentFields = this.getFields();
 
-        return Vow.all(fields.map(function(field) {
-                return field.checkValidity();
-            }));
-        // this._updateView();
+        for(var i = 0, l = currentFields.length; i < l; i++) {
+            currentFields[i].validate();
+        }
+
+        this._updateView();
     },
 
     /**
@@ -92,7 +92,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * @protected
      */
     _updateView : function() {
-        this.toggleMod('validity-state', 'invalid', Boolean(this.getStatus()));
+        this.toggleMod('invalid', true, Boolean(this.getStatus()));
     }
 
 }, {
