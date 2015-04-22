@@ -57,7 +57,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * Get form status
      *
      * @public
-     * @returns {Boolean}
+     * @returns {?String}
      */
     getStatus : function() {
         var currentFields = this.getFields();
