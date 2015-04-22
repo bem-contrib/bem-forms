@@ -8,7 +8,7 @@
             block : 'form',
             mods : {
                 theme : 'islands',
-                'has-validate' : true,
+                'has-validation' : true,
                 message : 'text'
             },
             method : 'GET',
@@ -22,7 +22,7 @@
                             mods : {
                                 theme : 'islands',
                                 type : 'input',
-                                'has-validate' : true,
+                                'has-validation' : true,
                                 required : true,
                                 message : 'text'
                             },
@@ -49,7 +49,7 @@
                             mods : {
                                 theme : 'islands',
                                 type : 'select',
-                                'has-validate' : true,
+                                'has-validation' : true,
                                 required : true,
                                 message : 'text'
                             },
@@ -76,7 +76,7 @@
                             mods : {
                                 theme : 'islands',
                                 type : 'textarea',
-                                'has-validate' : true,
+                                'has-validation' : true,
                                 required : true,
                                 message : 'text'
                             },
@@ -99,7 +99,7 @@
                             mods : {
                                 type : 'checkbox',
                                 theme : 'islands',
-                                'has-validate' : true,
+                                'has-validation' : true,
                                 required : true,
                                 message : 'text'
                             },

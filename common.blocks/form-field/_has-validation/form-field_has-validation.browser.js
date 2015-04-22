@@ -8,7 +8,7 @@ modules.define('form-field',
 /**
  * Field block
  */
-FormField.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @lends form-field.prototype */{
+FormField.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** @lends form-field.prototype */{
 
     onSetMod : {
         'js' : {

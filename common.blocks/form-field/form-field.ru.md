@@ -8,7 +8,7 @@
     id : 'input',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         required : true,
         message : 'text'
     },
@@ -173,7 +173,7 @@
 }
 ```
 
-### Валидация `_has-validate`
+### Валидация `_has-validation`
 
 Подключаюет логику валидаторов. Используется в группе с модификаторами `_required` и `_validate_*`.
 
@@ -182,7 +182,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true
+        'has-validation' : true
     },
     content : [
         {
@@ -202,7 +202,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         required : true
     },
     content : [
@@ -226,7 +226,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         validate : 'card'
     },
     content : [
@@ -249,7 +249,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         required : true,
         message : 'text'
     },
@@ -269,7 +269,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         required : true,
         message : 'popup'
     },

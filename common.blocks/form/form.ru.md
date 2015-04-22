@@ -6,7 +6,7 @@
 {
     block : 'form',
     mods : {
-        'has-validate' : true,
+        'has-validation' : true,
         message : 'text'
     },
     method : 'GET',
@@ -16,7 +16,7 @@
             id : 'input',
             mods : {
                 type : 'input',
-                'has-validate' : true,
+                'has-validation' : true,
                 required : true,
                 message : 'text'
             },
@@ -70,7 +70,7 @@
 
 ## Модификаторы блока
 
-### Валидация `_has-validate`
+### Валидация `_has-validation`
 
 Подключаюет логику валидации. Переопределяет событие `submit` и запускает все валидоторы на полях.
 Не дает отправить невалидную форму на сервер.
@@ -79,7 +79,7 @@
 {
     block : 'form',
     mods : {
-        'has-validate' : true
+        'has-validation' : true
     },
     content : [
     ]
@@ -96,7 +96,7 @@
 {
     block : 'form',
     mods : {
-        'has-validate' : true,
+        'has-validation' : true,
         message : 'text'
     },
     content : [
@@ -110,7 +110,7 @@
 {
     block : 'form',
     mods : {
-        'has-validate' : true,
+        'has-validation' : true,
         message : 'popup'
     },
     content : [

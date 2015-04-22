@@ -2,12 +2,13 @@
  * @module form
  */
 modules.define('form',
-    function(provide, Form) {
+    ['vow'],
+    function(provide, Vow, Form) {
 
 /**
  * Field block
  */
-Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @lends form.prototype */{
+Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** @lends form.prototype */{
 
     onSetMod : {
         'js' : {
@@ -26,7 +27,12 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * @param {Event}
      */
     _onSubmit : function(e) {
-        if(this.validate()) e.preventDefault();
+        e.preventDefault();
+        var _this = this;
+        this.checkValidity()
+            .then(function () {
+                _this.domElem.submit();
+            });
     },
 
     /**
@@ -52,9 +58,9 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * Get form status
      *
      * @public
-     * @returns {String}
+     * @returns {Boolean}
      */
-    getStatus : function() {
+    getState : function() {
         var currentFields = this.getFields();
 
         for(var i = 0, l = currentFields.length; i < l; i++) {
@@ -68,16 +74,15 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * Check form validaty state
      *
      * @public
-     * @returns {Boolean}
+     * @returns {Promise}
      */
-    validate : function() {
-        var currentFields = this.getFields();
+    checkValidity : function() {
+        var fields = this.getFields();
 
-        for(var i = 0, l = currentFields.length; i < l; i++) {
-            currentFields[i].validate();
-        }
-
-        this._updateView();
+        return Vow.all(fields.map(function(field) {
+                return field.checkValidity();
+            }));
+        // this._updateView();
     },
 
     /**
@@ -87,7 +92,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * @protected
      */
     _updateView : function() {
-        this.toggleMod('invalid', true, Boolean(this.getStatus()));
+        this.toggleMod('validity-state', 'invalid', Boolean(this.getStatus()));
     }
 
 }, {
