@@ -1,6 +1,6 @@
 ({
     shouldDeps : [
-        { mod : 'has-validate' },
+        { mod : 'has-validation' },
         { block : 'validation', mods : { card : true } }
     ]
 })

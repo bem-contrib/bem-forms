@@ -1,6 +1,6 @@
 ({
     block : 'form',
-    mods :  { 'has-validate' : true, message : 'popup' },
+    mods :  { 'has-validation' : true, message : 'popup' },
     mix :  { block : 'another-block' },
     attrs :  { 'data-form' : 'custom form data' },
     action : '/parse-form-data-on-back-end',

@@ -2,7 +2,7 @@
     block : 'form-field',
     mods : {
         type : 'input',
-        'has-validate' : true,
+        'has-validation' : true,
         required : true,
         message : 'text'
     },

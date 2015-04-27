@@ -7,7 +7,7 @@ modules.define('form',
 /**
  * Field block
  */
-Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @lends form.prototype */{
+Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** @lends form.prototype */{
 
     onSetMod : {
         'js' : {
@@ -26,7 +26,12 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * @param {Event}
      */
     _onSubmit : function(e) {
-        if(this.validate()) e.preventDefault();
+        e.preventDefault();
+        var _this = this;
+        this.checkValidity()
+            .then(function () {
+                _this.domElem.submit();
+            });
     },
 
     /**
@@ -52,7 +57,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * Get form status
      *
      * @public
-     * @returns {String}
+     * @returns {?String}
      */
     getStatus : function() {
         var currentFields = this.getFields();
@@ -68,7 +73,7 @@ Form.decl({ block : this.name, modName : 'has-validate', modVal : true }, /** @l
      * Check form validaty state
      *
      * @public
-     * @returns {Boolean}
+     * @returns {?Boolean}
      */
     validate : function() {
         var currentFields = this.getFields();
