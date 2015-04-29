@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['validation', 'validation_required'],
-    function(provide, Validation, validation_required, FormField) {
+    ['validation_required'],
+    function(provide, validation_required, FormField) {
 
 /**
  * Required form-field
