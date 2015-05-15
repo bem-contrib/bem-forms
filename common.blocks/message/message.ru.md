@@ -30,7 +30,7 @@
 ```bemjson
 {
     block : 'message',
-    mods : { type : 'password' },
+    mods : { type : 'popup' },
     content : 'Popup'
 }
 ```
