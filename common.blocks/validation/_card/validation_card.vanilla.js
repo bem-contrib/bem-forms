@@ -20,12 +20,16 @@ var DEFAULT_MESSAGE = {
             pattern : /^4/
         },
         {
+            name : 'visa electron',
+            pattern : /^(4026|417500|4405|4508|4844|4913|4917)/
+        },
+        {
             name : 'mastercard',
-            pattern : /^5[1-5]/
+            pattern : /^5[0-5]/
         },
         {
             name : 'maestro',
-            pattern : /^(5018|5020|5038|6304|6759|676[1-3])/
+            pattern : /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)/
         }
     ];
 
