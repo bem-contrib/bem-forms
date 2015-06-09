@@ -44,7 +44,6 @@ modules.define('spec', ['validation', 'validation_card'], function(provide, Vali
         it('should check card type', function() {
             // valid card number, but not visa, mastercard or maestro
             validators.check('3337947503486698').should.equal(unsupported);
-            validators.check('6706708844149056').should.equal(unsupported);
 
             // MasterCard
             (validators.check('5193785732641552') || '').should.not.equal(unsupported);
@@ -57,6 +56,7 @@ modules.define('spec', ['validation', 'validation_card'], function(provide, Vali
 
             // Maestro
             (validators.check('6759926535993220') || '').should.not.equal(unsupported);
+            (validators.check('6706708844149056') || '').should.not.equal(unsupported);
         });
     });
 
