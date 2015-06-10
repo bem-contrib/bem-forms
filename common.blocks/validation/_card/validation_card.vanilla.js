@@ -16,20 +16,20 @@ var DEFAULT_MESSAGE = {
 
     CARDS_RE = [
         {
-            name : 'visa',
-            pattern : /^4/
-        },
-        {
             name : 'visa electron',
             pattern : /^(4026|417500|4405|4508|4844|4913|4917)/
         },
         {
+            name : 'visa',
+            pattern : /^4/
+        },
+        {
             name : 'mastercard',
-            pattern : /^5[0-5]/
+            pattern : /^5[1-5]/
         },
         {
             name : 'maestro',
-            pattern : /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)/
+            pattern : /^(50|5[6-9]|6)/
         }
     ];
 
