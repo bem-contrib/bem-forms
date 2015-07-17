@@ -21,6 +21,7 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                     this._prepare(val);
                 }.bind(this));
 
+                // You can bind to anothe form events
                 // this._form.on('change', function(e, data) {
                 //     console.log('changed form', data);
                 // });
@@ -42,9 +43,9 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
         // true - valid
         // false - invalid
         if(this._form.getStatus()) {
-            console.log('valid');
+            console.log('form valid');
         } else {
-            console.log('invalid');
+            console.log('form invalid');
         }
 
     }

@@ -1,8 +1,31 @@
 {
   "name": "bem-forms",
-  "version": "0.0.0",
-  "authors": [
+  "version": "0.1.0",
+  "keywords": [
+    "bem",
+    "form",
+    "forms"
+  ],
+  "author": [
     "Vyacheslav Aristov <einstain@yandex-team.ru>"
+  ],
+  "contributors": [
+    {
+      "name": "Ivan Voischev",
+      "email": "voischev.ivan@ya.ru"
+    },
+    {
+      "name": "Anton Winogradov",
+      "email": "winogradovaa@gmail.com"
+    },
+    {
+      "name": "Alexej Yaroshevich",
+      "email": "zxqfox@gmail.com"
+    },
+    {
+      "name": "Daniel Sabelnikov",
+      "email": "dsabelnikov@gmail.com"
+    }
   ],
   "ignore": [
     "node_modules",
@@ -10,7 +33,7 @@
     "bundles"
   ],
   "dependencies": {
-    "bem-components": "bem/bem-components#v2"
+    "bem-components": "2.2.1"
   },
   "devDependencies": {
     "bem-pr": "~0.10.0"

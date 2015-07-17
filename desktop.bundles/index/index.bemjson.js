@@ -27,7 +27,7 @@
                                         type : 'input',
                                         'has-validation' : true,
                                         required : true,
-                                        message : 'text'
+                                        message : 'popup'
                                     },
                                     js : {
                                         required : {
