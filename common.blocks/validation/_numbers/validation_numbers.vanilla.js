@@ -2,9 +2,10 @@
  * @module validation_numbers
  */
 
-modules.define('validation_numbers',
-    ['objects'],
-    function(provide, objects) {
+modules.define(
+'validation_numbers',
+['objects'],
+function(provide, objects) {
 
 var DEFAULT_MESSAGE = 'Should be a number (e.g. 123.45)',
     NUMBERS_RE = /^\d+(\.\d+)?$/;

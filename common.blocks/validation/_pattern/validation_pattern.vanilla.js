@@ -2,8 +2,9 @@
  * @module validation_pattern
  */
 
-modules.define('validation_pattern',
-    function(provide) {
+modules.define(
+'validation_pattern',
+function(provide) {
 
 var DEFAULT_MESSAGE = 'Should match provided pattern "%s"';
 

@@ -2,9 +2,10 @@
  * @module validation_card
  */
 
-modules.define('validation_card',
-    ['objects'],
-    function(provide, objects) {
+modules.define(
+'validation_card',
+['objects'],
+function(provide, objects) {
 
 var DEFAULT_MESSAGE = {
         wrong_length : 'Card number should be made of 16 or 18 digits',
@@ -32,39 +33,7 @@ var DEFAULT_MESSAGE = {
             pattern : /^(50|5[6-9]|6)/
         }
     ];
-
-return provide(function(params) {
-    params = objects.extend({}, params);
-    var message = params.message || DEFAULT_MESSAGE;
-
-    return function(val) {
-        if(!val) {
-            return null;
-        }
-
-        if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
-            return _resolveMessage(message, 'wrong_length');
-        }
-
-        if(!_luhn(val)) {
-            return _resolveMessage(message, 'luhn_failed');
-        }
-
-        var cardType = _detectType(val);
-
-        if(!cardType) {
-            return _resolveMessage(message, 'unsupported');
-        }
-
-        // if you need concrete card type
-        if(params.cardType && !~params.cardType.indexOf(cardType.name)) {
-            return _resolveMessage(message, 'unsupported');
-        }
-
-        return null;
-    };
-});
-
+    
 /**
  * Match card BIN pattern
  *
@@ -119,5 +88,37 @@ function _luhn(cardNumber) {
 function _resolveMessage(message, type) {
     return typeof message === 'string'? message : message[type];
 }
+
+provide(function(params) {
+    params = objects.extend({}, params);
+    var message = params.message || DEFAULT_MESSAGE;
+
+    return function(val) {
+        if(!val) {
+            return null;
+        }
+
+        if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
+            return _resolveMessage(message, 'wrong_length');
+        }
+
+        if(!_luhn(val)) {
+            return _resolveMessage(message, 'luhn_failed');
+        }
+
+        var cardType = _detectType(val);
+
+        if(!cardType) {
+            return _resolveMessage(message, 'unsupported');
+        }
+
+        // if you need concrete card type
+        if(params.cardType && !~params.cardType.indexOf(cardType.name)) {
+            return _resolveMessage(message, 'unsupported');
+        }
+
+        return null;
+    };
+});
 
 });
