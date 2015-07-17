@@ -12,7 +12,8 @@
                     mods : {
                         theme : 'islands',
                         'has-validation' : true,
-                        message : 'text'
+                        message : 'text',
+                        disabled: true
                     },
                     method : 'GET',
                     content : [
