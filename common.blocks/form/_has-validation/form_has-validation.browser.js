@@ -12,6 +12,8 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
     onSetMod : {
         'js' : {
             'inited' : function() {
+                this.__base.apply(this, arguments);
+
                 this.bindTo('submit', function(e) {
                     this._onSubmit(e);
                 });

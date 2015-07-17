@@ -15,7 +15,11 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
             'inited' : function() {
                 console.log('this is test');
 
-                this.findBlockInside('form').on('submit', function(e, val) {
+                this._form = this.findBlockInside('form');
+
+                this._form.setMod('disabled');
+
+                this._form.on('submit', function(e, val) {
                     console.log(val);
                 });
             }

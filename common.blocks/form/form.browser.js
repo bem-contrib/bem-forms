@@ -13,14 +13,18 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         'js' : {
             'inited' : function() {
                 this._changeStorage = null;
+
+                this.hasMod('disabled') && this._toggleDisableFields('disabled');
             }
         },
 
-        'disabled' : function(modName, modVal) {
-            this.getFields().forEach(function(field) {
-                field.setMod(modName, modVal);
-            });
-        }
+        'disabled' : this._toggleDisableFields
+    },
+
+    _toggleDisableFields : function(modName, modVal) {
+        this.getFields().forEach(function(field) {
+            field.setMod(modName, modVal);
+        });
     },
     /**
      * Returns all fields inside form
