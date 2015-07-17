@@ -90,7 +90,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      * @protected
      */
     _updateView : function() {
-        this.toggleMod('invalid', true, Boolean(this.getStatus()));
+        this.toggleMod('invalid', true, !this.getStatus());
     }
 
 }, {

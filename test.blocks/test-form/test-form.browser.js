@@ -17,13 +17,26 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
 
                 this._form = this.findBlockInside('form');
 
-                this._form.setMod('disabled');
-
                 this._form.on('submit', function(e, val) {
-                    console.log(val);
-                });
+                    this._prepare(val);
+                }.bind(this));
             }
         }
+    },
+
+    _prepare : function(val) {
+        // exec validators
+        this._form.validate();
+
+        // get status
+        // true - valid
+        // false - invalid
+        if(this._form.getStatus()) {
+            console.log('valid');
+        } else {
+            console.log('invalid');
+        }
+
     }
 
 }));
