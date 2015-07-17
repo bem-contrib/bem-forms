@@ -15,16 +15,30 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
                 this._changeStorage = null;
 
                 this.hasMod('disabled') && this._toggleDisableFields('disabled');
+
+                this._bindToFields('change', this._onFieldChange);
+                this._bindToFields('focus', this._onFieldFocus);
             }
         },
 
         'disabled' : this._toggleDisableFields
     },
-
+    /**
+     * Toggle all fields disabled modifier
+     */
     _toggleDisableFields : function(modName, modVal) {
         this.getFields().forEach(function(field) {
             field.setMod(modName, modVal);
         });
+    },
+
+    /**
+     * Bind to fields events
+     */
+    _bindToFields : function(eventName, fn) {
+        this.getFields().forEach(function(field) {
+            field.on(eventName, fn, this);
+        }.bind(this));
     },
     /**
      * Returns all fields inside form
@@ -75,56 +89,19 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * Field change event handler
      * @abstract
      * @private
-     * @param {FormField} field
      * @param {Event} event
-     * @param {Object} [data]
      */
-    _onFieldChange : function(field, event, data) {
-        var storage = this._changeStorage || {},
-            name = field.getName();
-
-        // Just skip if there is no name
-        if(!name) return;
-
-        storage[name] = { event : event, data : data };
-        if(!this._changeStorage) this.emit('change', storage);
+    _onFieldChange : function(event) {
+        this.emit('change', this.getVal());
     },
     /**
      * Field focus event handler
      * @abstract
      * @private
-     * @param {FormField} field
      * @param {Event} event
-     * @param {Object} [data]
      */
-    _onFieldFocus : function() {
-        // dummy
-    },
-    /**
-     * Field blur event handler
-     * @abstract
-     * @private
-     * @param {FormField} field
-     * @param {Event} event
-     * @param {Object} [data]
-     */
-    _onFieldBlur : function() {
-        // dummy
-    }
-}, /** @lends form */{
-    live : function () {
-        this
-            .liveInitOnBlockInsideEvent('change', 'form-field', function (e, data) {
-                this._onFieldChange(e.target, e, data);
-            })
-            .liveInitOnBlockInsideEvent('focus', 'form-field', function (e, data) {
-                this._onFieldFocus(e.target, e, data);
-            })
-            .liveInitOnBlockInsideEvent('blur', 'form-field', function (e, data) {
-                this._onFieldBlur(e.target, e, data);
-            });
-
-        return this.__base.apply(this, arguments);
+    _onFieldFocus : function(event) {
+        this.emit('focus', this.getVal());
     }
 }));
 

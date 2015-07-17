@@ -20,6 +20,14 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                 this._form.on('submit', function(e, val) {
                     this._prepare(val);
                 }.bind(this));
+
+                // this._form.on('change', function(e, data) {
+                //     console.log('changed form', data);
+                // });
+
+                // this._form.on('focus', function(e, data) {
+                //     console.log('focused form', data);
+                // });
             }
         }
     },
