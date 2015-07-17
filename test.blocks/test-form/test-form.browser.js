@@ -25,6 +25,8 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
     },
 
     _prepare : function(val) {
+        console.log(val);
+
         // exec validators
         this._form.validate();
 

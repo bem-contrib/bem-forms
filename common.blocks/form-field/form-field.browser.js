@@ -9,6 +9,14 @@ function(provide, BEMDOM) {
  * Field block
  */
 provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
+                !this.hasMod('name') && console.warn('Name required for form-field', this);
+            }
+        }
+    },
     /**
      * Returns field name
      * @returns {String}

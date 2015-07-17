@@ -15,6 +15,8 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
+                !this.hasMod('message') && console.warn('Message modifier required for form-field_has-validation', this);
+
                 this._status = this.getStatus();
             }
         }

@@ -21,7 +21,7 @@
                             content : [
                                 {
                                     block : 'form-field',
-                                    name : 'firstName',
+                                    name : 'input',
                                     mods : {
                                         theme : 'islands',
                                         type : 'input',
@@ -48,7 +48,7 @@
                                 },
                                 {
                                     block : 'form-field',
-                                    name : 'years',
+                                    name : 'select',
                                     mods : {
                                         theme : 'islands',
                                         type : 'select',
@@ -75,7 +75,7 @@
                                 },
                                 {
                                     block : 'form-field',
-                                    id : 'textarea',
+                                    name : 'textarea',
                                     mods : {
                                         theme : 'islands',
                                         type : 'textarea',
@@ -98,7 +98,7 @@
                                 },
                                 {
                                     block : 'form-field',
-                                    name : 'ololo',
+                                    name : 'checkbox',
                                     mods : {
                                         type : 'checkbox',
                                         theme : 'islands',
@@ -116,7 +116,7 @@
                                 },
                                 {
                                     block : 'form-field',
-                                    name : 'checkboxGroupName',
+                                    name : 'checkboxGroup',
                                     mods : {
                                         type : 'checkbox-group',
                                         theme : 'islands'
@@ -150,7 +150,7 @@
                                 },
                                 {
                                     block : 'form-field',
-                                    name : 'radioGroupName',
+                                    name : 'radioGroup',
                                     mods : {
                                         type : 'radio-group',
                                         theme : 'islands'
