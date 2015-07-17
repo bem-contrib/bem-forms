@@ -2,14 +2,13 @@
  * @module validation_card
  */
 
-modules.define(
-'validation_card',
+modules.define('validation_card',
 ['objects'],
 function(provide, objects) {
 
 var DEFAULT_MESSAGE = {
-        wrong_length : 'Card number should be made of 16 or 18 digits',
-        luhn_failed : 'Incorrect card number',
+        wrongLength : 'Card number should be made of 16 or 18 digits',
+        luhnFailed : 'Incorrect card number',
         unsupported : 'Unsupported card type'
     },
 
@@ -33,7 +32,7 @@ var DEFAULT_MESSAGE = {
             pattern : /^(50|5[6-9]|6)/
         }
     ];
-    
+
 /**
  * Match card BIN pattern
  *
@@ -99,11 +98,11 @@ provide(function(params) {
         }
 
         if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
-            return _resolveMessage(message, 'wrong_length');
+            return _resolveMessage(message, 'wrongLength');
         }
 
         if(!_luhn(val)) {
-            return _resolveMessage(message, 'luhn_failed');
+            return _resolveMessage(message, 'luhnFailed');
         }
 
         var cardType = _detectType(val);

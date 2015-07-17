@@ -2,8 +2,7 @@
  * @module validation_money
  */
 
-modules.define(
-'validation_money',
+modules.define('validation_money',
 function(provide) {
 
 var DEFAULT_MESSAGE = 'Field should be filled with money amount',

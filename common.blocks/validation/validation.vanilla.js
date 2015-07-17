@@ -2,8 +2,7 @@
  * @module validation
  */
 
-modules.define(
-'validation',
+modules.define('validation',
 function (provide) {
 
 /**
@@ -48,7 +47,7 @@ ptp.check = function(value) {
         }
     }
     return null;
-};    
+};
 
 provide({
     /**

@@ -296,6 +296,8 @@ function getSourceLevels(platform) {
         levels.push({ path : name + '.blocks', check : true });
     });
 
+    levels.push({ path : 'test.blocks', check : true });
+
     platformNames.forEach(function(name) {
         levels.push(
             { path : path.join('design', name + '.blocks'), check : true }

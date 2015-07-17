@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-    function(provide, FormField) {
+function(provide, FormField) {
 
 /**
  * Field type checkbox (flag)
@@ -11,8 +11,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' },
-    /** @lends form-field_type_checkbox.prototype */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
 
     /**
      * Returns field value if checked or empty string (?)

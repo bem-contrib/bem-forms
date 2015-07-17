@@ -2,7 +2,7 @@
  * @module form
  */
 modules.define('form',
-    function(provide, Form) {
+function(provide, Form) {
 
 /**
  * Base form__message class
@@ -18,7 +18,7 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
      * @protected
      * @abstract
      */
-    _getMessage : function() {
+    getMessage : function() {
         return this._message || (this._message = this.findBlockInside('message'));
     },
 
@@ -28,7 +28,7 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
      * @abstract
      */
     getMessageVal : function() {
-        return this._getMessage().getVal();
+        return this.getMessage().getVal();
     },
 
     /**
@@ -37,7 +37,7 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
      * @abstract
      */
     setMessageVal : function(val) {
-        this._getMessage().setVal(val);
+        this.getMessage().setVal(val);
         this.emit('message-change');
         return this;
     }

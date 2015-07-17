@@ -2,8 +2,7 @@
  * @module validation_numbers
  */
 
-modules.define(
-'validation_numbers',
+modules.define('validation_numbers',
 ['objects'],
 function(provide, objects) {
 

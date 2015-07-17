@@ -2,8 +2,7 @@
  * @module validation_email
  */
 
-modules.define(
-'validation_email',
+modules.define('validation_email',
 function(provide) {
 
 var DEFAULT_MESSAGE = 'Field requires email inside',

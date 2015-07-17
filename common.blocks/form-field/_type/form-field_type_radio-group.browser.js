@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-    function(provide, FormField) {
+function(provide, FormField) {
 
 /**
  * Radio-group field
@@ -11,8 +11,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'radio-group' }, {},
-    /** @lends form-field_type_radio-group */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
 
     live : function() {
         var ptp = this.prototype;

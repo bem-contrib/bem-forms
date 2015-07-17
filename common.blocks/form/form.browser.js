@@ -2,8 +2,8 @@
  * @module form
  */
 modules.define('form',
-    ['i-bem__dom', 'objects'],
-    function(provide, BEMDOM, objects) {
+['i-bem__dom', 'objects'],
+function(provide, BEMDOM, objects) {
 
 /**
  * Form declaration
@@ -31,10 +31,12 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     },
     /**
      * Returns field by name
+     * Work only with simple names or with camelCase names
      * @type {FormField[]}
      */
     getFieldByName : function(name) {
-        return this.findBlocksInside({ block : 'form-field', modName : 'name', modVal : name });
+        console.warn('Method `getFieldByName` work only with simple names or with camelCase names');
+        return this.findBlockInside({ block : 'form-field', modName : 'name', modVal : name });
     },
     /**
      * Returns serialized form data

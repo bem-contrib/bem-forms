@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-    function(provide, FormField) {
+function(provide, FormField) {
 
 /**
  * Base form-field__message class

@@ -2,8 +2,7 @@
  * @module validation_required
  */
 
-modules.define(
-'validation_required',
+modules.define('validation_required',
 function(provide) {
 
 var DEFAULT_MESSAGE = 'Required field';

@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['validation_card'],
-    function(provide, validate_card, FormField) {
+['validation_card'],
+function(provide, validate_card, FormField) {
 
 /**
  * Card form-field validation

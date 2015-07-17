@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-    function(provide, FormField) {
+function(provide, FormField) {
 
 /**
  * Input field (simple text input)
@@ -11,8 +11,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'input' }, {},
-    /** @lends form-field_type_input */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
 
     live : function() {
         var ptp = this.prototype;

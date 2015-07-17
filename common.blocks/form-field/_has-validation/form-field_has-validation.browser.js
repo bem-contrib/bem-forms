@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['i-bem__dom', 'validation'],
-    function(provide, BEMDOM, Validation, FormField) {
+['i-bem__dom', 'validation'],
+function(provide, BEMDOM, Validation, FormField) {
 
 /**
  * Field block

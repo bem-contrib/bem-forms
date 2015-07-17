@@ -2,7 +2,7 @@
  * @module form
  */
 modules.define('form',
-    function(provide, Form) {
+function(provide, Form) {
 
 /**
  * Field block
@@ -27,11 +27,7 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
      */
     _onSubmit : function(e) {
         e.preventDefault();
-        var _this = this;
-        this.checkValidity()
-            .then(function () {
-                _this.domElem.submit();
-            });
+        this.emit('submit', this.getVal());
     },
 
     /**

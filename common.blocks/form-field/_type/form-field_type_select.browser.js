@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-    function(provide, FormField) {
+function(provide, FormField) {
 
 /**
  select
@@ -11,8 +11,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'select' }, {},
-    /** @lends form-field_type_checkbox */{
+FormField.decl({ block : this.name, modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
 
     live : function() {
         var ptp = this.prototype;
