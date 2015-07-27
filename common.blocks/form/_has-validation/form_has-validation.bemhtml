@@ -1,4 +1,4 @@
-block('form').mod('has-validation')(
+block('form').mod('has-validation', true)(
     attrs()(function() {
         var attrs = applyNext();
         attrs['novalidate'] = true;
