@@ -18,9 +18,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this._popup = this.findBlockInside('popup');
-
-                this._popup.setAnchor(this);
+                this.getPopup().setAnchor(this);
             }
         }
     },
@@ -30,7 +28,14 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
      * @returns {BEM}
      */
     setAnchor : function(anchor) {
-        this._popup.setAnchor(anchor);
+        this.getPopup().setAnchor(anchor);
+    },
+    /**
+     * Returns reference to popup block (cached).
+     * @returns {BEM}
+     */
+    getPopup : function() {
+        return this._popup || (this._popup = this.findBlockInside('popup'));
     },
     /**
      * Returns message val
@@ -48,7 +53,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     setVal : function() {
         this.__base.apply(this, arguments);
 
-        this._popup.setContent(this._val);
+        this.getPopup().setContent(this._val);
     },
     /**
      * Show message in popup
@@ -56,7 +61,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     show : function() {
         this.__base.apply(this, arguments);
 
-        this._popup.setMod('visible');
+        this.getPopup().setMod('visible');
     },
     /**
      * Hide message in popup
@@ -64,7 +69,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     hide : function() {
         this.__base.apply(this, arguments);
 
-        this._popup.delMod('visible');
+        this.getPopup().delMod('visible');
     },
     /**
      * Toggle message in popup
@@ -72,7 +77,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
     toggle : function() {
         this.__base.apply(this, arguments);
 
-        this._popup.toggleMod('visible');
+        this.getPopup().toggleMod('visible');
     }
 });
 
