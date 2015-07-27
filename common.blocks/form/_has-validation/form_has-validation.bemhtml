@@ -1,0 +1,7 @@
+block('form').mod('has-validation')(
+    attrs()(function() {
+        var attrs = applyNext();
+        attrs['novalidate'] = true;
+        return attrs;
+    })
+);
