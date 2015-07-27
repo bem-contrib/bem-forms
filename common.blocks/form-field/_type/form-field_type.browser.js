@@ -19,6 +19,8 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
     onSetMod : {
         'js' : {
             'inited' : function() {
+                this.__base.apply(this, arguments);
+
                 !this.getControl() && console.warn('Control required for form-field', this);
             }
         },
