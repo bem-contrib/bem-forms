@@ -7,8 +7,7 @@ function(provide) {
 
 var DEFAULT_MESSAGE = 'Field requires email inside',
 
-    // http://www.w3.org/TR/html5/forms.html#valid-e-mail-address
-    EMAIL_RE = /^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/;
+    EMAIL_RE = /^([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/;
 
 provide(function(params) {
     params = params || {};
