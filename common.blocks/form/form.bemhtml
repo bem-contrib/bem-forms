@@ -5,10 +5,12 @@ block('form')(
     js()(true),
 
     attrs()(function() {
+        var ctx = this.ctx;
+
         return {
-            action : this.ctx.action,
-            enctype : this.ctx.enctype,
-            method : this.ctx.method
+            action : ctx.action,
+            enctype : ctx.enctype,
+            method : ctx.method
         };
     })
 
