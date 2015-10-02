@@ -8,7 +8,7 @@ block('form-field')(
 
         _form_field.mods.name = _form_field.name;
 
-        applyNext({ _form_field : _form_field });
+        return applyNext({ _form_field : _form_field });
     })
 
 );

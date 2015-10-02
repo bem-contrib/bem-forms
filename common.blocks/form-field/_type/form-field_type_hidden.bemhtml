@@ -4,14 +4,16 @@ block('form-field').mod('type', 'hidden')(
     }),
 
     content()(function() {
+        var ctx = this.ctx;
+
         return [
             {
                 tag : 'input',
                 attrs : {
                     type : 'hidden',
-                    name : this.ctx.name,
-                    id : this.ctx.id,
-                    value : this.ctx.val
+                    name : ctx.name,
+                    id : ctx.id,
+                    value : ctx.val
                 }
             }
         ];
