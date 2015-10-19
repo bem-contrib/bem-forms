@@ -12,7 +12,20 @@ function(provide, FormField) {
  * @bem
  */
 FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field.prototype */{
+    onSetMod : {
+        'focused' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
 
+                this.hasMod('invalid') && this.getMessage().show();
+            },
+            '' : function() {
+                this.__base.apply(this, arguments);
+
+                this.getMessage().hide();
+            }
+        }
+    },
     /**
      * Return instance of message block
      * @public

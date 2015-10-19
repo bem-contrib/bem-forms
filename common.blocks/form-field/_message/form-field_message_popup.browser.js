@@ -16,8 +16,10 @@ FormField.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /**
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-
-                this.getMessage().setAnchor(this);
+                /* istanbul ignore else: no way to check, form-field throws without `type` */
+                if(this.hasMod('type')) {
+                    this.getMessage().setAnchor(this.getControl());
+                }
             }
         }
     }

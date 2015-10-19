@@ -15,10 +15,11 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                !this.hasMod('message') && console.warn('Message modifier required for form-field_has-validation', this);
+                !this.hasMod('message') &&
+                console.warn('Message modifier required for form-field_has-validation', this);
 
-                this.on('blur', function(e, data) {
-                    this._dirty = this._dirty || (this.getVal() != this._initVal);
+                this.on('blur', function() {
+                    this._dirty = this._dirty || (this.getVal() !== this._initVal);
                     this.toggleMod('dirty', true, this._dirty);
                     this._dirty && this.validate();
                 }.bind(this));
@@ -70,6 +71,11 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
         this.getControl().toggleMod('invalid', true, Boolean(this._status));
 
         this.getMessage().toggleMod('invalid', true, Boolean(this._status));
+
+        if(this.hasMod('message')) {
+            this.setMessageVal(this._status);
+            this._status && this.hasMod('focused') && this.getMessage().show();
+        }
     }
 });
 
