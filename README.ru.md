@@ -42,7 +42,7 @@ BEM Forms Library
 Получаем исходники:
 
 ```bash
-$ git clone git://github.com/bem/bem-forms.git
+$ git clone git://github.com/bem-incubator/bem-forms.git
 $ cd bem-forms
 ```
 
@@ -80,7 +80,7 @@ $ npm run lint
 <a name="how-to-contribute"></a>
 ### Внесение изменений
 
-1. [Создать issue](https://github.com/bem/bem-forms/issues/new) с описанием сути изменений.
+1. [Создать issue](https://github.com/bem-incubator/bem-forms/issues/new) с описанием сути изменений.
 1. Определить, в какую версию проекта необходимо внести изменения.
 1. Создать отдельную ветку с указанием номера issue и версии (`issues/<номер issue>@v<номер версии>`) на основе ветки версии.
 Например, для issue с номером 42 и версией 2: `git checkout -b issues/42@v2`. Если изменения нужно внести в несколько версий, то для каждой из версий создается отдельная ветка.
