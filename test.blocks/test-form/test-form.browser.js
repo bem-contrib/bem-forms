@@ -13,6 +13,7 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
         'js' : {
             'inited' : function() {
                 this._form = this.findBlockInside('form');
+
                 this._form.on('submit', function(e, val) {
                     this._form.validate();
                     /* true - valid; false - invalid */
@@ -24,6 +25,8 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                         this._form.getInvalidFields()[0].getControl().elem('control').focus();
                     }
                 }.bind(this));
+
+                //this._form.getFields()[0].setStatus('invalid');
 
                 // You can bind to other form events
                 // this._form.on('change', function(e, data) {

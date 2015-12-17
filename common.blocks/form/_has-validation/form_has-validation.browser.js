@@ -66,6 +66,17 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
         return true;
     },
     /**
+     * Set form status
+     *
+     * @public
+     * @returns {String|Boolean}
+     */
+    setStatus : function(status) {
+        this._status = status;
+        this._updateStatus();
+        return this._status;
+    },
+    /**
      * Check form validation state
      *
      * @public

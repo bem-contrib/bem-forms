@@ -43,6 +43,17 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
         return this.getValidator().check(String(this.getVal()));
     },
     /**
+     * Set current form-field status
+     *
+     * @public
+     * @returns {String|Boolean}
+     */
+    setStatus : function(status) {
+        this._status = status;
+        this._updateStatus();
+        return this._status;
+    },
+    /**
      * Require dirty mechanic
      */
     requireDirty : function () {
