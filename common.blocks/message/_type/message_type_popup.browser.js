@@ -2,8 +2,7 @@
  * @module message
  */
 modules.define('message',
-function(provide, Message) {
-
+    function(provide, Message) {
 /**
  * Message type popup
  *

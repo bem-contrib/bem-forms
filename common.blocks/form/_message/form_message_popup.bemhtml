@@ -1,14 +1,20 @@
 block('form').mod('message', 'popup')(
+    mix()({ mods : { 'has-validation' : true } }),
+
     content()(function() {
         var ctx = this.ctx;
 
         return [
+            applyNext(),
             {
                 block : 'message',
-                mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },
+                mods : {
+                    type : 'popup',
+                    theme : ctx.mods.theme,
+                    size : ctx.mods.size
+                },
                 mix : { block : ctx.block, elem : 'message' }
-            },
-            applyNext()
+            }
         ];
     })
 );

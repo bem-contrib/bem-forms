@@ -1,10 +1,9 @@
 /**
- * @module message
+ * @module test-form
  */
 modules.define('test-form',
-['i-bem__dom'],
-function(provide, BEMDOM) {
-
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
 /**
  * test-form block
  */
@@ -13,15 +12,20 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                console.log('this is test');
-
                 this._form = this.findBlockInside('form');
-
                 this._form.on('submit', function(e, val) {
-                    this._prepare(val);
+                    this._form.validate();
+                    /* true - valid; false - invalid */
+                    if(this._form.getStatus()) {
+                        this._form.getMessage().hide();
+                        console.log(val);
+                    } else {
+                        this._form.getMessage().show();
+                        this._form.getInvalidFields()[0].getControl().elem('control').focus();
+                    }
                 }.bind(this));
 
-                // You can bind to anothe form events
+                // You can bind to other form events
                 // this._form.on('change', function(e, data) {
                 //     console.log('changed form', data);
                 // });
@@ -31,23 +35,6 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                 // });
             }
         }
-    },
-
-    _prepare : function(val) {
-        console.log(val);
-
-        // exec validators
-        this._form.validate();
-
-        // get status
-        // true - valid
-        // false - invalid
-        if(this._form.getStatus()) {
-            console.log('form valid');
-        } else {
-            console.log('form invalid');
-        }
-
     }
 
 }));

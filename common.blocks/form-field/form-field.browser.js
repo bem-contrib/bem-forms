@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-['i-bem__dom'],
-function(provide, BEMDOM) {
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
 
 /**
  * Field block

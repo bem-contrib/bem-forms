@@ -2,10 +2,9 @@
  * @module form
  */
 modules.define('form',
-function(provide, Form) {
-
+    function(provide, Form) {
 /**
- * Field block
+ * Form block
  */
 Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** @lends form.prototype */{
 
@@ -17,10 +16,12 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
                 this.bindTo('submit', function(e) {
                     this._onSubmit(e);
                 });
+
+                this._initVal = this.getVal();
+                this._status = this.getStatus();
             }
         }
     },
-
     /**
      * onSubmit event handler
      *
@@ -31,7 +32,6 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
         e.preventDefault();
         this.emit('submit', this.getVal());
     },
-
     /**
      * Get all invalid form-fields
      *
@@ -50,12 +50,11 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
 
         return invalid;
     },
-
     /**
      * Get form status
      *
      * @public
-     * @returns {?String}
+     * @returns {String|Boolean}
      */
     getStatus : function() {
         var currentFields = this.getFields();
@@ -66,12 +65,11 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
 
         return true;
     },
-
     /**
-     * Check form validaty state
+     * Check form validation state
      *
      * @public
-     * @returns {?Boolean}
+     * @returns {Boolean}
      */
     validate : function() {
         var currentFields = this.getFields();
@@ -80,17 +78,19 @@ Form.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** 
             currentFields[i].validate();
         }
 
-        this._updateView();
+        this._status = this.getStatus();
+        this._updateStatus();
     },
 
     /**
      * Update form modifier `invalid` according to current validity state.
-     * This method can be overriden in projects based on `bem-forms`
+     * This method can be override in projects based on `bem-forms`
      *
      * @protected
      */
-    _updateView : function() {
+    _updateStatus : function() {
         this.toggleMod('invalid', true, !this.getStatus());
+        this.setMessageVal(this._status);
     }
 
 }, {

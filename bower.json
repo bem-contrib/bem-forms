@@ -33,7 +33,7 @@
     "bundles"
   ],
   "dependencies": {
-    "bem-components": "2.2.1"
+    "bem-components": "2.4.0"
   },
   "devDependencies": {
     "bem-pr": "~0.10.0"

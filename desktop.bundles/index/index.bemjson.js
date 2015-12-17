@@ -11,11 +11,14 @@
                     block : 'form',
                     mods : {
                         theme : 'islands',
-                        'has-validation' : true,
                         message : 'text'
                     },
                     method : 'GET',
                     content : [
+                        {
+                            elem : 'header',
+                            content : 'Simple form example'
+                        },
                         {
                             elem : 'content',
                             content : [
@@ -25,7 +28,6 @@
                                     mods : {
                                         theme : 'islands',
                                         type : 'input',
-                                        'has-validation' : true,
                                         required : true,
                                         message : 'popup'
                                     },
@@ -36,13 +38,23 @@
                                     },
                                     content : [
                                         {
-                                            block : 'label',
-                                            mods : { theme : 'islands' },
-                                            content : 'Input'
+                                            elem : 'label',
+                                            content : [
+                                                {
+                                                    block : 'label',
+                                                    mods : { theme : 'islands' },
+                                                    content : 'Input'
+                                                }
+                                            ]
                                         },
                                         {
-                                            block : 'input',
-                                            mods : { theme : 'islands', size : 'l' }
+                                            elem : 'control',
+                                            content : [
+                                                {
+                                                    block : 'input',
+                                                    mods : { theme : 'islands', size : 'l' }
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -52,23 +64,36 @@
                                     mods : {
                                         theme : 'islands',
                                         type : 'select',
-                                        'has-validation' : true,
                                         required : true,
                                         message : 'text'
                                     },
                                     content : [
                                         {
-                                            block : 'label',
-                                            mods : { theme : 'islands' },
-                                            content : 'Select'
+                                            elem : 'label',
+                                            content : [
+                                                {
+                                                    block : 'label',
+                                                    mods : { theme : 'islands' },
+                                                    content : 'Select'
+                                                }
+                                            ]
                                         },
                                         {
-                                            block : 'select',
-                                            mods : { mode : 'check', theme : 'islands', size : 'l' },
-                                            text : 'Программа конференции',
-                                            options : [
-                                                { text : '1', val : 1 },
-                                                { text : '2', val : 2 }
+                                            elem : 'control',
+                                            content : [
+                                                {
+                                                    block : 'select',
+                                                    mods : {
+                                                        mode : 'check',
+                                                        theme : 'islands',
+                                                        size : 'l'
+                                                    },
+                                                    text : 'Программа конференции',
+                                                    options : [
+                                                        { text : '1', val : 1 },
+                                                        { text : '2', val : 2 }
+                                                    ]
+                                                }
                                             ]
                                         }
                                     ]
@@ -79,20 +104,29 @@
                                     mods : {
                                         theme : 'islands',
                                         type : 'textarea',
-                                        'has-validation' : true,
                                         required : true,
                                         message : 'text'
                                     },
                                     content : [
                                         {
-                                            block : 'label',
-                                            mods : { theme : 'islands' },
-                                            content : 'Textarea'
+                                            elem : 'label',
+                                            content : [
+                                                {
+                                                    block : 'label',
+                                                    mods : { theme : 'islands' },
+                                                    content : 'Textarea'
+                                                }
+                                            ]
                                         },
                                         {
-                                            block : 'textarea',
-                                            name : 'BIO',
-                                            mods : { theme : 'islands', size : 'l' }
+                                            elem : 'control',
+                                            content : [
+                                                {
+                                                    block : 'textarea',
+                                                    name : 'BIO',
+                                                    mods : { theme : 'islands', size : 'l' }
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -102,7 +136,6 @@
                                     mods : {
                                         type : 'checkbox',
                                         theme : 'islands',
-                                        'has-validation' : true,
                                         required : true,
                                         message : 'text'
                                     },
@@ -174,7 +207,12 @@
                             content : [
                                 {
                                     block : 'button',
-                                    mods : { theme : 'islands', size : 'l', type : 'submit', view : 'action' },
+                                    mods : {
+                                        theme : 'islands',
+                                        size : 'l',
+                                        type : 'submit',
+                                        view : 'action'
+                                    },
                                     text : 'Submit'
                                 }
                             ]

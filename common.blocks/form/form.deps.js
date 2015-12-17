@@ -3,6 +3,7 @@
         { block : 'i-bem' }
     ],
     shouldDeps : [
+        { mods : { 'has-validation' : true, message : ['text', 'popup'] } },
         { block : 'objects' },
         { block : 'form-field' }
     ]
@@ -14,12 +15,7 @@
 {
     tech : 'tmpl-spec.js',
     mustDeps : [
-        { block : 'form', elem : 'text' },
-        { block : 'form', elem : 'message' },
-        { block : 'form', mods : { message : 'text' } },
-        { block : 'form', mods : { message : 'popup' } },
-        { block : 'message', elem : 'control' },
-        { block : 'message', mods : { type : 'text' } },
-        { block : 'message', mods : { type : 'popup' } }
+        { block : 'form', mods : { message : ['text', 'popup'] } },
+        { block : 'message' }
     ]
 }]

@@ -1,0 +1,7 @@
+.message_type_text {
+    display: none;
+}
+
+.message_type_text.message_showed {
+    display: inline-block;
+}

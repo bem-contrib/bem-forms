@@ -1,5 +1,1 @@
-block('message')(
-
-    js()(true)
-
-);
+block('message').js()(true);

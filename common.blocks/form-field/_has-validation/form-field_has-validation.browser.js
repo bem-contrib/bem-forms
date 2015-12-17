@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-['i-bem__dom', 'validation'],
-function(provide, BEMDOM, Validation, FormField) {
+    ['i-bem__dom', 'validation'],
+    function(provide, BEMDOM, Validation, FormField) {
 
 /**
  * Field block
@@ -18,14 +18,8 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
                 !this.hasMod('message') &&
                 console.warn('Message modifier required for form-field_has-validation', this);
 
-                this.on('blur', function() {
-                    this._dirty = this._dirty || (this.getVal() !== this._initVal);
-                    this.toggleMod('dirty', true, this._dirty);
-                    this._dirty && this.validate();
-                }.bind(this));
-
+                this.requireDirty();
                 this._initVal = this.getVal();
-
                 this._status = this.getStatus();
             }
         }
@@ -49,6 +43,23 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
         return this.getValidator().check(this.getVal());
     },
     /**
+     * Require dirty mechanic
+     */
+    requireDirty : function () {
+        this.on('blur', function() {
+            this._dirty = this._dirty || (this.getVal() !== this._initVal);
+            this.toggleMod('dirty', true, this._dirty);
+            this._dirty && this.validate();
+        }.bind(this));
+    },
+    /**
+     * Get all dirty fields
+     * @returns {Array}
+     */
+    getDirty : function() {
+        return !!this._dirty;
+    },
+    /**
      * Validate form-field
      *
      * @public
@@ -67,15 +78,10 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
      */
     _updateStatus : function() {
         this.toggleMod('invalid', true, Boolean(this._status));
-
         this.getControl().toggleMod('invalid', true, Boolean(this._status));
-
         this.getMessage().toggleMod('invalid', true, Boolean(this._status));
 
-        if(this.hasMod('message')) {
-            this.setMessageVal(this._status);
-            this._status && this.hasMod('focused') && this.getMessage().show();
-        }
+        this.setMessageVal(this._status);
     }
 });
 

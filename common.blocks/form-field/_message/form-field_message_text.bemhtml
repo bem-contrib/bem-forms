@@ -1,4 +1,6 @@
 block('form-field').mod('message', 'text')(
+    mix()({ mods : { 'has-validation' : true } }),
+
     content()(function() {
         var ctx = this.ctx;
 

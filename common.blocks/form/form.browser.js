@@ -2,8 +2,8 @@
  * @module form
  */
 modules.define('form',
-['i-bem__dom', 'objects'],
-function(provide, BEMDOM, objects) {
+    ['i-bem__dom', 'objects'],
+    function(provide, BEMDOM, objects) {
 
 /**
  * Form declaration
@@ -12,8 +12,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.__base.apply(this, arguments);
-
                 this._changeStorage = null;
 
                 this.hasMod('disabled') && this._toggleDisableFields('disabled');
