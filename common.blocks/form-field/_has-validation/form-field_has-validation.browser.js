@@ -40,7 +40,7 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
      * @returns {String}
      */
     getStatus : function() {
-        return this.getValidator().check(this.getVal());
+        return this.getValidator().check(String(this.getVal()));
     },
     /**
      * Require dirty mechanic

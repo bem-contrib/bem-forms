@@ -18,9 +18,9 @@ FormField.decl({ block : this.name, modName : 'type', modVal : 'select' }, {}, /
 
         this.__base();
         this
-            .liveInitOnBlockInsideEvent('change', 'button', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'button', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'button', ptp._onControlBlur);
+            .liveInitOnBlockInsideEvent('change', 'select', ptp._onControlChange)
+            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'select', ptp._onControlFocus)
+            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'select', ptp._onControlBlur);
     }
 });
 

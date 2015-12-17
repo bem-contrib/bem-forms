@@ -9,10 +9,7 @@
             content : [
                 {
                     block : 'form',
-                    mods : {
-                        theme : 'islands',
-                        message : 'text'
-                    },
+                    mods : { message : 'text' },
                     method : 'GET',
                     content : [
                         {
@@ -26,14 +23,13 @@
                                     block : 'form-field',
                                     name : 'input',
                                     mods : {
-                                        theme : 'islands',
                                         type : 'input',
                                         required : true,
                                         message : 'popup'
                                     },
                                     js : {
                                         required : {
-                                            message : 'Super required!'
+                                            message : 'Super required input!'
                                         }
                                     },
                                     content : [
@@ -42,7 +38,6 @@
                                             content : [
                                                 {
                                                     block : 'label',
-                                                    mods : { theme : 'islands' },
                                                     content : 'Input'
                                                 }
                                             ]
@@ -62,10 +57,14 @@
                                     block : 'form-field',
                                     name : 'select',
                                     mods : {
-                                        theme : 'islands',
                                         type : 'select',
                                         required : true,
                                         message : 'text'
+                                    },
+                                    js : {
+                                        required : {
+                                            message : 'Super required select!'
+                                        }
                                     },
                                     content : [
                                         {
@@ -73,7 +72,6 @@
                                             content : [
                                                 {
                                                     block : 'label',
-                                                    mods : { theme : 'islands' },
                                                     content : 'Select'
                                                 }
                                             ]
@@ -102,7 +100,6 @@
                                     block : 'form-field',
                                     name : 'textarea',
                                     mods : {
-                                        theme : 'islands',
                                         type : 'textarea',
                                         required : true,
                                         message : 'text'
@@ -135,7 +132,6 @@
                                     name : 'checkbox',
                                     mods : {
                                         type : 'checkbox',
-                                        theme : 'islands',
                                         required : true,
                                         message : 'text'
                                     },
@@ -152,7 +148,8 @@
                                     name : 'checkboxGroup',
                                     mods : {
                                         type : 'checkbox-group',
-                                        theme : 'islands'
+                                        required : true,
+                                        message : 'text'
                                     },
                                     content : [
                                         {
@@ -171,7 +168,8 @@
                                     name : 'radio',
                                     mods : {
                                         type : 'radio',
-                                        theme : 'islands'
+                                        required : true,
+                                        message : 'text'
                                     },
                                     content : [
                                         {
@@ -186,7 +184,8 @@
                                     name : 'radioGroup',
                                     mods : {
                                         type : 'radio-group',
-                                        theme : 'islands'
+                                        required : true,
+                                        message : 'text'
                                     },
                                     content : [
                                         {

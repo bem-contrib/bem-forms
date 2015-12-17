@@ -1,9 +1,8 @@
 /**
  * @module validation_required
  */
-
 modules.define('validation_required',
-function(provide) {
+    function(provide) {
 
 var DEFAULT_MESSAGE = 'Required field';
 
@@ -11,7 +10,6 @@ provide(function(params) {
     params = params || {};
 
     var message = params.message || DEFAULT_MESSAGE;
-
     return function(val) {
         return val? null : message;
     };
