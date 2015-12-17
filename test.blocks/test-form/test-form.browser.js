@@ -26,6 +26,11 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                     }
                 }.bind(this));
 
+                //this._form.getFields()[1].setValidationMessage('required', 'Ololo!');
+                //this._form.getFields()[0].setValidationMessages({
+                //    required : 'FUCK!'
+                //});
+
                 //this._form.getFields()[2].setMod('disabled');
                 //this._form.getFields()[0].setStatus('invalid');
 

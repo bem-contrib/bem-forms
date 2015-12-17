@@ -3,8 +3,7 @@
  */
 
 modules.define('validation_card',
-['objects'],
-function(provide, objects) {
+    function(provide) {
 
 var DEFAULT_MESSAGE = {
         wrongLength : 'Card number should be made of 16 or 18 digits',
@@ -88,11 +87,10 @@ function _resolveMessage(message, type) {
     return typeof message === 'string'? message : message[type];
 }
 
-provide(function(params) {
-    params = objects.extend({}, params);
-    var message = params.message || DEFAULT_MESSAGE;
-
+provide(function(field) {
     return function(val) {
+        var message = field.getValidationMessage('card') || DEFAULT_MESSAGE;
+
         if(!val) {
             return null;
         }
@@ -112,7 +110,7 @@ provide(function(params) {
         }
 
         // if you need concrete card type
-        if(params.cardType && !~params.cardType.indexOf(cardType.name)) {
+        if(field.params.cardType && !~field.params.cardType.indexOf(cardType.name)) {
             return _resolveMessage(message, 'unsupported');
         }
 

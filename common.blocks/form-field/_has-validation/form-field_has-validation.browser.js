@@ -46,12 +46,41 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
      * Set current form-field status
      *
      * @public
+     * @param status
      * @returns {String|Boolean}
      */
     setStatus : function(status) {
         this._status = status;
         this._updateStatus();
         return this._status;
+    },
+    /**
+     * Set validation messages in runtime
+     * @param messages
+     */
+    setValidationMessages : function (messages) {
+        Object.keys(messages).forEach(function (validator) {
+            this._messages[validator] = this._messages[validator] || {};
+            this._messages[validator]['message'] = messages[validator];
+        }.bind(this));
+    },
+    setValidationMessage : function (validator, message) {
+        this._messages[validator] = this._messages[validator] || {};
+        this._messages[validator]['message'] = message;
+    },
+    /**
+     * Get validation messages
+     * @returns {Object}
+     */
+    getValidationMessages : function () {
+        var msgs = {};
+        Object.keys(this._messages).forEach(function (validator) {
+            msgs[validator] = validator['message'];
+        });
+        return msgs;
+    },
+    getValidationMessage : function (validator) {
+        return this._messages[validator]? this._messages[validator]['message'] : null;
     },
     /**
      * Require dirty mechanic

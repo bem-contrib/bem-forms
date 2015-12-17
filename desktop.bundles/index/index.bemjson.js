@@ -26,8 +26,7 @@
                                         theme : 'islands',
                                         type : 'input',
                                         required : true,
-                                        message : 'popup',
-                                        disabled : true
+                                        message : 'popup'
                                     },
                                     js : {
                                         required : {

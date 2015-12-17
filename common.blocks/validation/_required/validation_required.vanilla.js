@@ -6,12 +6,9 @@ modules.define('validation_required',
 
 var DEFAULT_MESSAGE = 'Required field';
 
-provide(function(params) {
-    params = params || {};
-
-    var message = params.message || DEFAULT_MESSAGE;
+provide(function(field) {
     return function(val) {
-        return val? null : message;
+        return val? null : field.getValidationMessage('required') || DEFAULT_MESSAGE;
     };
 });
 

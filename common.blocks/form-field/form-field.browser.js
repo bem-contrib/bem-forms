@@ -15,6 +15,8 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
 
                 !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
                 !this.hasMod('name') && console.warn('Name required for form-field', this);
+
+                this._messages = {};
             }
         },
 
