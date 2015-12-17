@@ -23,9 +23,11 @@
                                     block : 'form-field',
                                     name : 'input',
                                     mods : {
+                                        theme : 'islands',
                                         type : 'input',
                                         required : true,
-                                        message : 'popup'
+                                        message : 'popup',
+                                        disabled : true
                                     },
                                     js : {
                                         required : {

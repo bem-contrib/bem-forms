@@ -26,6 +26,7 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                     }
                 }.bind(this));
 
+                //this._form.getFields()[2].setMod('disabled');
                 //this._form.getFields()[0].setStatus('invalid');
 
                 // You can bind to other form events

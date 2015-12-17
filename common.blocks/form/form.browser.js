@@ -4,7 +4,6 @@
 modules.define('form',
     ['i-bem__dom', 'objects'],
     function(provide, BEMDOM, objects) {
-
 /**
  * Form declaration
  */
@@ -24,7 +23,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         'disabled' : this._toggleDisableFields
     },
     /**
-     * Toggle all fields disabled modifier
+     * Toggle all fields disabled mod
      */
     _toggleDisableFields : function(modName, modVal) {
         this.getFields().forEach(function(field) {
@@ -34,7 +33,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         var btn = this.findBlockInside({ block : 'button', modName : 'type', modVal : 'submit' });
         btn && btn.setMod(modName, modVal);
     },
-
     /**
      * Bind to fields events
      */

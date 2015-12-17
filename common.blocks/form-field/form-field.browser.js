@@ -4,7 +4,6 @@
 modules.define('form-field',
     ['i-bem__dom'],
     function(provide, BEMDOM) {
-
 /**
  * Field block
  */
@@ -17,6 +16,11 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
                 !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
                 !this.hasMod('name') && console.warn('Name required for form-field', this);
             }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.findBlockInside('label').setMod(modName, modVal);
+            this.getControl().setMod(modName, modVal);
         }
     },
     /**
@@ -27,7 +31,6 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     getName : function() {
         return this.getMod('name');
     },
-
     /**
      * Returns field value
      * @returns {String}
@@ -36,7 +39,6 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     getVal : function() {
         return '';
     },
-
     /**
      * Set value to field
      * @param {*|String} val

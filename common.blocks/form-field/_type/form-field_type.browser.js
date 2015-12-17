@@ -23,9 +23,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
 
                 !this.getControl() && console.warn('Control required for form-field', this);
             }
-        },
-        'disabled' : function(modName, modVal) {
-            this.getControl().setMod(modName, modVal);
         }
     },
     /**
