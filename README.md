@@ -10,8 +10,6 @@ BEM Forms Library
 * <a href="https://github.com/bem/bem-components/blob/v2/README.ru.md#supported-browsers">Поддерживаемые браузеры</a>
 * <a href="#development">Разработка</a>
   * <a href="#working-copy">Рабочая копия</a>
-  * <a href="#how-to-contribute">Внесение изменений</a>
-  * <a href="https://github.com/bem/bem-components/blob/v2/README.ru.md#modular-tests">Модульное тестирование</a>
 
 <a name="content"></a>
 
@@ -21,8 +19,6 @@ BEM Forms Library
 ### Уровни
 
 * `common.blocks` — поддержка всех устройств и браузеров.
-* `desktop.blocks` — поддержка всех десктопных браузеров.
-* `touch.blocks` — реализация специфических особенностей для touch-платформ.
 
 <a name="blocks"></a>
 ### Блоки
@@ -77,17 +73,5 @@ $ open http://localhost:8080/
 ```bash
 $ npm run lint
 ```
-<a name="how-to-contribute"></a>
-### Внесение изменений
-
-1. [Создать issue](https://github.com/bem-incubator/bem-forms/issues/new) с описанием сути изменений.
-1. Определить, в какую версию проекта необходимо внести изменения.
-1. Создать отдельную ветку с указанием номера issue и версии (`issues/<номер issue>@v<номер версии>`) на основе ветки версии.
-Например, для issue с номером 42 и версией 2: `git checkout -b issues/42@v2`. Если изменения нужно внести в несколько версий, то для каждой из версий создается отдельная ветка.
-1. Внести изменения. Локально проверить, что ничего не сломалось, запустив `npm test`.
-1. Сделать коммит и отправить изменения в удаленный репозиторий (`push`). Если это необходимо, то нужно сделать `rebase` от базовой ветки версии.
-1. Создать pull request на основе созданной ветки. Для случая изменений в нескольких версиях необходимо создать pull request для каждой версии.
-1. Любым способом связать pull request и issue (например, c помощью [комментария](https://github.com/blog/1506-closing-issues-via-pull-requests)).
-1. Ждать закрытия pull request и issue ;-)
 
 ### [MIT](http://en.wikipedia.org/wiki/MIT_License) Лицензия

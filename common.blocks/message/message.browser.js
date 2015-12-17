@@ -2,9 +2,8 @@
  * @module message
  */
 modules.define('message',
-['i-bem__dom'],
-function(provide, BEMDOM) {
-
+    ['i-bem__dom'],
+    function(provide, BEMDOM) {
 /**
  * Message block
  */
@@ -31,7 +30,6 @@ provide(BEMDOM.decl(this.name, /** @lends message.prototype */{
      */
     setVal : function(val) {
         this._val = val;
-        return this._val;
     },
     /**
      * Show message
