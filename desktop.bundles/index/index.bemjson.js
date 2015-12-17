@@ -9,7 +9,7 @@
             content : [
                 {
                     block : 'form',
-                    mods : { message : 'text' },
+                    mods : { message : 'text', disabled : true },
                     method : 'GET',
                     content : [
                         {

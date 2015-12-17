@@ -25,8 +25,6 @@ provide(BEMDOM.decl(this.name, /** @lends test-form.prototype */{
                     }
                 }.bind(this));
 
-                console.log(this.findBlockInside('select').getVal().length);
-
                 // You can bind to other form events
                 // this._form.on('change', function(e, data) {
                 //     console.log('changed form', data);

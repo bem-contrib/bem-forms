@@ -30,6 +30,9 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         this.getFields().forEach(function(field) {
             field.setMod(modName, modVal);
         });
+
+        var btn = this.findBlockInside({ block : 'button', modName : 'type', modVal : 'submit' });
+        btn && btn.setMod(modName, modVal);
     },
 
     /**
