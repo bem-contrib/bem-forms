@@ -2,8 +2,7 @@
  * @module message
  */
 modules.define('message',
-function(provide, Message) {
-
+    function(provide, Message) {
 /**
  * Message type text
  *
@@ -12,7 +11,6 @@ function(provide, Message) {
  * @bem
  */
 Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
-
     /**
      * Set message val
      * @protected
@@ -21,7 +19,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
     setVal : function() {
         this.__base.apply(this, arguments);
 
-        this.domElem.text(this._val);
+        this.domElem.html(this.getVal());
 
         return this;
     }

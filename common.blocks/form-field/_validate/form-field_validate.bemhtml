@@ -1,3 +1,0 @@
-block('form-field').match(function() { return this.ctx.mods.validate; })(
-    mix()({ mods : { 'has-validation' : true } })
-)

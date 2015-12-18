@@ -3,12 +3,17 @@ block('form').mod('message', 'popup')(
         var ctx = this.ctx;
 
         return [
+            applyNext(),
             {
                 block : 'message',
-                mods : { type : 'popup', theme : ctx.mods.theme, size : ctx.mods.size },
-                mix : { block : ctx.block, elem : 'message' }
-            },
-            applyNext()
+                mods : {
+                    type : 'popup',
+                    theme : ctx.mods.theme,
+                    size : ctx.mods.size
+                },
+                mix : { block : ctx.block, elem : 'message' },
+                directions : ctx.directions
+            }
         ];
     })
 );

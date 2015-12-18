@@ -2,8 +2,7 @@
  * @module form
  */
 modules.define('form',
-function(provide, Form) {
-
+    function(provide, Form) {
 /**
  * Base form__message class
  *
@@ -12,16 +11,14 @@ function(provide, Form) {
  * @bem
  */
 Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype */{
-
     /**
      * Return instance of message block
      * @protected
      * @abstract
      */
     getMessage : function() {
-        return this._message || (this._message = this.findBlockInside('message'));
+        return this._message || (this._message = this.findBlockOn('message', 'message'));
     },
-
     /**
      * Return message value
      * @public
@@ -30,7 +27,6 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
     getMessageVal : function() {
         return this.getMessage().getVal();
     },
-
     /**
      * Set message value
      * @public
