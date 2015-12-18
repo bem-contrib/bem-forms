@@ -96,22 +96,34 @@ provide(function(field) {
         }
 
         if(!DIGITS_RE.test(val) || (val.length !== 16 && val.length !== 18)) {
-            return _resolveMessage(message, 'wrongLength');
+            return {
+                field : field.getName() || field.getId(),
+                message : _resolveMessage(message, 'wrongLength')
+            };
         }
 
         if(!_luhn(val)) {
-            return _resolveMessage(message, 'luhnFailed');
+            return {
+                field : field.getName() || field.getId(),
+                message : _resolveMessage(message, 'luhnFailed')
+            };
         }
 
         var cardType = _detectType(val);
 
         if(!cardType) {
-            return _resolveMessage(message, 'unsupported');
+            return {
+                field : field.getName() || field.getId(),
+                message : _resolveMessage(message, 'unsupported')
+            };
         }
 
         // if you need concrete card type
         if(field.params.cardType && !~field.params.cardType.indexOf(cardType.name)) {
-            return _resolveMessage(message, 'unsupported');
+            return {
+                field : field.getName() || field.getId(),
+                message : _resolveMessage(message, 'unsupported')
+            };
         }
 
         return null;

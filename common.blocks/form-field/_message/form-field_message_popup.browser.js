@@ -3,7 +3,6 @@
  */
 modules.define('form-field',
     function(provide, FormField) {
-
 /**
  *
  * @exports

@@ -16,7 +16,7 @@ var techs = {
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
         'common.blocks',
-        'test.blocks'
+        'example.blocks'
     ];
 
 module.exports = function(config) {

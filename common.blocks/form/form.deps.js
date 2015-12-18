@@ -3,9 +3,10 @@
         { block : 'i-bem' }
     ],
     shouldDeps : [
-        { mods : { 'has-validation' : true, message : ['text', 'popup'] } },
         { block : 'objects' },
-        { block : 'form-field' }
+        { block : 'form-field' },
+        { block : 'validation' },
+        { block : 'vow' }
     ]
 },
 {

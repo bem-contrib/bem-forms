@@ -1,10 +1,9 @@
 /**
  * @module validation
  */
-
 modules.define('validation',
-function (provide) {
-
+    ['vow'],
+    function (provide, Vow) {
 /**
  * Validation container
  * @constructor
@@ -14,14 +13,12 @@ function Validation() {
 }
 
 var ptp = Validation.prototype;
-
 ptp._stack = null;
-
 /**
  * push validator to stack
  *
  * @param {Function} validator
- * @returns {BEM}
+ * @returns {Object}
  */
 ptp.push = function (validator) {
     if(typeof validator !== 'function') {
@@ -30,23 +27,24 @@ ptp.push = function (validator) {
     this._stack.push(validator);
     return this;
 };
-
 /**
  * Runs all registered validators for a specified value
- *   and returns the first error or null
+ * and returns the first error or null
  *
  * @param {*} value
- * @? param {?function(?String)} fn
- * @returns {?String} - filled with an error or null if all is fine
+ * @returns {Promise}
  */
 ptp.check = function(value) {
-    for(var i = 0, l = this._stack.length; i < l; i++) {
-        var res = this._stack[i](value);
-        if(res !== null) {
-            return res;
-        }
-    }
-    return null;
+    return Vow.all(this._stack.map(function(validationFunction) {
+        return new Vow.Promise(function(resolve, reject) {
+            var validation = Vow.resolve(validationFunction(value));
+            return validation.then(function (res) {
+                res !== null? reject(res) : resolve(null);
+            });
+        });
+    }))
+    .then(function () { return null; })
+    .fail(function(error) { return error });
 };
 
 provide({
@@ -54,7 +52,7 @@ provide({
      * Static object creator
      *
      * @api
-     * @returns {Validator}
+     * @returns {Object}
      */
     create : function() {
         var res = new Validation();

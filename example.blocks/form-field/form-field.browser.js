@@ -6,7 +6,7 @@ modules.define('form-field',
 /**
  * Field block
  */
-FormField.decl({ block : this.name, modName : 'has-validation', modVal : true }, /** @lends form-field.prototype */{
+FormField.decl(this.name, /** @lends form-field.prototype */{
 
     onSetMod : {
         'focused' : {
@@ -21,6 +21,16 @@ FormField.decl({ block : this.name, modName : 'has-validation', modVal : true },
                 this.getMessage().hide();
             }
         }
+    },
+    /**
+     * debug override
+     * @returns {Promise}
+     */
+    validate : function() {
+        return this.__base.apply(this, arguments).then(function(error) {
+            error && console.warn(error);
+            return error;
+        });
     }
 });
 

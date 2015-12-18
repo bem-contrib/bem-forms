@@ -9,7 +9,10 @@ var DEFAULT_MESSAGE = 'Field requires email inside',
 
 provide(function(field) {
     return function(val) {
-        return !val || EMAIL_RE.test(val)? null : field.getValidationMessage('email') || DEFAULT_MESSAGE;
+        return !val || EMAIL_RE.test(val)? null : {
+            field : field.getName() || field.getId(),
+            message : field.getValidationMessage('email') || DEFAULT_MESSAGE
+        };
     };
 });
 

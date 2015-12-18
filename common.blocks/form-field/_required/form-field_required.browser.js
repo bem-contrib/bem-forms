@@ -4,10 +4,8 @@
 modules.define('form-field',
     ['validation_required'],
     function(provide, validation_required, FormField) {
-
 /**
  * Required form-field
-
  * @exports
  * @class form-field
  * @bem
@@ -19,7 +17,9 @@ FormField.decl({ modName : 'required', modVal : true }, /** @lends form-field.pr
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this.setValidationMessages({ required : this.params.required });
+                this.params.required && this.setValidationMessages({
+                    required : this.params.required.message
+                });
 
                 this.getValidator().push(validation_required(this));
             }

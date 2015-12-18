@@ -1,3 +1,0 @@
-block('form-field').mod('required', true)(
-    mix()({ mods : { 'has-validation' : true } })
-);

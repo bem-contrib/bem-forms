@@ -19,7 +19,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lend
     setVal : function() {
         this.__base.apply(this, arguments);
 
-        this.domElem.text(this.getVal());
+        this.domElem.html(this.getVal());
 
         return this;
     }

@@ -1,6 +1,4 @@
 block('form').mod('message', 'popup')(
-    mix()({ mods : { 'has-validation' : true } }),
-
     content()(function() {
         var ctx = this.ctx;
 
@@ -13,7 +11,8 @@ block('form').mod('message', 'popup')(
                     theme : ctx.mods.theme,
                     size : ctx.mods.size
                 },
-                mix : { block : ctx.block, elem : 'message' }
+                mix : { block : ctx.block, elem : 'message' },
+                directions : ctx.directions
             }
         ];
     })

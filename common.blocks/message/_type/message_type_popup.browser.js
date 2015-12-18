@@ -17,7 +17,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this.getPopup().setAnchor(this);
+                this.getPopup().setAnchor(this.domElem);
             }
         }
     },

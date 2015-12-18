@@ -6,7 +6,6 @@ modules.define('form-field',
     function(provide, validateEmail, objects, FormField) {
 /**
  * E-mail form-field validation
-
  * @exports
  * @class form-field
  * @bem
@@ -18,7 +17,9 @@ FormField.decl({ modName : 'validate', modVal : 'email' }, /** @lends form-field
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this.setValidationMessages({ email : this.params.email });
+                this.params.email && this.setValidationMessages({
+                    email : this.params.email.message
+                });
 
                 this.getValidator().push(validateEmail(this));
             }

@@ -5,11 +5,13 @@
     scripts : [{ elem : 'js', url : 'index.min.js' }],
     content : [
         {
-            block : 'test-form',
+            block : 'app',
+            js : true,
             content : [
                 {
                     block : 'form',
-                    mods : { message : 'text' },
+                    mods : { theme : 'islands', message : 'popup' },
+                    directions : ['right-top'],
                     method : 'GET',
                     content : [
                         {
@@ -28,11 +30,43 @@
                                         required : true,
                                         message : 'popup'
                                     },
+                                    directions : ['top-left'],
                                     js : {
                                         required : {
                                             message : 'Super required input!'
                                         }
                                     },
+                                    content : [
+                                        {
+                                            elem : 'label',
+                                            content : [
+                                                {
+                                                    block : 'label',
+                                                    content : 'Input'
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            elem : 'control',
+                                            content : [
+                                                {
+                                                    block : 'input',
+                                                    mods : { theme : 'islands', size : 'l' }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    block : 'form-field',
+                                    name : 'inputWithCustom',
+                                    mods : {
+                                        theme : 'islands',
+                                        type : 'input',
+                                        validate : 'custom',
+                                        message : 'popup'
+                                    },
+                                    directions : ['top-left'],
                                     content : [
                                         {
                                             elem : 'label',

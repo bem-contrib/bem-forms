@@ -6,7 +6,6 @@ modules.define('form-field',
     function(provide, validate_card, FormField) {
 /**
  * Card form-field validation
-
  * @exports
  * @class form-field
  * @bem
@@ -18,7 +17,9 @@ FormField.decl({ modName : 'validate', modVal : 'card' }, /** @lends form-field.
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this.setValidationMessages({ card : this.params.card });
+                this.params.card && this.setValidationMessages({
+                    card : this.params.card.message
+                });
 
                 this.getValidator().push(validate_card(this));
             }
