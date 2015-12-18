@@ -53,6 +53,17 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
         return '';
     },
     /**
+     * Sets value
+     * @param {String} val
+     * @param {Boolean} emitEvent
+     */
+    setVal : function(val, emitEvent) {
+        emitEvent && this.emit('change', {
+            field : this.getName() || this.getId(),
+            val : val
+        });
+    },
+    /**
      * Get form-field validator instance
      *
      * @public

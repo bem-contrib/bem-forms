@@ -27,6 +27,7 @@ FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /**
      * @param {String} val значение
      */
     setVal : function(val) {
+        this.__base.apply(this, arguments);
         this.getControl().setMod('checked', !!val);
     },
 
