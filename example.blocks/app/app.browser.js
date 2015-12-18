@@ -15,16 +15,20 @@ provide(BEMDOM.decl(this.name, /** @lends app.prototype */{
                 this._form = this.findBlockInside('form');
 
                 this._form.on('submit', function(e, val) {
-                    this._form.validate().then(function (fieldsStatuses) {
-                        if(this._form.checkFields(fieldsStatuses)) {
-                            this._form.getMessage().hide();
-                            console.log(val);
-                        } else {
-                            this._form.setMessageVal(this.concatMessages(fieldsStatuses));
-                            this._form.getMessage().show();
-                            this._form.getInvalidFields()[0].getControl().elem('control').focus();
-                        }
-                    }.bind(this));
+                    this._form.validate()
+                        .then(function (fieldsStatuses) {
+                            if(this._form.checkFields(fieldsStatuses)) {
+                                this._form.getMessage().hide();
+                                console.log(val);
+                            } else {
+                                this._form.setMessageVal(this._concatMessages(fieldsStatuses));
+                                this._form.getMessage().show();
+                                this._form.getInvalidFields()
+                                    .then(function (invalidFields) {
+                                        invalidFields[0].getControl().setMod('focused');
+                                    });
+                            }
+                        }.bind(this));
                 }.bind(this));
 
                 //this._form.getFields()[1].setValidationMessage('required', 'Ololo!');
@@ -47,7 +51,7 @@ provide(BEMDOM.decl(this.name, /** @lends app.prototype */{
         }
     },
 
-    concatMessages : function(fieldsStatuses) {
+    _concatMessages : function(fieldsStatuses) {
         var messages = [];
         for(var i = 0, l = fieldsStatuses.length; i < l; i++) {
             if(fieldsStatuses[i] !== null) {

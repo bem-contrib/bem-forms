@@ -124,19 +124,20 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * Get all invalid form-fields
      *
      * @public
-     * @returns {Array}
+     * @returns {Promise}
      */
     getInvalidFields : function() {
         var currentFields = this.getFields(),
             invalid = [];
 
-        for(var i = 0, l = currentFields.length; i < l; i++) {
-            var f = currentFields[i];
-
-            if(f.getStatus()) invalid.push(f);
-        }
-
-        return invalid;
+        return Vow.all(currentFields.map(function (field) {
+            return field.getStatus();
+        })).then(function(fieldsStatuses) {
+            for(var i = 0, l = fieldsStatuses.length; i < l; i++) {
+                fieldsStatuses[i] !== null && invalid.push(currentFields[i]);
+            }
+            return invalid;
+        });
     },
     /**
      * Get form status
