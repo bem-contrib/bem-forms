@@ -110,7 +110,7 @@
                                             content : [
                                                 {
                                                     block : 'label',
-                                                    content : 'Input'
+                                                    content : 'Input with custom validator'
                                                 }
                                             ]
                                         },
