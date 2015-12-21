@@ -3,9 +3,8 @@
  */
 modules.define('form-field',
     function(provide, FormField) {
-
 /**
- select
+ * Select field
  *
  * @exports
  * @class form-field
