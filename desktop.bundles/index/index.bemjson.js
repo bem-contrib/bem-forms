@@ -26,6 +26,43 @@
                                     name : 'input',
                                     mods : {
                                         theme : 'islands',
+                                        type : 'attach',
+                                        required : true,
+                                        message : 'text'
+                                    },
+                                    js : {
+                                        required : {
+                                            message : 'Shit!'
+                                        }
+                                    },
+                                    content : [
+                                        {
+                                            elem : 'label',
+                                            content : [
+                                                {
+                                                    block : 'label',
+                                                    content : 'File'
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            elem : 'control',
+                                            content : [
+                                                {
+                                                    block : 'attach',
+                                                    mods : { theme : 'islands', size : 'l' },
+                                                    button : 'Choose file',
+                                                    noFileText : 'No file'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    block : 'form-field',
+                                    name : 'input',
+                                    mods : {
+                                        theme : 'islands',
                                         type : 'input',
                                         required : true,
                                         message : 'popup'

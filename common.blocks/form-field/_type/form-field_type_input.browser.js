@@ -3,9 +3,8 @@
  */
 modules.define('form-field',
     function(provide, FormField) {
-
 /**
- * Input field (simple text input)
+ * Input field
  *
  * @exports
  * @class form-field
