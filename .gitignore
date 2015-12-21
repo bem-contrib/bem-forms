@@ -21,6 +21,8 @@ libs
 /coverage
 /coverage.json
 /gemini-report/
+common.specs
+common.docs
 
 /dist
 /*.docs
