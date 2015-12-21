@@ -4,16 +4,15 @@ modules.define('spec',
 
 var expect = chai.expect;
 
-describe('form-field_type_hidden', function() {
+describe('form-field_type_textarea', function() {
 
     var formField;
 
     beforeEach(function() {
         formField = BEMDOM.init($(BEMHTML.apply({
             block : 'form-field',
-            mods : { type : 'hidden' },
-            name : 'hidden',
-            val :  'value'
+            mods : { type : 'textarea' },
+            content : { block : 'textarea' }
         })).appendTo('body')).bem('form-field');
     });
 
@@ -21,14 +20,13 @@ describe('form-field_type_hidden', function() {
         BEMDOM.destruct(formField.domElem);
     });
 
-    it('should return value on getVal', function() {
-        formField.getVal().should.equal('value');
-    });
+    it.skip('should set val to textarea');
 
-    it('should allow to change value', function() {
-        formField.setVal('new');
-        formField.getVal().should.equal('new');
-    });
+    it.skip('should get val to textarea');
+
+    it.skip('should get textarea name');
+
+    it.skip('should set invalid mod to textarea');
 });
 
 provide();

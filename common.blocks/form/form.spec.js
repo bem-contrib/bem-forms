@@ -1,15 +1,17 @@
 modules.define('spec',
-    ['form', 'BEMHTML', 'i-bem__dom', 'jquery'],
-    function(provide, Form, BEMHTML, BEMDOM, $) {
+    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
+
+var expect = chai.expect;
 
 describe('form', function() {
 
     var form;
 
     beforeEach(function() {
-        form = buildForm({
+        form = BEMDOM.init($(BEMHTML.apply({
             block : 'form'
-        });
+        })).appendTo('body')).bem('form');
     });
 
     afterEach(function() {
@@ -21,48 +23,13 @@ describe('form', function() {
             block : 'form-field',
             name : 'firstName',
             mods : { type : 'input' },
-            content : [
-                { block : 'input' }
-            ]
+            content : { block : 'input' }
         }));
 
         form.getFieldByName('firstName').getName().should.be.eq('firstName');
     });
 
-    it.skip('should rebuild tab-index', function() {
-        form.getFields().length.should.be.eq(0);
-
-        BEMDOM.append(form.domElem, BEMHTML.apply({
-            block : 'form-field',
-            name : 'firstName',
-            mods : { type : 'input' },
-            content : [
-                { block : 'input' }
-            ]
-        }));
-
-        form.getFieldByName('firstName').getIndex().should.be.eq(1);
-
-        BEMDOM.prepend(form.domElem, BEMHTML.apply({
-            block : 'form-field',
-            name : 'lastName',
-            mods : { type : 'input' },
-            content : [
-                { block : 'input' }
-            ]
-        }));
-
-        form.getFields().length.should.be.eq(2);
-
-        form.getFieldByName('firstName').getIndex().should.be.eq(2);
-        form.getFieldByName('lastName').getIndex().should.be.eq(1);
-    });
-
 });
-
-function buildForm(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body')).bem('form');
-}
 
 provide();
 

@@ -5,7 +5,11 @@ block('message').mod('type', 'popup')(
         return [{
             block : 'popup',
             directions : ctx.directions,
-            mods : { target : 'anchor', theme : ctx.mods.theme, size : ctx.mods.size },
+            mods : {
+                target : 'anchor',
+                theme : ctx.mods.theme,
+                size : ctx.mods.size
+            },
             mix : { block : ctx.block, elem : 'control' }
         }];
     })

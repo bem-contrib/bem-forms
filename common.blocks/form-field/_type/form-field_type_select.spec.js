@@ -4,16 +4,21 @@ modules.define('spec',
 
 var expect = chai.expect;
 
-describe('form-field_type_hidden', function() {
+describe('form-field_type_select', function() {
 
     var formField;
 
     beforeEach(function() {
         formField = BEMDOM.init($(BEMHTML.apply({
             block : 'form-field',
-            mods : { type : 'hidden' },
-            name : 'hidden',
-            val :  'value'
+            mods : { type : 'select' },
+            content : {
+                block : 'select',
+                options : [
+                    { val : 0, text : 0 },
+                    { val : 1, text : 1 }
+                ]
+            }
         })).appendTo('body')).bem('form-field');
     });
 
@@ -21,14 +26,13 @@ describe('form-field_type_hidden', function() {
         BEMDOM.destruct(formField.domElem);
     });
 
-    it('should return value on getVal', function() {
-        formField.getVal().should.equal('value');
-    });
+    it.skip('should set val to select');
 
-    it('should allow to change value', function() {
-        formField.setVal('new');
-        formField.getVal().should.equal('new');
-    });
+    it.skip('should get val to select');
+
+    it.skip('should get select name');
+
+    it.skip('should set invalid mod to select');
 });
 
 provide();

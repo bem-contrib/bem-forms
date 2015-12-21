@@ -6,7 +6,7 @@ modules.define('validation_pattern',
 
 var DEFAULT_MESSAGE = 'Should match provided pattern "%s"';
 provide(function(field) {
-    if(!field.params.value) {
+    if(!field.params.pattern && !field.params.pattern.value) {
         return function () {
             return null;
         };
