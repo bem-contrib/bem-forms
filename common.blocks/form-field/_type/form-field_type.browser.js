@@ -2,7 +2,7 @@
  * @module form-field
  */
 modules.define('form-field',
-function(provide, FormField) {
+    function(provide, FormField) {
 
 /**
  * Base class for form-field block with _type modifier
@@ -23,9 +23,6 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
 
                 !this.getControl() && console.warn('Control required for form-field', this);
             }
-        },
-        'disabled' : function(modName, modVal) {
-            this.getControl().setMod(modName, modVal);
         }
     },
     /**

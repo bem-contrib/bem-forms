@@ -8,6 +8,7 @@ block('form')(
         var ctx = this.ctx;
 
         return {
+            novalidate : true,
             action : ctx.action,
             enctype : ctx.enctype,
             method : ctx.method

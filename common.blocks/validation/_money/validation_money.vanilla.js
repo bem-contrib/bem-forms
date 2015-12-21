@@ -1,19 +1,18 @@
 /**
  * @module validation_money
  */
-
 modules.define('validation_money',
-function(provide) {
+    function(provide) {
 
 var DEFAULT_MESSAGE = 'Field should be filled with money amount',
     MONEY_RE = /^-?\d+(\.\d{1,2})?$/;
 
-provide(function(params) {
-    params = params || {};
-    var message = params.message || DEFAULT_MESSAGE;
-
+provide(function(field) {
     return function(val) {
-        return !val || MONEY_RE.test(val)? null : message;
+        return !val || MONEY_RE.test(val)? null : {
+            field : field.getName() || field.getId(),
+            message : field.getValidationMessage('money') || DEFAULT_MESSAGE
+        };
     };
 });
 

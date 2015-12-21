@@ -1,5 +1,5 @@
 modules.define('form-field',
-function(provide, FormField) {
+    function(provide, FormField) {
 
 provide(FormField.decl({ modName : 'type', modVal : 'hidden' }, {
 
