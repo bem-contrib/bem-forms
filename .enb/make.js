@@ -5,26 +5,45 @@ var techs = {
         stylus: require('enb-stylus/techs/stylus'),
         browserJs: require('enb-js/techs/browser-js'),
         bemhtml: require('enb-bemxjst/techs/bemhtml'),
-        bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html')
+        bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html'),
+        bem : require('enb-bem-techs')
     },
     enbBemTechs = require('enb-bem-techs'),
-    levels = [
+    libs = [
         { path: 'libs/bem-core/common.blocks', check: false },
         { path: 'libs/bem-core/desktop.blocks', check: false },
         { path: 'libs/bem-components/common.blocks', check: false },
         { path: 'libs/bem-components/desktop.blocks', check: false },
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
-        'common.blocks',
-        'example.blocks'
-    ];
+    ],
+    specs = [{ path : 'libs/bem-pr/spec.blocks', check : false }],
+    project = ['common.blocks'],
+    examples = ['example.blocks'];
 
 module.exports = function(config) {
     var isProd = process.env.YENV === 'production';
 
+    config.includeConfig('enb-bem-specs');
+    config.module('enb-bem-specs').createConfigurator('specs').configure({
+        destPath : 'common.specs',
+        levels : [].concat(libs, project),
+        sourceLevels : [].concat(specs, project),
+        jsSuffixes : ['vanilla.js', 'browser.js', 'js'],
+        depsTech : techs.bem.depsOld
+    });
+
+    config.includeConfig('enb-bem-docs');
+    config.module('enb-bem-docs').createConfigurator('docs').configure({
+        destPath : 'common.docs',
+        levels : project,
+        langs : ['ru', 'en'],
+        jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
+    });
+
     config.nodes('*.bundles/*', function(nodeConfig) {
         nodeConfig.addTechs([
-            [enbBemTechs.levels, { levels: levels }],
+            [enbBemTechs.levels, { levels: [].concat(libs, project, examples) }],
             [techs.fileProvider, { target: '?.bemjson.js' }],
             [enbBemTechs.bemjsonToBemdecl],
             [enbBemTechs.deps],
