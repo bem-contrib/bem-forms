@@ -3,16 +3,14 @@
  */
 modules.define('form-field',
     function(provide, FormField) {
-
 /**
- * Field type checkbox (flag)
+ * Checkbox field
  *
  * @exports
  * @class form-field
  * @bem
  */
 FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
-
     /**
      * Returns field value if checked or empty string (?)
      * @returns {String}
@@ -21,16 +19,14 @@ FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /**
         var control = this.getControl();
         return control.hasMod('checked')? control.getVal() : '';
     },
-
     /**
-     * Sets checked on if value is truthy or off if falsy
+     * Sets checked on if value is true or off if false
      * @param {String} val значение
      */
     setVal : function(val) {
         this.__base.apply(this, arguments);
         this.getControl().setMod('checked', !!val);
     },
-
     _onControlChange : function(e, data) {
         /**
          * Input data change event
