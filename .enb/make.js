@@ -10,12 +10,12 @@ var techs = {
     },
     enbBemTechs = require('enb-bem-techs'),
     libs = [
-        { path: 'libs/bem-core/common.blocks', check: false },
-        { path: 'libs/bem-core/desktop.blocks', check: false },
-        { path: 'libs/bem-components/common.blocks', check: false },
-        { path: 'libs/bem-components/desktop.blocks', check: false },
-        { path: 'libs/bem-components/design/common.blocks', check: false },
-        { path: 'libs/bem-components/design/desktop.blocks', check: false },
+        { path : 'libs/bem-core/common.blocks', check: false },
+        { path : 'libs/bem-core/desktop.blocks', check: false },
+        { path : 'libs/bem-components/common.blocks', check: false },
+        { path : 'libs/bem-components/desktop.blocks', check: false },
+        { path : 'libs/bem-components/design/common.blocks', check: false },
+        { path : 'libs/bem-components/design/desktop.blocks', check: false },
     ],
     specs = [{ path : 'libs/bem-pr/spec.blocks', check : false }],
     project = ['common.blocks'],
@@ -27,8 +27,8 @@ module.exports = function(config) {
     config.includeConfig('enb-bem-specs');
     config.module('enb-bem-specs').createConfigurator('specs').configure({
         destPath : 'common.specs',
-        levels : [].concat(libs, project),
-        sourceLevels : [].concat(specs, project),
+        levels : [].concat(project),
+        sourceLevels : [].concat(specs, libs, project),
         jsSuffixes : ['vanilla.js', 'browser.js', 'js'],
         depsTech : techs.bem.depsOld
     });

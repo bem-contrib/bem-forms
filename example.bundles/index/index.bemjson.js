@@ -23,7 +23,7 @@
                             content : [
                                 {
                                     block : 'form-field',
-                                    name : 'input',
+                                    name : 'attach',
                                     mods : {
                                         theme : 'islands',
                                         type : 'attach',

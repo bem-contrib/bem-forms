@@ -39,22 +39,13 @@
   },
   "private": true,
   "scripts": {
-    "start": "magic server",
-    "make": "BEM_TEMPLATE_ENGINE=BEMHTML magic make --no-cache",
+    "postinstall": "npm run deps",
+    "start": "enb server",
     "deps": "bower i",
-    "compiled": "find . -iname '*.styl' | xargs stylus",
-    "build": "npm run build-${TEST_SCOPE:-all}",
-    "build-all": "npm run deps && magic make desktop.examples desktop.tests desktop.docs touch.examples touch.tests touch.docs *.bundles/*",
-    "build-specs": "npm run deps",
-    "build-tmpls": "npm run deps",
-    "test": "npm run build && npm run ${TEST_SCOPE:-test-all}",
-    "test-all": "npm run lint && npm run unit && npm run test-tmpls",
-    "test-specs": "magic run specs",
-    "test-tmpls": "magic run tmpl-specs",
     "lint": "jshint-groups && jscs .",
-    "specs": "npm run test-specs",
-    "tmpls": "npm run test-tmpls",
-    "unit": "npm run test-specs",
+    "specs": "enb make specs",
+    "docs": "enb make docs",
+    "tmpls": "enb make specs",
     "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
   }
 }

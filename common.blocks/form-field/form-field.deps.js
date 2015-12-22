@@ -7,11 +7,10 @@
         { block : 'vow' }
     ]
 }, {
-    tech : 'tmpl-spec.js',
+    tech : 'spec.js',
     mustDeps : [
-        { block : 'message', mods : { type : 'text' } },
-        { block : 'message', mods : { type : 'popup' } },
-        { block : 'form-field', mods : { message : 'popup' } },
-        { block : 'form-field', mods : { message : 'text' } },
+        { tech : 'bemhtml', block : 'form-field' },
+        { tech : 'bemhtml', block : 'form-field', mods : { message : ['text', 'popup'] } },
+        { tech : 'bemhtml', block : 'form-field', mods : { type : 'input' } }
     ]
 }]

@@ -1,78 +1,41 @@
 modules.define('spec',
-    ['form-field'],
-    function(provide, FormField) {
+    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
 
-    describe('form fields manipulating', function() {
+var expect = chai.expect;
 
-        var formField;
+describe('form-field', function() {
 
-        beforeEach(function() {
-            formField = buildFormField();
-        });
+    var formField;
 
-        it.skip('should get tab-index', function() {
-            formField.getIndex().should.be.eq(1);
-        });
-
-        it.skip('should set tab-index', function() {
-            formField.getIndex().should.be.eq(1);
-            formField.setIndex(-1);
-            formField.getIndex().should.be.eq(-1);
-        });
-
+    beforeEach(function() {
+        formField = BEMDOM.init($(BEMHTML.apply({
+            block : 'form-field'
+        })).appendTo('body')).bem('form-field');
     });
 
-    function buildFormField() {
+    afterEach(function() {
+        BEMDOM.destruct(formField.domElem);
+    });
 
-    }
+    it.skip('should get id');
 
-    provide();
+    it.skip('should require dirty mechanic');
+
+    it.skip('should exec validators on blur');
+
+    it.skip('should update status after validation');
+
+    it.skip('should set status manually');
+
+    it.skip('should set validations messages');
+
+    it.skip('should set one validation message');
+
+    it.skip('should disable label and control in disable mod');
+
 });
 
-//describe('form-field_has-validation', function() {
-//
-//    var block, bemjson;
-//
-//    beforeEach(function() {
-//        bemjson = {
-//            block : 'form-field',
-//            mods : {
-//                'has-validation' : true
-//            }
-//        };
-//    });
-//
-//    afterEach(function() {
-//        block && utils.destruct(block);
-//    });
-//
-//    it('should not throw without `type` mod', function() {
-//        block = utils.buildBlock('form-field', bemjson);
-//        block.getVal().should.equal('');
-//    });
-//
-//    it('should call show message when changes status focused', function() {
-//        bemjson.mods.type = 'input';
-//        bemjson.mods.message = 'text';
-//        bemjson.content = {
-//            elem : 'control',
-//            content : {
-//                block : 'input',
-//                val : 'XXX'
-//            }
-//        };
-//        block = utils.buildBlock('form-field', bemjson);
-//
-//        // should not show for valid block
-//        block.getControl().elem('control').focus();
-//        var spy = sinon.spy(block.getMessage(), 'show');
-//        block._updateStatus();
-//        (!!spy.called).should.be.false;
-//
-//        // should show for invalid block
-//        block._status = 'error';
-//        block._updateStatus();
-//        (!!spy.called).should.be.true;
-//    });
-//
-//});
+provide();
+
+});

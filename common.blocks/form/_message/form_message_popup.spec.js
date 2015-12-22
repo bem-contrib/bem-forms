@@ -1,22 +1,22 @@
 modules.define('spec',
-    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
+    ['form', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Form, BEMDOM, $, BEMHTML, chai) {
 
 var expect = chai.expect;
 
-describe('form-field_message_popup', function() {
+describe('form_message_popup', function() {
 
-    var formField;
+    var form;
 
     beforeEach(function() {
-        formField = BEMDOM.init($(BEMHTML.apply({
-            block : 'form-field',
+        form = BEMDOM.init($(BEMHTML.apply({
+            block : 'form',
             mods : { message : 'popup' }
-        })).appendTo('body')).bem('form-field');
+        })).appendTo('body')).bem('form');
     });
 
     afterEach(function() {
-        BEMDOM.destruct(formField.domElem);
+        BEMDOM.destruct(form.domElem);
     });
 
     it.skip('should set anchor for popup');
