@@ -13,7 +13,8 @@
     "url": "http://github.com/bem-incubator/bem-forms/issues"
   },
   "dependencies": {
-    "bem-environ": "1.4.0"
+    "bem-environ": "1.4.0",
+    "bower": "^1.7.1"
   },
   "devDependencies": {
     "bem-naming": "0.5.1",
