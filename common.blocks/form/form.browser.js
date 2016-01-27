@@ -15,13 +15,6 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
 
                 this.hasMod('disabled') && this._toggleDisableFields('disabled');
 
-                this._bindToFields('change', this._onFieldChange);
-                this._bindToFields('focus', this._onFieldFocus);
-
-                this.bindTo('submit', function(e) {
-                    this._onSubmit(e);
-                });
-
                 this._initVal = this.getVal();
                 this._status = this.getStatus();
             }
@@ -98,7 +91,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @private
      * @param {Event} event
      */
-    _onFieldChange : function(event) {
+    _onFieldChange : function() {
         this.emit('change', this.getVal());
     },
     /**
@@ -107,7 +100,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @private
      * @param {Event} event
      */
-    _onFieldFocus : function(event) {
+    _onFieldFocus : function() {
         this.emit('focus', this.getVal());
     },
     /**
@@ -205,7 +198,13 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         return st;
     }
 }, /** @lends form */{
-    live : true
+    live : function() {
+        var ptp = this.prototype;
+        this
+            .liveBindTo('submit', ptp._onSubmit)
+            .liveInitOnBlockInsideEvent('change', 'form-field', ptp._onFieldChange)
+            .liveInitOnBlockInsideEvent('focus', 'form-field', ptp._onFieldFocus);
+    }
 }));
 
 });

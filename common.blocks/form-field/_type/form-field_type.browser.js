@@ -1,3 +1,4 @@
+/*jslint devel: true */
 /**
  * @module form-field
  */
