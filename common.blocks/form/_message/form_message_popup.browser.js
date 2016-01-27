@@ -2,14 +2,14 @@
  * @module form
  */
 modules.define('form',
-    function(provide, FormField) {
+    function(provide, Form) {
 /**
  *
  * @exports
  * @class form
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /** @lends form.prototype */{
+Form.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /** @lends form.prototype */{
 
     onSetMod : {
         'js' : {
@@ -27,6 +27,6 @@ FormField.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /**
 
 });
 
-provide(FormField);
+provide(Form);
 
 });
