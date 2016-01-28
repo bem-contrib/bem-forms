@@ -1,8 +1,13 @@
 module.exports = function(bh) {
 
     bh.match('label', function(ctx, json) {
-        ctx.tag('label');
-        ctx.attrs({ for : json.for });
+        var _form_field = ctx.tParam('_form_field');
+
+        if(_form_field) {
+            json.for = _form_field.id;
+        }
+
+        ctx.tag('label').attrs({ for : json.for });
     });
 
 };
