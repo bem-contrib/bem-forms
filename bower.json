@@ -6,10 +6,7 @@
     "form",
     "forms"
   ],
-  "author": [
-    "Vyacheslav Aristov <einstain@yandex-team.ru>"
-  ],
-  "contributors": [
+  "authors": [
     {
       "name": "Ivan Voischev",
       "email": "voischev.ivan@ya.ru"
@@ -25,6 +22,10 @@
     {
       "name": "Daniel Sabelnikov",
       "email": "dsabelnikov@gmail.com"
+    },
+    {
+        "name": "Vyacheslav Aristov",
+        "email": "einstain@yandex-team.ru"
     }
   ],
   "ignore": [

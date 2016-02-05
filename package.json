@@ -4,7 +4,6 @@
     "bem",
     "forms"
   ],
-  "author": "Vyacheslav Aristov",
   "repository": {
     "type": "git",
     "url": "https://github.com/bem-incubator/bem-forms"
@@ -38,7 +37,6 @@
     "jshint": "2.6.3",
     "jshint-groups": "^0.7.0"
   },
-  "private": true,
   "scripts": {
     "postinstall": "npm run deps",
     "start": "enb server",
