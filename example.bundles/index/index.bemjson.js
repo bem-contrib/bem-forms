@@ -270,6 +270,43 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    block : 'fieldset',
+                                    legend : {
+                                        tag : 'h4',
+                                        content : 'form part'
+                                    },
+                                    content : [
+                                        {
+                                            block : 'form-field',
+                                            name : 'input',
+                                            mods : {
+                                                theme : 'islands',
+                                                type : 'input'
+                                            },
+                                            content : [
+                                                {
+                                                    elem : 'label',
+                                                    content : [
+                                                        {
+                                                            block : 'label',
+                                                            content : 'Input'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    elem : 'control',
+                                                    content : [
+                                                        {
+                                                            block : 'input',
+                                                            mods : { theme : 'islands', size : 'l' }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                    ]
                                 }
                             ]
                         },
