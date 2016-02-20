@@ -1,8 +1,6 @@
 modules.define('spec',
-    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
-
-var expect = chai.expect;
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'form', 'form-field'],
+    function(provide, BEMDOM, $, BEMHTML) {
 
 describe('form', function() {
 

@@ -1,8 +1,6 @@
 modules.define('spec',
-    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
-
-var expect = chai.expect;
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'form-field'],
+    function(provide, BEMDOM, $, BEMHTML) {
 
 describe('form-field_type_hidden', function() {
 
@@ -11,9 +9,9 @@ describe('form-field_type_hidden', function() {
     beforeEach(function() {
         formField = BEMDOM.init($(BEMHTML.apply({
             block : 'form-field',
-            mods : { type : 'hidden' },
+            mods : { type : 'hidden', message : 'text' },
             name : 'hidden',
-            val :  'value'
+            val : 'value'
         })).appendTo('body')).bem('form-field');
     });
 
