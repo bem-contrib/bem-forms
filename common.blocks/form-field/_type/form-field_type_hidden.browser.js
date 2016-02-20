@@ -10,12 +10,11 @@ provide(FormField.decl({ modName : 'type', modVal : 'hidden' }, {
     },
 
     setVal : function(val) {
-        this.params.value = val;
         this.getControl().val(val);
     },
 
     getVal : function() {
-        return this.params.value || '';
+        return this.getControl().val();
     },
 
     getControl : function() {

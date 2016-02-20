@@ -31,6 +31,7 @@ FormField.decl({ block : this.name, modName : 'type' }, /** @lends form-field.pr
      * @protected
      * @returns {BEM}
      */
+    // TODO: move to base Class
     getControl : function() {
         return this._control || (this._control = this.findBlockInside(this.getMod('type')));
     },

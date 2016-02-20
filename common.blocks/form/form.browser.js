@@ -55,7 +55,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @returns {Object}
      */
     getFieldByName : function(name) {
-        console.warn('Method `getFieldByName` work only with simple names or with camelCase names');
+        console.warn('Method `getFieldByName` work only with simple names or with camelCase names'); // jshint ignore:line
         return this.findBlockInside({ block : 'form-field', modName : 'name', modVal : name });
     },
     /**
@@ -180,7 +180,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             st = fieldsStatuses;
         }
 
-        this.toggleMod('invalid', true, st);
+        this.toggleMod('invalid', true, !st);
         this.setMessageVal(st);
         this._status = st;
 
