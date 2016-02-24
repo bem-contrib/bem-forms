@@ -1,5 +1,5 @@
 modules.define('spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'form', 'form-field'],
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'form', 'form-field', 'input'],
     function(provide, BEMDOM, $, BEMHTML) {
 
 describe('form', function() {
