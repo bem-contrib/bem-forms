@@ -18,7 +18,7 @@ FormField.decl(this.name, /** @lends form-field.prototype */{
             '' : function() {
                 this.__base.apply(this, arguments);
 
-                this.getMessage().hide();
+                this.getMessage() && this.getMessage().hide();
             }
         }
     },
@@ -28,7 +28,7 @@ FormField.decl(this.name, /** @lends form-field.prototype */{
      */
     validate : function() {
         return this.__base.apply(this, arguments).then(function(error) {
-            error && console.warn(error);
+            error && console.warn(error); // jshint ignore:line
             return error;
         });
     }

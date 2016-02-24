@@ -11,9 +11,9 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
-                !this.hasMod('name') && console.warn('Name required for form-field', this);
-                !this.hasMod('message') && console.warn('Message modifier required for form-field', this);
+                !this.getControl() && console.warn('Control required for form-field', this); // jshint ignore:line
+                !this.hasMod('type') && console.warn('Type modifier required for form-field', this); // jshint ignore:line
+                !this.hasMod('name') && console.warn('Name required for form-field', this); // jshint ignore:line
 
                 this._messages = {};
 
@@ -27,6 +27,74 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
             this.findBlockInside('label').setMod(modName, modVal);
             this.getControl().setMod(modName, modVal);
         }
+    },
+    /**
+     * Returns control of field
+     * @protected
+     * @returns {BEM}
+     */
+    getControl : function() {
+        return this._control || (this._control = this.findBlockInside(this.getMod('type')));
+    },
+    /**
+     * Returns field value
+     * @returns {String}
+     */
+    getVal : function() {
+        return this.getControl().getVal();
+    },
+    /**
+     * Sets value
+     * @param {*|String} val устанавливаемое значение
+     * @param {Boolean} emitEvent
+     */
+    setVal : function(val, emitEvent) {
+        emitEvent && this.emit('change', {
+            field : this.getName() || this.getId(),
+            val : val
+        });
+        this.getControl().setVal(val);
+    },
+    /**
+     * Control changed
+     * @protected
+     */
+    _onControlChange : function(e, data) {
+        /**
+         * Input data change event
+         *
+         * @event FormField#change
+         * @type {Object}
+         */
+        this.emit('change', data);
+    },
+    /**
+     * Control focused
+     * @protected
+     */
+    _onControlFocus : function(e, data) {
+        this.setMod('focused', true);
+        /**
+         * Input focus event
+         *
+         * @event FormField#focus
+         * @type {Object}
+         */
+        this.emit('focus', data);
+    },
+    /**
+     * Control unfocused
+     * @protected
+     */
+    _onControlBlur : function(e, data) {
+        this.delMod('focused');
+        /**
+         * Input blur event
+         *
+         * @event FormField#blur
+         * @type {Object}
+         */
+        this.emit('blur', data);
     },
     /**
      * Returns field name
@@ -43,25 +111,6 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
      */
     getId : function() {
         return this.params.id;
-    },
-    /**
-     * Returns field value
-     * @returns {String}
-     * @abstract
-     */
-    getVal : function() {
-        return '';
-    },
-    /**
-     * Sets value
-     * @param {String} val
-     * @param {Boolean} emitEvent
-     */
-    setVal : function(val, emitEvent) {
-        emitEvent && this.emit('change', {
-            field : this.getName() || this.getId(),
-            val : val
-        });
     },
     /**
      * Get form-field validator instance
@@ -151,17 +200,13 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
         }.bind(this));
     },
     /**
-     * Update statuses on form-field and elements: control, message
+     * Update statuses on form-field and elements: control
      *
      * @protected
      */
     _updateStatus : function(status) {
-        var st = status === null? status : status.message;
-        this.toggleMod('invalid', true, Boolean(st));
-        this.getControl().toggleMod('invalid', true, Boolean(st));
-        this.getMessage().toggleMod('invalid', true, Boolean(st));
-
-        this.setMessageVal(st);
+        this.toggleMod('invalid', true, Boolean(status));
+        this.getControl().toggleMod('invalid', true, Boolean(status));
         this._status = status;
     }
 }, /** @lends form-field */{

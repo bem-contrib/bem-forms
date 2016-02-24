@@ -5,6 +5,15 @@
     scripts : [{ elem : 'js', url : 'index.min.js' }],
     content : [
         {
+            block : 'form',
+            mix : { block : 'test', js : true },
+            content : {
+                block : 'button',
+                mods : { theme : 'islands', size : 'l', type : 'submit' },
+                text : 'init'
+            }
+        },
+        {
             block : 'app',
             js : true,
             content : [
