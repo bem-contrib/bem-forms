@@ -52,7 +52,7 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
 
         var status = this._status;
         this.getMessage().toggleMod('invalid', true, Boolean(status));
-        if(status.message) this.setMessageVal(status.message);
+        if(status && status.message) this.setMessageVal(status.message);
     }
 });
 

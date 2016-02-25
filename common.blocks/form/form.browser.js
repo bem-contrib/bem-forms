@@ -181,10 +181,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         }
 
         this.toggleMod('invalid', true, !st);
-        this.setMessageVal(st);
         this._status = st;
-
-        return this._status;
     },
 
     checkFields : function (fieldsStatuses) {

@@ -36,7 +36,20 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
         this.getMessage().setVal(val);
         this.emit('message-change');
         return this;
-    }
+    },
+
+    _updateStatus : function(fieldsStatuses) {
+        this.__base.apply(this, arguments);
+
+        if(!this.hasMod('message')) {
+            console.warn('Message modifier required for form', this); // jshint ignore:line
+            return;
+        }
+
+        var status = this._status;
+        this.getMessage().toggleMod('invalid', true, Boolean(status));
+        if(status && status.message) this.setMessageVal(status.message);
+    },
 });
 
 provide(Form);
