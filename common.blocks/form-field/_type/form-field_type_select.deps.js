@@ -1,5 +1,6 @@
 ({
-    shouldDeps : [
-        { block : 'select' }
-    ]
+    shouldDeps : {
+        block : 'select',
+        mods : { invalid : true, dirty : true }
+    }
 })

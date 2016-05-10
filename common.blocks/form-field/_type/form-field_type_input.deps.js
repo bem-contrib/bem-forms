@@ -1,3 +1,6 @@
 ({
-    shouldDeps : 'input'
+    shouldDeps : {
+        block : 'input',
+        mods : { invalid : true, dirty : true }
+    }
 })
