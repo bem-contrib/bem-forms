@@ -8,9 +8,8 @@ module.exports = function(bh) {
 
         _form_field.id = _form_field.id || ctx.generateId();
 
-        _form_field.mods.name = _form_field.name;
-
         ctx.tParam('_form_field', _form_field);
+        ctx.attr('data-name', _form_field.name);
 
     });
 

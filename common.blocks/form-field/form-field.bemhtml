@@ -6,9 +6,8 @@ block('form-field')(
         var _form_field = this.ctx;
         _form_field.id = _form_field.id || this.generateId();
 
-        _form_field.mods.name = _form_field.name;
-
         return applyNext({ _form_field : _form_field });
-    })
+    }),
+    attrs()({ 'data-name' : this.ctx.name })
 
 );
