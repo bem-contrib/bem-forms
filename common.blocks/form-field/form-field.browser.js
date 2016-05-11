@@ -15,7 +15,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
                 this.__base.apply(this, arguments);
 
                 !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
-                !this.hasMod('name') && console.warn('Name required for form-field', this);
+                !this.getName() && console.warn('Name required for form-field', this);
             }
         }
     },
@@ -25,7 +25,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
      * @public
      */
     getName : function() {
-        return this.getMod('name');
+        return this.domElem.attr('data-name');
     },
 
     /**
