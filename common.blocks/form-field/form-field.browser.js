@@ -13,18 +13,13 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
             'inited' : function() {
                 !this.getControl() && console.warn('Control required for form-field', this); // jshint ignore:line
                 !this.hasMod('type') && console.warn('Type modifier required for form-field', this); // jshint ignore:line
-                !this.hasMod('name') && console.warn('Name required for form-field', this); // jshint ignore:line
+                !this.getName() && console.warn('Name required for form-field', this); // jshint ignore:line
 
                 this._messages = {};
 
-<<<<<<< HEAD
                 this.requireDirty();
                 this._initVal = this.getVal();
                 this._status = this.getStatus();
-=======
-                !this.hasMod('type') && console.warn('Type modifier required for form-field', this);
-                !this.getName() && console.warn('Name required for form-field', this);
->>>>>>> 6c46745... Merge pull request #183 from kompolom/173@move-form-field-name
             }
         },
 
