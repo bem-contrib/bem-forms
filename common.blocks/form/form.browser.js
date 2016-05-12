@@ -55,13 +55,8 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @returns {Object}
      */
     getFieldByName : function(name) {
-<<<<<<< HEAD
-        console.warn('Method `getFieldByName` work only with simple names or with camelCase names'); // jshint ignore:line
-        return this.findBlockInside({ block : 'form-field', modName : 'name', modVal : name });
-=======
         var needleDom = this.domElem.find('[data-name=' + name + ']');
         return this.findBlockOn(needleDom, { block : 'form-field' });
->>>>>>> 6c46745... Merge pull request #183 from kompolom/173@move-form-field-name
     },
     /**
      * Returns serialized form data
