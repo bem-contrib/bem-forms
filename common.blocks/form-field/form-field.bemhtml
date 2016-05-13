@@ -8,6 +8,8 @@ block('form-field')(
 
         return applyNext({ _form_field : _form_field });
     }),
-    attrs()({ 'data-name' : this.ctx.name })
+    attrs()(function(){
+        return { 'data-name' : this.ctx.name };
+    })
 
 );
