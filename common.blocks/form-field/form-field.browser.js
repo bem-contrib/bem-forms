@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['i-bem-dom', 'validation', 'label'],
-    function(provide, bemDom, Validation, Label) {
+    ['i-bem', 'i-bem-dom', 'validation', 'label'],
+    function(provide, bem, bemDom, Validation, Label) {
 /**
  * Field block
  */
@@ -28,13 +28,15 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
             this.getControl().setMod(modName, modVal);
         }
     },
+
     /**
      * Returns control of field
      * @protected
      * @returns {BEM}
      */
     getControl : function() {
-        return this._control || (this._control = this.findChildBlock(this.getMod('type')));
+        var control = bem.entities[this.getMod('type')];
+        return this._control || (this._control = this.findChildBlock(control));
     },
     /**
      * Returns field value
