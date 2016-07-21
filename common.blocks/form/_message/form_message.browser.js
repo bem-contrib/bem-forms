@@ -10,14 +10,14 @@ modules.define('form', ['message'],
  * @class form
  * @bem
  */
-Form.declMod({ block : this.name, modName : 'message' }, /** @lends form.prototype */{
+Form.declMod({ block : this.name, modName : 'message', modVal : '*' }, /** @lends form.prototype */{
     /**
      * Return instance of message block
      * @protected
      * @abstract
      */
     getMessage : function() {
-        return this._message || (this._message = this.findMixedBlock(Message));
+        return this._message || (this._message = this.findChildElem('message').findMixedBlock(Message));
     },
     /**
      * Return message value
