@@ -11,8 +11,9 @@ modules.define('form-field', ['textarea'],
  * @bem
  */
 FormField.declMod({ block : this.name, modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
+    lazyInit : true,
 
-    live : function() {
+    onInit : function() {
         var ptp = this.prototype;
         ptp._controls['textarea'] = Textarea;
 
