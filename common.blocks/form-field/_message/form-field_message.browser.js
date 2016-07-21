@@ -17,7 +17,7 @@ FormField.declMod({ block : this.name, modName : 'message', modVal: '*' }, /** @
      * @abstract
      */
     getMessage : function() {
-        return this._message || (this._message = this.findMixedBlock(Message));
+        return this._message || (this._message = this.findChildElem('message').findMixedBlock(Message));
     },
     /**
      * Return message value
