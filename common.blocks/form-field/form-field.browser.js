@@ -175,7 +175,7 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
      * Require dirty mechanic
      */
     requireDirty : function () {
-        this.on('blur', function() {
+        this._events().on('blur', function() {
             this._dirty = this._dirty || (this.getVal() !== this._initVal);
             this.toggleMod('dirty', true, this._dirty);
             this._dirty && this.validate();

@@ -38,7 +38,7 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
      */
     _bindToFields : function(eventName, fn) {
         this.getFields().forEach(function(field) {
-            field.on(eventName, fn, this);
+            field._events().on(eventName, fn, this);
         }.bind(this));
     },
     /**
