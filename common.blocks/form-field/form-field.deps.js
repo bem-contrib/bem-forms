@@ -4,6 +4,7 @@
     ],
     shouldDeps : [
         { block : 'validation' },
+        { block : 'label' },
         { block : 'vow' }
     ]
 }, {

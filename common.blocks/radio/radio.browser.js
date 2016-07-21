@@ -1,19 +1,19 @@
-modules.define('radio',
-    function(provide, Radio) {
+modules.define('radio', ['i-bem-dom'],
+    function(provide, bemDom, Radio) {
 /**
  * @exports
  * @class radio
  * @augments control
  * @bem
  */
-provide(Radio.decl({
+provide(bemDom.declBlock(Radio, {
     /**
      * Emit change event
      * @private
      */
     _onChange : function() {
         this.__base.apply(this, arguments);
-        this.emit('change');
+        this._emit('change');
     }
 }));
 

@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['checkbox-group'],
+    function(provide, CheckboxGroup, FormField) {
 /**
  * Checkbox-group field
  *
@@ -10,16 +10,17 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox-group' }, {}, /** @lends form-field_type_checkbox */{
+FormField.declMod({ block : this.name, modName : 'type', modVal : 'checkbox-group' }, {}, /** @lends form-field_type_checkbox */{
+    lazyInit : true,
 
-    live : function() {
+    onInit : function() {
         var ptp = this.prototype;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent('change', 'checkbox-group', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'checkbox-group', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'checkbox-group', ptp._onControlBlur);
+        this._events(CheckboxGroup)
+            .on('change', ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

@@ -34,7 +34,7 @@
     "bundles"
   ],
   "dependencies": {
-    "bem-components": "2.4.0"
+    "bem-components": "git://github.com/bem/bem-components.git#v5"
   },
   "devDependencies": {
     "bem-pr": "~0.10.0"

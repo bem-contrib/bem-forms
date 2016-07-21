@@ -1,13 +1,13 @@
 modules.define('spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'form-field'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['i-bem-dom', 'jquery', 'BEMHTML', 'form-field'],
+    function(provide, bemDom, $, BEMHTML) {
 
 describe('form-field_type_hidden', function() {
 
     var formField;
 
     beforeEach(function() {
-        formField = BEMDOM.init($(BEMHTML.apply({
+        formField = bemDom.init($(BEMHTML.apply({
             block : 'form-field',
             mods : { type : 'hidden', message : 'text' },
             name : 'hidden',
@@ -16,7 +16,7 @@ describe('form-field_type_hidden', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(formField.domElem);
+        bemDom.destruct(formField.domElem);
     });
 
     it('should return value on getVal', function() {

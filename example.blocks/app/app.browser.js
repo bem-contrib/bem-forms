@@ -2,19 +2,20 @@
  * @module app
  */
 modules.define('app',
-    ['i-bem__dom'],
-    function(provide, BEMDOM) {
+    ['i-bem-dom', 'form'],
+    function(provide, bemDom, Form) {
 /**
  * app block
  */
-provide(BEMDOM.decl(this.name, /** @lends app.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends app.prototype */{
 
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._form = this.findBlockInside('form');
-
-                this._form.on('submit', function(e, val) {
+                this._form = this.findChildBlock(Form);
+                // todo
+                this._form._events().on('submit', function () {console.log('submit')});
+                this._form._domEvents().on('submit', function(e, val) {
                     this._form.validate()
                         .then(function (fieldsStatuses) {
                             if(this._form.checkFields(fieldsStatuses)) {

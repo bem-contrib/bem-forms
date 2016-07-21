@@ -9,7 +9,7 @@ modules.define('form',
  * @class form
  * @bem
  */
-Form.decl({ block : this.name, modName : 'message', modVal : 'popup' }, /** @lends form.prototype */{
+Form.declMod({ block : this.name, modName : 'message', modVal : 'popup' }, /** @lends form.prototype */{
 
     onSetMod : {
         'js' : {

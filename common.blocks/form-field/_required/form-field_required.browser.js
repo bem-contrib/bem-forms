@@ -10,7 +10,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ modName : 'required', modVal : true }, /** @lends form-field.prototype */{
+FormField.declMod({ modName : 'required', modVal : true }, /** @lends form-field.prototype */{
 
     onSetMod : {
         'js' : {

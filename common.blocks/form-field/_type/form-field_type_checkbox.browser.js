@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['checkbox'],
+    function(provide, Checkbox, FormField) {
 /**
  * Checkbox field
  *
@@ -10,7 +10,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
+FormField.declMod({ block : this.name, modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
     /**
      * Returns field value if checked or empty string (?)
      * @returns {String}
@@ -34,17 +34,19 @@ FormField.decl({ block : this.name, modName : 'type', modVal : 'checkbox' }, /**
          * @event FormField#change
          * @type {Object}
          */
-        this.emit('change', data);
+        this._emit('change', data);
     }
 }, /** @lends form-field_type_checkbox */{
-    live : function() {
+    lazyInit : true,
+
+    onInit : function() {
         var ptp = this.prototype;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : '*' }, 'checkbox', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'checkbox', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'checkbox', ptp._onControlBlur);
+        this._events(Checkbox)
+            .on({ modName : 'checked', modVal : '*' }, ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

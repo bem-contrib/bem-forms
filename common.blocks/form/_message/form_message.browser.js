@@ -1,8 +1,8 @@
 /**
  * @module form
  */
-modules.define('form',
-    function(provide, Form) {
+modules.define('form', ['message'],
+    function(provide, Message, Form) {
 /**
  * Base form__message class
  *
@@ -10,14 +10,14 @@ modules.define('form',
  * @class form
  * @bem
  */
-Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype */{
+Form.declMod({ block : this.name, modName : 'message' }, /** @lends form.prototype */{
     /**
      * Return instance of message block
      * @protected
      * @abstract
      */
     getMessage : function() {
-        return this._message || (this._message = this.findBlockOn('message', 'message'));
+        return this._message || (this._message = this.findMixedBlock(Message));
     },
     /**
      * Return message value
@@ -34,7 +34,7 @@ Form.decl({ block : this.name, modName : 'message' }, /** @lends form.prototype 
      */
     setMessageVal : function(val) {
         this.getMessage().setVal(val);
-        this.emit('message-change');
+        this._emit('message-change');
         return this;
     },
 

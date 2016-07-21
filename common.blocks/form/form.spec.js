@@ -1,23 +1,23 @@
 modules.define('spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'form', 'form-field', 'input'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['i-bem-dom', 'jquery', 'BEMHTML', 'form', 'form-field', 'input'],
+    function(provide, bemDom, $, BEMHTML) {
 
 describe('form', function() {
 
     var form;
 
     beforeEach(function() {
-        form = BEMDOM.init($(BEMHTML.apply({
+        form = bemDom.init($(BEMHTML.apply({
             block : 'form'
         })).appendTo('body')).bem('form');
     });
 
     afterEach(function() {
-        BEMDOM.destruct(form.domElem);
+        bemDom.destruct(form.domElem);
     });
 
     it('should find form-field by name', function() {
-        BEMDOM.append(form.domElem, BEMHTML.apply({
+        bemDom.append(form.domElem, BEMHTML.apply({
             block : 'form-field',
             name : 'firstName',
             mods : { type : 'input' },

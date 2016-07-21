@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['textarea'],
+    function(provide, Textarea, FormField) {
 /**
  * Textarea field
  *
@@ -10,16 +10,16 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
+FormField.declMod({ block : this.name, modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
 
     live : function() {
         var ptp = this.prototype;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent('change', 'textarea', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'textarea', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'textarea', ptp._onControlBlur);
+        this._events(Textarea)
+            .on('change', ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

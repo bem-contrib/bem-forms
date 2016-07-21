@@ -1,12 +1,12 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['i-bem-dom'],
+    function(provide, bemDom, FormField) {
 /**
  * Field block
  */
-FormField.decl(this.name, /** @lends form-field.prototype */{
+provide(bemDom.declBlock(FormField, /** @lends form-field.prototype */{
 
     onSetMod : {
         'focused' : {
@@ -32,8 +32,6 @@ FormField.decl(this.name, /** @lends form-field.prototype */{
             return error;
         });
     }
-});
-
-provide(FormField);
+}));
 
 });

@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['input'],
+    function(provide, Input, FormField) {
 /**
  * Input field
  *
@@ -10,16 +10,17 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
+FormField.declMod({ block : this.name, modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
+    lazyInit : true,
 
-    live : function() {
+    onInit : function() {
         var ptp = this.prototype;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent('change', 'input', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'input', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'input', ptp._onControlBlur);
+        this._events(Input)
+            .on('change', ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

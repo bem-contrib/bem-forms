@@ -1,8 +1,8 @@
 /**
  * @module message
  */
-modules.define('message',
-    function(provide, Message) {
+modules.define('message', ['popup'],
+    function(provide, Popup, Message) {
 /**
  * Message type popup
  *
@@ -10,7 +10,7 @@ modules.define('message',
  * @class message
  * @bem
  */
-Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
+Message.declMod({ block : this.name, modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
 
     onSetMod : {
         'js' : {
@@ -34,7 +34,7 @@ Message.decl({ block : this.name, modName : 'type', modVal : 'popup' }, /** @len
      * @returns {BEM}
      */
     getPopup : function() {
-        return this._popup || (this._popup = this.findBlockInside('popup'));
+        return this._popup || (this._popup = this.findChildBlock(Popup));
     },
     /**
      * Returns message val

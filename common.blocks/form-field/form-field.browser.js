@@ -2,12 +2,12 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['i-bem__dom', 'validation'],
-    function(provide, BEMDOM, Validation) {
+    ['i-bem-dom', 'validation', 'label'],
+    function(provide, bemDom, Validation, Label) {
 /**
  * Field block
  */
-provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -24,7 +24,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
         },
 
         'disabled' : function(modName, modVal) {
-            this.findBlockInside('label').setMod(modName, modVal);
+            this.findChildBlock(Label).setMod(modName, modVal);
             this.getControl().setMod(modName, modVal);
         }
     },
@@ -34,7 +34,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
      * @returns {BEM}
      */
     getControl : function() {
-        return this._control || (this._control = this.findBlockInside(this.getMod('type')));
+        return this._control || (this._control = this.findChildBlock(this.getMod('type')));
     },
     /**
      * Returns field value
@@ -49,7 +49,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
      * @param {Boolean} emitEvent
      */
     setVal : function(val, emitEvent) {
-        emitEvent && this.emit('change', {
+        emitEvent && this._emit('change', {
             field : this.getName() || this.getId(),
             val : val
         });
@@ -66,7 +66,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
          * @event FormField#change
          * @type {Object}
          */
-        this.emit('change', data);
+        this._emit('change', data);
     },
     /**
      * Control focused
@@ -80,7 +80,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
          * @event FormField#focus
          * @type {Object}
          */
-        this.emit('focus', data);
+        this._emit('focus', data);
     },
     /**
      * Control unfocused
@@ -94,7 +94,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
          * @event FormField#blur
          * @type {Object}
          */
-        this.emit('blur', data);
+        this._emit('blur', data);
     },
     /**
      * Returns field name
@@ -210,7 +210,7 @@ provide(BEMDOM.decl(this.name, /** @lends form-field.prototype */{
         this._status = status;
     }
 }, /** @lends form-field */{
-    live : true
+    lazyInit : true
 }));
 
 });
