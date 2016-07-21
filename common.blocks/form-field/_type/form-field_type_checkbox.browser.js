@@ -41,6 +41,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'checkbox' }, 
 
     onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['checkbox'] = Checkbox;
 
         this.__base();
         this._events(Checkbox)

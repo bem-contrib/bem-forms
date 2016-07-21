@@ -15,6 +15,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'attach' }, {}
 
     onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['attach'] = Attach;
 
         this.__base();
         this._events(Attach)

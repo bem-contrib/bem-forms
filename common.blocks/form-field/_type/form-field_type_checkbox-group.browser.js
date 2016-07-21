@@ -15,6 +15,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'checkbox-grou
 
     onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['checkbox-group'] = CheckboxGroup;
 
         this.__base();
         this._events(CheckboxGroup)

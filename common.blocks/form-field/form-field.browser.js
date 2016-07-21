@@ -30,12 +30,17 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
     },
 
     /**
+     * Controls from form-field_type_*
+     */
+    _controls : {},
+
+    /**
      * Returns control of field
      * @protected
      * @returns {BEM}
      */
     getControl : function() {
-        var control = bem.entities[this.getMod('type')];
+        var control = this._controls[this.getMod('type')];
         return this._control || (this._control = this.findChildBlock(control));
     },
     /**

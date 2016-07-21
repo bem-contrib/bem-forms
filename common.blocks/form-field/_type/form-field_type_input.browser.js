@@ -15,6 +15,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'input' }, {},
 
     onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['input'] = Input;
 
         this.__base();
         this._events(Input)

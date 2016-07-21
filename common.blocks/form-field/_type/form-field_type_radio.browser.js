@@ -15,6 +15,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'radio' }, {},
 
     onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['radio'] = Radio;
 
         this.__base();
         this._events(Radio)

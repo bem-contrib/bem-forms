@@ -14,6 +14,7 @@ FormField.declMod({ block : this.name, modName : 'type', modVal : 'textarea' }, 
 
     live : function() {
         var ptp = this.prototype;
+        ptp._controls['textarea'] = Textarea;
 
         this.__base();
         this._events(Textarea)
