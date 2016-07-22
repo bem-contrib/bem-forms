@@ -11,7 +11,7 @@ describe('form-field', function() {
     beforeEach(function() {
         formField = bemDom.init($(BEMHTML.apply({
             block : 'form-field'
-        })).appendTo('body')).bem('form-field');
+        })).appendTo('body')).bem(FormField);
     });
 
     afterEach(function() {

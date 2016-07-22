@@ -12,7 +12,7 @@ describe('message_type_popup', function() {
         message = bemDom.init($(BEMHTML.apply({
             block : 'message',
             mods : { type : 'popup' }
-        })).appendTo('body')).bem('message');
+        })).appendTo('body')).bem(Message);
     });
 
     afterEach(function() {

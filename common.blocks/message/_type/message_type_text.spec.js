@@ -12,7 +12,7 @@ describe('message_type_text', function() {
         message = bemDom.init($(BEMHTML.apply({
             block : 'message',
             mods : { type : 'text' }
-        })).appendTo('body')).bem('message');
+        })).appendTo('body')).bem(Message);
     });
 
     afterEach(function() {

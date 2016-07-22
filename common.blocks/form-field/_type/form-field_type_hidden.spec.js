@@ -1,6 +1,6 @@
 modules.define('spec',
     ['i-bem-dom', 'jquery', 'BEMHTML', 'form-field'],
-    function(provide, bemDom, $, BEMHTML) {
+    function(provide, bemDom, $, BEMHTML, FormField) {
 
 describe('form-field_type_hidden', function() {
 
@@ -12,7 +12,7 @@ describe('form-field_type_hidden', function() {
             mods : { type : 'hidden', message : 'text' },
             name : 'hidden',
             val : 'value'
-        })).appendTo('body')).bem('form-field');
+        })).appendTo('body')).bem(FormField);
     });
 
     afterEach(function() {

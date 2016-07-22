@@ -1,6 +1,6 @@
 modules.define('spec',
     ['i-bem-dom', 'jquery', 'BEMHTML', 'form', 'form-field', 'input'],
-    function(provide, bemDom, $, BEMHTML) {
+    function(provide, bemDom, $, BEMHTML, Form) {
 
 describe('form', function() {
 
@@ -9,7 +9,7 @@ describe('form', function() {
     beforeEach(function() {
         form = bemDom.init($(BEMHTML.apply({
             block : 'form'
-        })).appendTo('body')).bem('form');
+        })).appendTo('body')).bem(Form);
     });
 
     afterEach(function() {
