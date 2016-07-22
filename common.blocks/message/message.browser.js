@@ -2,12 +2,12 @@
  * @module message
  */
 modules.define('message',
-    ['i-bem__dom'],
-    function(provide, BEMDOM) {
+    ['i-bem-dom'],
+    function(provide, bemDom) {
 /**
  * Message block
  */
-provide(BEMDOM.decl(this.name, /** @lends message.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends message.prototype */{
 
     onSetMod : {
         'js' : {

@@ -1,6 +1,6 @@
 modules.define('spec',
-    ['message', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai', 'popup'],
-    function(provide, Message, BEMDOM, $, BEMHTML, chai, Popup) {
+    ['message', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai', 'popup'],
+    function(provide, Message, bemDom, $, BEMHTML, chai, Popup) {
 
 var expect = chai.expect;
 
@@ -9,14 +9,14 @@ describe('message_type_popup', function() {
     var message;
 
     beforeEach(function() {
-        message = BEMDOM.init($(BEMHTML.apply({
+        message = bemDom.init($(BEMHTML.apply({
             block : 'message',
             mods : { type : 'popup' }
-        })).appendTo('body')).bem('message');
+        })).appendTo('body')).bem(Message);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(message.domElem);
+        bemDom.destruct(message.domElem);
     });
 
     it('should set val to the popup', function() {

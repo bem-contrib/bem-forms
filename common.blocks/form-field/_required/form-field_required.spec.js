@@ -1,6 +1,6 @@
 modules.define('spec',
-    ['form-field', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, FormField, BEMDOM, $, BEMHTML, chai) {
+    ['form-field', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, FormField, bemDom, $, BEMHTML, chai) {
 
 var expect = chai.expect;
 
@@ -9,7 +9,7 @@ describe('form-field_required', function() {
     var formField;
 
     afterEach(function() {
-        BEMDOM.destruct(formField.domElem);
+        bemDom.destruct(formField.domElem);
     });
 
     // formField = buildFormField('hidden')
@@ -50,7 +50,7 @@ describe('form-field_required', function() {
 });
 
 function buildFormField(type, control) {
-    return BEMDOM.init($(BEMHTML.apply({
+    return bemDom.init($(BEMHTML.apply({
         block : 'form-field',
         mods : { type : type, required : true },
         content : control

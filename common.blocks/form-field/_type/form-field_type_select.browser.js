@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['select'],
+    function(provide, Select, FormField) {
 /**
  * Select field
  *
@@ -10,16 +10,18 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
+FormField.declMod({ modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
+    lazyInit : true,
 
-    live : function() {
+    onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['select'] = Select;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent('change', 'select', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'select', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'select', ptp._onControlBlur);
+        this._events(Select)
+            .on('change', ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

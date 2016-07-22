@@ -2,12 +2,12 @@
  * @module form
  */
 modules.define('form',
-    ['i-bem__dom', 'objects', 'vow'],
-    function(provide, BEMDOM, objects, Vow) {
+    ['i-bem-dom', 'objects', 'form-field', 'button', 'vow'],
+    function(provide, bemDom, objects, FormField, Button, Vow) {
 /**
  * Form declaration
  */
-provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -30,7 +30,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
             field.setMod(modName, modVal);
         });
 
-        var btn = this.findBlockInside({ block : 'button', modName : 'type', modVal : 'submit' });
+        var btn = this.findChildBlock({ block : Button, modName : 'type', modVal : 'submit' });
         btn && btn.setMod(modName, modVal);
     },
     /**
@@ -38,7 +38,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      */
     _bindToFields : function(eventName, fn) {
         this.getFields().forEach(function(field) {
-            field.on(eventName, fn, this);
+            field._events().on(eventName, fn, this);
         }.bind(this));
     },
     /**
@@ -46,7 +46,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @type {Array}
      */
     getFields : function() {
-        return this.findBlocksInside('form-field');
+        return this.findChildBlocks(FormField);
     },
     /**
      * Returns field by name
@@ -55,8 +55,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @returns {Object}
      */
     getFieldByName : function(name) {
-        var needleDom = this.domElem.find('[data-name=' + name + ']');
-        return this.findBlockOn(needleDom, { block : 'form-field' });
+        return this.domElem.find('[data-name=' + name + ']').bem(FormField);
     },
     /**
      * Returns serialized form data
@@ -81,7 +80,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         });
 
         this.nextTick(function() {
-            if(!objects.isEmpty(storage)) this.emit('change', storage);
+            if(!objects.isEmpty(storage)) this._emit('change', storage);
             this._changeStorage = null;
         });
     },
@@ -92,7 +91,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @param {Event} event
      */
     _onFieldChange : function() {
-        this.emit('change', this.getVal());
+        this._emit('change', this.getVal());
     },
     /**
      * Field focus event handler
@@ -101,7 +100,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @param {Event} event
      */
     _onFieldFocus : function() {
-        this.emit('focus', this.getVal());
+        this._emit('focus', this.getVal());
     },
     /**
      * onSubmit event handler
@@ -111,7 +110,7 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      */
     _onSubmit : function(e) {
         e.preventDefault();
-        this.emit('submit', this.getVal());
+        this._emit('submit', this.getVal());
     },
     /**
      * Get all invalid form-fields
@@ -195,12 +194,14 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
         return st;
     }
 }, /** @lends form */{
-    live : function() {
+    lazyInit : true,
+
+    onInit : function() {
         var ptp = this.prototype;
-        this
-            .liveBindTo('submit', ptp._onSubmit)
-            .liveInitOnBlockInsideEvent('change', 'form-field', ptp._onFieldChange)
-            .liveInitOnBlockInsideEvent('focus', 'form-field', ptp._onFieldFocus);
+        this._domEvents().on('submit', ptp._onSubmit);
+        this._events(FormField)
+            .on('change', ptp._onFieldChange)
+            .on('focus', ptp._onFieldFocus);
     }
 }));
 

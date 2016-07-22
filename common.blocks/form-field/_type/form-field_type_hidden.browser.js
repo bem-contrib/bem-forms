@@ -1,7 +1,7 @@
 modules.define('form-field',
     function(provide, FormField) {
 
-provide(FormField.decl({ modName : 'type', modVal : 'hidden' }, {
+provide(FormField.declMod({ modName : 'type', modVal : 'hidden' }, {
 
     onSetMod : {
         'disabled' : function(modName, modVal) {

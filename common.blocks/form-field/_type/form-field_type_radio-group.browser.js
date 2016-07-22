@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['radio-group'],
+    function(provide, RadioGroup, FormField) {
 /**
  * Radio-group field
  *
@@ -10,16 +10,18 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
+FormField.declMod({ modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
+    lazyInit : true,
 
-    live : function() {
+    onInit : function() {
         var ptp = this.prototype;
+        ptp._controls['radio-group'] = RadioGroup;
 
         this.__base();
-        this
-            .liveInitOnBlockInsideEvent('change', 'radio-group', ptp._onControlChange)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : true }, 'radio-group', ptp._onControlFocus)
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '' }, 'radio-group', ptp._onControlBlur);
+        this._events(RadioGroup)
+            .on('change', ptp._onControlChange)
+            .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
+            .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
 });
 

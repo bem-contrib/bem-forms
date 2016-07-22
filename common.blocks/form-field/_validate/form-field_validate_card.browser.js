@@ -10,7 +10,7 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ modName : 'validate', modVal : 'card' }, /** @lends form-field.prototype */{
+FormField.declMod({ modName : 'validate', modVal : 'card' }, /** @lends form-field.prototype */{
 
     onSetMod : {
         'js' : {
