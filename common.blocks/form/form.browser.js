@@ -2,8 +2,8 @@
  * @module form
  */
 modules.define('form',
-    ['i-bem-dom', 'objects', 'form-field', 'vow'],
-    function(provide, bemDom, objects, FormField, Vow) {
+    ['i-bem-dom', 'objects', 'form-field', 'button', 'vow'],
+    function(provide, bemDom, objects, FormField, Button, Vow) {
 /**
  * Form declaration
  */
@@ -30,7 +30,7 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
             field.setMod(modName, modVal);
         });
 
-        var btn = this.findChildBlock({ block : 'button', modName : 'type', modVal : 'submit' });
+        var btn = this.findChildBlock({ block : Button, modName : 'type', modVal : 'submit' });
         btn && btn.setMod(modName, modVal);
     },
     /**
