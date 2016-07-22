@@ -55,9 +55,7 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
      * @returns {Object}
      */
     getFieldByName : function(name) {
-        var needleDom = this.domElem.find('[data-name=' + name + ']');
-        // return this.findMixedBlock(needleDom, { block : 'form-field' });
-        return this.findMixedBlock({ block : 'form-field' });
+        return this.domElem.find('[data-name=' + name + ']').bem(FormField);
     },
     /**
      * Returns serialized form data
