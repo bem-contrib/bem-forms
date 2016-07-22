@@ -1,6 +1,6 @@
 ([{
     mustDeps : [
-        { block : 'i-bem', elem : 'dom' }
+        { block : 'i-bem-dom' }
     ],
     shouldDeps : [
         { block : 'objects' },
@@ -13,13 +13,13 @@
     tech : 'spec.js',
     mustDeps : [
         { tech : 'js', block : 'i-bem' },
-        { tech : 'js', block : 'i-bem', elem : 'dom' },
+        { tech : 'js', block : 'i-bem-dom' },
         { tech : 'js', block : 'form' },
         { tech : 'js', block : 'input' },
         { tech : 'js', block : 'form-field' },
         { tech : 'js', block : 'form-field', mods : { type : 'input' } },
         { tech : 'bemhtml', block : 'i-bem' },
-        { tech : 'bemhtml', block : 'i-bem', elem : 'dom' },
+        { tech : 'bemhtml', block : 'i-bem-dom' },
         { tech : 'bemhtml', block : 'form' },
         { tech : 'bemhtml', block : 'input' },
         { tech : 'bemhtml', block : 'form-field' },
