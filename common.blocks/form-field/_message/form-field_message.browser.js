@@ -10,7 +10,7 @@ modules.define('form-field', ['message'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'message', modVal: '*' }, /** @lends form-field.prototype */{
+FormField.declMod({ modName : 'message', modVal: '*' }, /** @lends form-field.prototype */{
     /**
      * Return instance of message block
      * @public

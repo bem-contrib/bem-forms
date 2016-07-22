@@ -10,7 +10,7 @@ modules.define('form-field', ['checkbox-group'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'checkbox-group' }, {}, /** @lends form-field_type_checkbox */{
+FormField.declMod({ modName : 'type', modVal : 'checkbox-group' }, {}, /** @lends form-field_type_checkbox */{
     lazyInit : true,
 
     onInit : function() {

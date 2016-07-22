@@ -10,7 +10,7 @@ modules.define('form-field', ['attach'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'attach' }, {}, /** @lends form-field_type_attach */{
+FormField.declMod({ modName : 'type', modVal : 'attach' }, {}, /** @lends form-field_type_attach */{
     lazyInit : true,
 
     onInit : function() {

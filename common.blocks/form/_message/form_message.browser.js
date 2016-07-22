@@ -10,7 +10,7 @@ modules.define('form', ['message'],
  * @class form
  * @bem
  */
-Form.declMod({ block : this.name, modName : 'message', modVal : '*' }, /** @lends form.prototype */{
+Form.declMod({ modName : 'message', modVal : '*' }, /** @lends form.prototype */{
     /**
      * Return instance of message block
      * @protected

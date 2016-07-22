@@ -10,7 +10,7 @@ modules.define('form-field', ['radio-group'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
+FormField.declMod({ modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
     lazyInit : true,
 
     onInit : function() {

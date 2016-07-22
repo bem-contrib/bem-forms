@@ -10,7 +10,7 @@ modules.define('form-field', ['select'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
+FormField.declMod({ modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
     lazyInit : true,
 
     onInit : function() {

@@ -10,7 +10,7 @@ modules.define('message', ['popup'],
  * @class message
  * @bem
  */
-Message.declMod({ block : this.name, modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
+Message.declMod({ modName : 'type', modVal : 'popup' }, /** @lends message.prototype */{
 
     onSetMod : {
         'js' : {

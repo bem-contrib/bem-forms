@@ -10,7 +10,7 @@ modules.define('form-field', ['input'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
+FormField.declMod({ modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
     lazyInit : true,
 
     onInit : function() {

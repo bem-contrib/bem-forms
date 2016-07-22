@@ -10,7 +10,7 @@ modules.define('form-field', ['textarea'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ block : this.name, modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
+FormField.declMod({ modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
     lazyInit : true,
 
     onInit : function() {
