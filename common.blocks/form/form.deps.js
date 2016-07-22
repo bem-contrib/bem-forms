@@ -1,6 +1,7 @@
 ([{
     mustDeps : [
-        { block : 'i-bem-dom' }
+        { block : 'i-bem-dom' },
+        { block : 'button' }
     ],
     shouldDeps : [
         { block : 'objects' },
