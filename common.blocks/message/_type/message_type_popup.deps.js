@@ -1,4 +1,4 @@
-({
+[{
     mustDeps : [
         { block : 'i-bem-dom' }
     ],
@@ -16,4 +16,4 @@
         { tech : 'bemhtml', block : 'popup', mods : { target : 'anchor' } },
         { tech : 'js', block : 'popup', mods : { target : 'anchor' } }
     ]
-});
+}];
