@@ -37,6 +37,6 @@
     "bem-components": "git://github.com/bem/bem-components.git#v5"
   },
   "devDependencies": {
-    "bem-pr": "~0.10.0"
+    "bem-pr": "~0.13.0"
   }
 }
