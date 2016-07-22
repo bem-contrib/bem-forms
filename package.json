@@ -28,6 +28,7 @@
     "enb-bemxjst": "^6.4.0",
     "enb-bh": "^1.2.0",
     "enb-borschik": "^2.4.0",
+    "enb-js": "^1.1.0",
     "enb-magic-factory": "^0.5.0",
     "enb-magic-platform": "^0.6.0",
     "enb-modules": "^0.2.0",
