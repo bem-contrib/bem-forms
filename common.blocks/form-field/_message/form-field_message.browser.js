@@ -1,8 +1,8 @@
 /**
  * @module form-field
  */
-modules.define('form-field',
-    function(provide, FormField) {
+modules.define('form-field', ['message'],
+    function(provide, Message, FormField) {
 /**
  * Base form-field__message class
  *
@@ -10,14 +10,14 @@ modules.define('form-field',
  * @class form-field
  * @bem
  */
-FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field.prototype */{
+FormField.declMod({ modName : 'message', modVal: '*' }, /** @lends form-field.prototype */{
     /**
      * Return instance of message block
      * @public
      * @abstract
      */
     getMessage : function() {
-        return this._message || (this._message = this.findBlockOn('message', 'message'));
+        return this._message || (this._message = this.findChildElem('message').findMixedBlock(Message));
     },
     /**
      * Return message value
@@ -34,7 +34,7 @@ FormField.decl({ block : this.name, modName : 'message' }, /** @lends form-field
      */
     setMessageVal : function(val) {
         this.getMessage().setVal(val);
-        this.emit('message-change');
+        this._emit('message-change');
         return this;
     },
     /**

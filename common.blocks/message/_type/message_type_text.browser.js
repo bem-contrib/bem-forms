@@ -10,7 +10,7 @@ modules.define('message',
  * @class message
  * @bem
  */
-Message.decl({ block : this.name, modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
+Message.declMod({ modName : 'type', modVal : 'text' }, /** @lends message.prototype */{
     /**
      * Set message val
      * @protected

@@ -1,19 +1,19 @@
-modules.define('checkbox',
-    function(provide, Checkbox) {
+modules.define('checkbox', ['i-bem-dom'],
+    function(provide, bemDom, Checkbox) {
 /**
  * @exports
  * @class checkbox
  * @augments control
  * @bem
  */
-provide(Checkbox.decl({
+provide(bemDom.declBlock(Checkbox, {
     /**
      * Emit change event
      * @private
      */
     _onChange : function() {
         this.__base.apply(this, arguments);
-        this.emit('change');
+        this._emit('change');
     }
 }));
 

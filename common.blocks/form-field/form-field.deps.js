@@ -1,9 +1,10 @@
 [{
     mustDeps : [
-        { block : 'i-bem', elems : ['dom'] }
+        { block : 'i-bem-dom' }
     ],
     shouldDeps : [
         { block : 'validation' },
+        { block : 'label' },
         { block : 'vow' }
     ]
 }, {

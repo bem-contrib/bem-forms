@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'i-bem', elems : ['dom'] }
+        { block : 'i-bem-dom' }
     ]
 }, {
     tech : 'spec.js',
