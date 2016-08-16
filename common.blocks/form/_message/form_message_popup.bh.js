@@ -5,7 +5,8 @@ module.exports = function(bh) {
             {
                 block : 'message',
                 mods : { type : 'popup', theme : json.mods.theme, size : json.mods.size },
-                mix : { block : json.block, elem : 'message' }
+                mix : { block : json.block, elem : 'message' },
+                directions : json.directions
             },
             ctx.content()
         ], true);
