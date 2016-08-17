@@ -126,7 +126,7 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
             return field.getStatus();
         })).then(function(fieldsStatuses) {
             for(var i = 0, l = fieldsStatuses.length; i < l; i++) {
-                fieldsStatuses[i] !== null && invalid.push(currentFields[i]);
+                fieldsStatuses[i] !== null && invalid.push(currentFields.get(i));
             }
             return invalid;
         });
