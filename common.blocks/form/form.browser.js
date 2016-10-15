@@ -55,8 +55,11 @@ provide(BEMDOM.decl(this.name, /** @lends form.prototype */{
      * @returns {Object}
      */
     getFieldByName : function(name) {
-        var needleDom = this.domElem.find('[data-name=' + name + ']');
-        return this.findBlockOn(needleDom, { block : 'form-field' });
+        var foundFields = this.getFields().filter(function(field) {
+            return field.getName() === name;
+        });
+
+        return foundFields.shift();
     },
     /**
      * Returns serialized form data
