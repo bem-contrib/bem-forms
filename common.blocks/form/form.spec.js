@@ -27,6 +27,17 @@ describe('form', function() {
         form.getFieldByName('firstName').getName().should.be.eq('firstName');
     });
 
+    it('should find form-field by complex name', function() {
+        BEMDOM.append(form.domElem, BEMHTML.apply({
+            block : 'form-field',
+            name : 'Client[name]',
+            mods : { type : 'input' },
+            content : { block : 'input' }
+        }));
+
+        form.getFieldByName('Client[name]').getName().should.be.eq('Client[name]');
+    });
+
 });
 
 provide();
