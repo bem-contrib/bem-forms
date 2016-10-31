@@ -2,8 +2,8 @@
  * @module form
  */
 modules.define('form',
-    ['i-bem-dom', 'objects', 'form-field', 'button', 'vow'],
-    function(provide, bemDom, objects, FormField, Button, Vow) {
+    ['i-bem-dom', 'objects', 'form-field', 'button', 'vow', 'next-tick'],
+    function(provide, bemDom, objects, FormField, Button, nextTick) {
 /**
  * Form declaration
  */
@@ -12,7 +12,6 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
         'js' : {
             'inited' : function() {
                 this._changeStorage = null;
-
                 this.hasMod('disabled') && this._toggleDisableFields('disabled');
 
                 this._initVal = this.getVal();
@@ -79,7 +78,7 @@ provide(bemDom.declBlock(this.name, /** @lends form.prototype */{
             field.setVal(val[field.getName()]);
         });
 
-        this.nextTick(function() {
+        nextTick(function() {
             if(!objects.isEmpty(storage)) this._emit('change', storage);
             this._changeStorage = null;
         });
