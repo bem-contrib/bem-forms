@@ -5,6 +5,7 @@
     ],
     shouldDeps : [
         { block : 'objects' },
+        { block : 'next-tick' },
         { block : 'form-field' },
         { block : 'validation' },
         { block : 'vow' }
