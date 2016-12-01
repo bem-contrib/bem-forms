@@ -3,7 +3,7 @@
  */
 modules.define('form',
     ['i-bem-dom', 'objects', 'form-field', 'button', 'vow', 'next-tick'],
-    function(provide, bemDom, objects, FormField, Button, nextTick) {
+    function(provide, bemDom, objects, FormField, Button, Vow, nextTick) {
 /**
  * Form declaration
  */
