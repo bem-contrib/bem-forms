@@ -19,6 +19,10 @@ provide(FormField.decl({ modName : 'type', modVal : 'hidden' }, {
 
     getControl : function() {
         return this._control || (this._control = this.domElem.find('input'));
+    },
+
+    _updateStatus : function(status) {
+        this._status = status;
     }
 
 }));
