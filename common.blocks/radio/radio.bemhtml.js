@@ -4,7 +4,7 @@ block('radio')(
         var ctx = this.ctx;
 
         ctx.name || (ctx.name = this._form_field.name);
-        this.mods.disabled = this._form_field.mods.disabled;
+        this.mods.disabled = this._form_field.mods.disabled || this.mods.disabled;
 
         return applyNext();
     })
