@@ -5,6 +5,7 @@ module.exports = function(bh) {
 
         if(_form_field) {
             json.name = json.name || _form_field.name;
+            ctx.mod('disabled', _form_field.mods.disabled);
         }
     });
 
