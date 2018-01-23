@@ -10,12 +10,17 @@ modules.define('form-field', ['select'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'select' }, {}, /** @lends form-field_type_checkbox */{
+provide(FormField.declMod({ modName : 'type', modVal : 'select' }, {
+
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(Select));
+    }
+
+}, /** @lends form-field_type_checkbox */{
     lazyInit : true,
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['select'] = Select;
 
         this.__base();
         this._events(Select)
@@ -23,8 +28,6 @@ FormField.declMod({ modName : 'type', modVal : 'select' }, {}, /** @lends form-f
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });
