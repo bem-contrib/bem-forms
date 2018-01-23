@@ -10,12 +10,17 @@ modules.define('form-field', ['attach'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'attach' }, {}, /** @lends form-field_type_attach */{
+provide(FormField.declMod({ modName : 'type', modVal : 'attach' }, {
+
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(Attach));
+    }
+
+}, /** @lends form-field_type_attach */{
     lazyInit : true,
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['attach'] = Attach;
 
         this.__base();
         this._events(Attach)
@@ -23,8 +28,6 @@ FormField.declMod({ modName : 'type', modVal : 'attach' }, {}, /** @lends form-f
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });

@@ -10,7 +10,10 @@ modules.define('form-field', ['checkbox'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
+provide(FormField.declMod({ modName : 'type', modVal : 'checkbox' }, /** @lends form-field_type_checkbox.prototype */{
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(Checkbox));
+    },
     /**
      * Returns field value if checked or empty string (?)
      * @returns {String}
@@ -41,7 +44,6 @@ FormField.declMod({ modName : 'type', modVal : 'checkbox' }, /** @lends form-fie
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['checkbox'] = Checkbox;
 
         this.__base();
         this._events(Checkbox)
@@ -49,8 +51,6 @@ FormField.declMod({ modName : 'type', modVal : 'checkbox' }, /** @lends form-fie
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });

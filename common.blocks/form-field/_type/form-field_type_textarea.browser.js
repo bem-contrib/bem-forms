@@ -10,12 +10,17 @@ modules.define('form-field', ['textarea'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'textarea' }, {}, /** @lends form-field_type_textarea */{
+provide(FormField.declMod({ modName : 'type', modVal : 'textarea' }, {
+
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(Textarea));
+    }
+
+}, /** @lends form-field_type_textarea */{
     lazyInit : true,
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['textarea'] = Textarea;
 
         this.__base();
         this._events(Textarea)
@@ -23,8 +28,6 @@ FormField.declMod({ modName : 'type', modVal : 'textarea' }, {}, /** @lends form
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });

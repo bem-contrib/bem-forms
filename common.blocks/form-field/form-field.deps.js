@@ -3,6 +3,7 @@
         { block : 'i-bem-dom' }
     ],
     shouldDeps : [
+        { block : 'functions' },
         { block : 'validation' },
         { block : 'label' },
         { block : 'vow' }

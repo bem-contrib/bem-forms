@@ -10,12 +10,17 @@ modules.define('form-field', ['radio-group'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'radio-group' }, {}, /** @lends form-field_type_radio-group */{
+provide(FormField.declMod({ modName : 'type', modVal : 'radio-group' }, {
+
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(RadioGroup));
+    },
+
+}, /** @lends form-field_type_radio-group */{
     lazyInit : true,
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['radio-group'] = RadioGroup;
 
         this.__base();
         this._events(RadioGroup)
@@ -23,8 +28,6 @@ FormField.declMod({ modName : 'type', modVal : 'radio-group' }, {}, /** @lends f
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });

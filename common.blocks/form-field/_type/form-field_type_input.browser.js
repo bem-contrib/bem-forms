@@ -10,12 +10,17 @@ modules.define('form-field', ['input'],
  * @class form-field
  * @bem
  */
-FormField.declMod({ modName : 'type', modVal : 'input' }, {}, /** @lends form-field_type_input */{
+provide(FormField.declMod({ modName : 'type', modVal : 'input' }, {
+
+    getControl : function() {
+        return this._control || (this._control = this.findChildBlock(Input));
+    },
+
+}, /** @lends form-field_type_input */{
     lazyInit : true,
 
     onInit : function() {
         var ptp = this.prototype;
-        ptp._controls['input'] = Input;
 
         this.__base();
         this._events(Input)
@@ -23,8 +28,6 @@ FormField.declMod({ modName : 'type', modVal : 'input' }, {}, /** @lends form-fi
             .on({ modName : 'focused', modVal : true }, ptp._onControlFocus)
             .on({ modName : 'focused', modVal : '' }, ptp._onControlBlur);
     }
-});
-
-provide(FormField);
+}));
 
 });

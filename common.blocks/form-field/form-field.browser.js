@@ -2,8 +2,8 @@
  * @module form-field
  */
 modules.define('form-field',
-    ['i-bem', 'i-bem-dom', 'validation', 'label'],
-    function(provide, bem, bemDom, Validation, Label) {
+    ['i-bem', 'i-bem-dom', 'validation', 'label', 'functions'],
+    function(provide, bem, bemDom, Validation, Label, functions) {
 /**
  * Field block
  */
@@ -11,9 +11,7 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                !this.getControl() && console.warn('Control required for form-field', this); // jshint ignore:line
-                !this.hasMod('type') && console.warn('Type modifier required for form-field', this); // jshint ignore:line
-                !this.getName() && console.warn('Name required for form-field', this); // jshint ignore:line
+                this.checkHealth();
 
                 this._messages = {};
 
@@ -29,20 +27,13 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
         }
     },
 
-    /**
-     * Controls from form-field_type_*
-     */
-    _controls : {},
-
-    /**
-     * Returns control of field
-     * @protected
-     * @returns {BEM}
-     */
-    getControl : function() {
-        var control = this._controls[this.getMod('type')];
-        return this._control || (this._control = this.findChildBlock(control));
+    checkHealth : function() {
+        !this.getControl() && console.error('Control required for form-field', this);// jshint ignore:line
+        !this.getName() && console.warn('Name required for form-field', this); // jshint ignore:line
     },
+
+    getControl : functions.noop,
+
     /**
      * Returns field value
      * @returns {String}
