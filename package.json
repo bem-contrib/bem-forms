@@ -1,6 +1,6 @@
 {
   "name": "bem-forms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "bem",
     "forms"
@@ -39,7 +39,6 @@
     "jshint-groups": "^0.7.0"
   },
   "scripts": {
-    "postinstall": "npm run deps",
     "start": "enb server",
     "deps": "bower i",
     "lint": "jshint-groups && jscs .",
