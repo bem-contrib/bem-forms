@@ -22,7 +22,7 @@ provide(bemDom.declBlock(this.name, /** @lends form-field.prototype */{
         },
 
         'disabled' : function(modName, modVal) {
-            this.findChildBlock(Label).setMod(modName, modVal);
+            this.findChildBlock(Label) && this.findChildBlock(Label).setMod(modName, modVal);
             this.getControl().setMod(modName, modVal);
         }
     },
