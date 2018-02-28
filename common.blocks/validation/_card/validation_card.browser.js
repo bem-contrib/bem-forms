@@ -31,8 +31,8 @@ var DEFAULT_MESSAGE = {
             pattern : /^(50|5[6-9]|6)/
         },
         {
-            name: 'mir',
-            pattern: /^200/
+            name : 'mir',
+            pattern : /^200/
         }
     ];
 
