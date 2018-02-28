@@ -30,7 +30,11 @@ var DEFAULT_MESSAGE = {
         {
             name : 'maestro',
             pattern : /^(50|5[6-9]|6)/
-        }
+        },
+        {
+    	    name : 'mir',
+    	    pattern : /^220/
+    	}
     ];
 
 /**
