@@ -32,6 +32,8 @@ module.exports = {
                 '**/*.bem/*.js',
                 '**/_*.js',
                 '**/*.bh.js',
+                '**/*.bemhtml.js',
+                '**/*.bemtree.js',
                 '**/*.spec.js',
                 '**/*.deps.js',
                 '**/*.bemjson.js'
@@ -56,6 +58,7 @@ module.exports = {
         },
 
         bemxjst : {
+
             options : {
                 predef : [
                     'apply',
@@ -74,14 +77,16 @@ module.exports = {
                     'mix',
                     'mod',
                     'mode',
-                    'tag'
+                    'tag',
+                    'wrap',
+                    'replace',
+                    'extend',
+                    'once'
                 ]
             },
             includes : [
-                '*.blocks/**/*.bemhtml',
-                '*.blocks/**/*.bemtree',
-                'design/*.blocks/**/*.bemhtml',
-                'design/*.blocks/**/*.bemtree'
+                '*.blocks/**/*.bemhtml.js',
+                '*.blocks/**/*.bemtree.js'
             ]
         },
 
