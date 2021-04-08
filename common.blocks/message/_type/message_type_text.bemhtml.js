@@ -1,3 +1,3 @@
 block('message').mod('type', 'text')(
-    mix()({ elem : 'control' })
+    addMix()({ elem : 'control' })
 );
